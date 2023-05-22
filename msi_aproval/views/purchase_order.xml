@@ -1,0 +1,26 @@
+<odoo>
+  <data>
+
+ 
+        <record id="tbl_po_approval" model="ir.ui.view">
+            <field name="name">tbl_po_approval</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_cancel']" position="replace">
+                    <button name="button_cancel" states="draft,to approve,appr1,appr2,appr3,appr4,appr5,sent,purchase" string="Cancel" type="object"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="act_appr1" string="Approve 1" type="object" class="oe_highlight" groups="msi_aproval.group1_po_approval" states='appr1'/>
+                    <button name="act_appr2" string="Approve 2" type="object" class="oe_highlight" groups="msi_aproval.group2_po_approval" states='appr2'/>
+                    <button name="act_appr3" string="Approve 3" type="object" class="oe_highlight" groups="msi_aproval.group3_po_approval" states='appr3'/>
+                    <button name="act_appr4" string="Approve 4" type="object" class="oe_highlight" groups="msi_aproval.group4_po_approval" states='appr4'/>
+                    <button name="act_appr5" string="Approve 5" type="object" class="oe_highlight" groups="msi_aproval.group5_po_approval" states='appr5'/>
+                    <button name="act_appr6" string="Approve 6" type="object" class="oe_highlight" groups="msi_aproval.group6_po_approval" states='appr6'/>
+                    <button name="act_appr7" string="Approve 7" type="object" class="oe_highlight" groups="msi_aproval.group7_po_approval" states='appr7'/>
+                </xpath>
+	          </field>
+	      </record>
+  </data>
+</odoo>

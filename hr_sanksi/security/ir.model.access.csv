@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_hr_sanksi_manager,mgr_tbl_hr_sanksi,model_tbl_hr_sanksi,grup_sanksi_mgr,1,1,1,1
+access_tbl_hr_tipe_sanksi_manager,mgr_tbl_hr_tipe_sanksi,model_tbl_hr_tipe_sanksi,grup_sanksi_mgr,1,1,1,1
+
+

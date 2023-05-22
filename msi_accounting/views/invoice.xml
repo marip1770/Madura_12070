@@ -1,0 +1,219 @@
+ <odoo>
+
+
+
+        <record id="view_msi_account_invoice_form" model="ir.ui.view">
+            <field name="name">account.msi_invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//page[1]" position="replace">
+                    <page string="Bill" name="bill">
+                            <field context="{'type': type, 'journal_id': journal_id}" name="invoice_line__bill_ids">
+                                <tree string="Bill lines" editable="bottom">
+                                    <field name="sequence" widget="handle" />
+                                    <field name="product_id" groups="account.group_products_in_bills"
+                                        context="{'partner_id': parent.partner_id}" domain="[('purchase_ok','=',True)]"/>
+                                    <field name="name"/>
+                                    <field name="is_service" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="account_id" groups="account.group_account_user"
+                                        domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"/>
+                                    <field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+                                        domain="[('company_id', '=', parent.company_id)]"
+                                        context="{'default_partner_id': parent.partner_id}"/>
+                                    <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" groups="uom.group_uom"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="base.group_no_one"/>
+                                    <field name="invoice_line_tax_ids" widget="many2many_tags" options="{'no_create': True}" context="{'type':parent.type, 'tree_view_ref': 'account.account_tax_view_tree', 'search_view_ref': 'account.account_tax_view_search'}"
+                                        domain="[('type_tax_use','=','purchase'),('company_id', '=', parent.company_id)]"/>
+                                    <field name="price_subtotal" string="Amount"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <group>
+            <!--                                     <div class="oe_inline">
+                                        <field name="tax_line_ids">
+                                            <tree editable="bottom" string="Taxes">
+                                                <field name="name"/>
+                                                Need invisible fields for on_change to create all necessary info 
+                                                <field name="tax_id" invisible="1"/>
+                                                <field name="sequence" invisible="1"/>
+                                                <field name="manual" invisible="1"/>
+                                                <field name="account_id" groups="account.group_account_user"/>
+                                                <field name="account_analytic_id" domain="[('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_accounting"/>
+                                                <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                                <field name="amount"/>
+                                                <field name="amount_rounding" invisible="1"/>
+                                                <field name="amount_total" invisible="1"/>
+                                                <field name="currency_id" invisible="1" force_save="1"/>
+                                            </tree>
+                                        </field>
+                                    </div> -->
+                                </group>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_untaxed_bill"/>
+                                    <field name="amount_tax_bill"/>
+                                    <field name="amount_total_bill" class="oe_subtotal_footer_separator"/>
+                                    <field name="amount_total_selisih" class="oe_subtotal_footer_separator" invisible="1"/>
+                                    <!-- <field name="payments_widget" colspan="2" nolabel="1" widget="payment"/>
+                                    <field name="residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                                    <field name="reconciled" invisible="1"/>
+                                    <field name="outstanding_credits_debits_widget" colspan="2" nolabel="1" widget="payment" attrs="{'invisible': [('state', 'not in', 'open')]}"/> -->
+                                </group>
+                            </group>
+                            <div>
+                                <field name="comment" placeholder="Additional notes..."/>
+                            </div>
+                        </page>
+                    <page string="Payment" name="payment">
+                            <field context="{'type': type, 'journal_id': journal_id}" name="invoice_line_ids">
+                                <tree string="Bill lines" editable="bottom">
+                                    <field name="sequence" widget="handle" />
+                                    <field name="product_id" groups="account.group_products_in_bills"
+                                        context="{'partner_id': parent.partner_id}" domain="[('purchase_ok','=',True)]"/>
+                                    <field name="name"/>
+                                    <field name="is_service" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="purchase_line_id" invisible="1" readonly="0"/>
+                                    <field name="purchase_id" invisible="1" readonly="0"/>
+                                    <field string="Asset Category" name="asset_category_id" domain="[('type','=','purchase')]" context="{'default_type':'purchase'}"/>
+                                    <field name="account_id" groups="account.group_account_user"
+                                        domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"/>
+                                    <field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+                                        domain="[('company_id', '=', parent.company_id)]"
+                                        context="{'default_partner_id': parent.partner_id}"/>
+                                    <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" groups="uom.group_uom"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="base.group_no_one"/>
+                                    <field name="invoice_line_tax_ids" widget="many2many_tags" options="{'no_create': True}" context="{'type':parent.type, 'tree_view_ref': 'account.account_tax_view_tree', 'search_view_ref': 'account.account_tax_view_search'}"
+                                        domain="[('type_tax_use','=','purchase'),('company_id', '=', parent.company_id)]"/>
+                                    <field name="price_subtotal" string="Amount"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <group>
+                                    <div class="oe_inline">
+                                        <field name="tax_line_ids">
+                                            <tree editable="bottom" string="Taxes">
+                                                <field name="name"/>
+                                                <!--Need invisible fields for on_change to create all necessary info -->
+                                                <field name="tax_id" invisible="1"/>
+                                                <field name="sequence" invisible="1"/>
+                                                <field name="manual" invisible="1"/>
+                                                <field name="account_id" groups="account.group_account_user"/>
+                                                <field name="account_analytic_id" domain="[('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_accounting"/>
+                                                <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                                <field name="amount"/>
+                                                <field name="amount_rounding" invisible="1"/>
+                                                <field name="amount_total" invisible="1"/>
+                                                <field name="currency_id" invisible="1" force_save="1"/>
+                                            </tree>
+                                        </field>
+                                    </div>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_untaxed"/>
+                                    <field name="amount_tax"/>
+                                    <field name="amount_total" class="oe_subtotal_footer_separator"/>
+                                    <field name="payments_widget" colspan="2" nolabel="1" widget="payment"/>
+                                    <field name="residual" class="oe_subtotal_footer_separator" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                                    <field name="reconciled" invisible="1"/>
+                                    <field name="outstanding_credits_debits_widget" colspan="2" nolabel="1" widget="payment" attrs="{'invisible': [('state', 'not in', 'open')]}"/>
+                                </group>
+                            </group>
+                            <div>
+                                <field name="comment" placeholder="Additional notes..."/>
+                            </div>
+                        </page>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_invoice_payment)d']" position="replace">
+                        <button name="%(account.action_account_invoice_payment)d" type="action" string="Register Payment" groups="account.group_account_invoice" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'open')]}"/>
+                        <!-- <button name="%(account.action_account_invoice_payment)d" type="action" states="open" string="Overide Register Payment" groups="msi_accounting.group_overide_payment" class="oe_highlight"/> -->
+                        <button name="action_invoice_approve" string="Approve" type="object" states="approve" groups="msi_accounting.group_overide_payment"/>
+                </xpath>
+                <xpath expr="//button[@name='action_invoice_open']" position="replace">
+                        <button name="act_validate" type="object" states="draft" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_bank_id']" position="after">
+                	<field name="code_transaksi" invisible="0"/>
+                	<field name="avail_po_value"/>
+                </xpath>
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="journal_service" groups="account.group_account_user" attrs="{'invisible': [('journal_service', '=', False)]}"/>
+                </xpath>
+	        </field>
+        </record>
+        <record id="view_msi_account_invoice_cancel_form" model="ir.ui.view">
+            <field name="name">account.msi_invoice.cancel.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_supplier_cancel_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="replace">
+                    <button name="action_invoice_cancel" type="object" states="draft,approve,open,in_payment,paid" string="Cancel" groups="account.group_account_invoice"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_msi_account_payment_form" model="ir.ui.view">
+            <field name="name">account.msi_payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+            	<field name="communication" position="after">
+            		<field name="communication1" invisible="0"/>
+            	</field>
+            </field>
+        </record>
+
+        <record id="view_msi_account_bank_statement_form" model="ir.ui.view">
+            <field name="name">msi_account_bank_statement.form</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='name']" position="after">
+                    <field name="name1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="msi_sel_inv_wizard_form" model="ir.ui.view">
+            <field name="name">msi_sel_inv.form</field>
+            <field name="model">msi_sel_inv</field>
+            <field name="arch" type="xml">
+                <form string="Payment">
+                            <center>Nominal pada Bill dan Payment Berbeda, Apakah akan dilanjutkan?</center>
+                        
+                    <footer>
+                        <button name="act_yes" string="Yes" type="object" class="oe_highlight"/>
+                        <button string="No" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+<!--         <record id="bi_view_account_payment_invoice_form_exchange_rate_field_add_inherit" 
+                model="ir.ui.view">
+            <field name="name">bi.view.account.payment.invoice.form.exchange.rate.field.add.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+            	<field name="communication" position="after">
+            		<field name="manual_currency_rate_active"/>
+
+            		<field name="manual_currency_rate" attrs="{'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+            		<field name="manual_rate" attrs="{'invisible': [('manual_currency_rate_active', '=', False)],'required':[('manual_currency_rate_active', '=', True)]}"/>
+            	</field>
+            </field>
+            </record> -->
+           
+
+
+
+</odoo>

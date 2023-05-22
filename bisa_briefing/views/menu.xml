@@ -1,0 +1,16 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_briefing_management" name="Briefing"  web_icon="bisa_briefing,static/description/icon.png"/>
+
+    <menuitem name="Plant and Assigment" id="menu_pna_top" parent="menu_briefing_management" sequence="10"/>
+    <menuitem name="Brief and Prepare" id="menu_bnp_top" parent="menu_briefing_management" sequence="11"/>
+    <menuitem name="Report" id="menu_report_top" parent="menu_briefing_management" sequence="12"/>
+    <menuitem name="Billing" id="menu_billing_top" parent="menu_briefing_management" sequence="13"/>
+    <menuitem name="Breakdown" id="menu_breakdown_top" parent="menu_briefing_management" sequence="14"/>
+    <!-- <menuitem name="Briefing" id="menu_briefing_top" parent="menu_briefing_management" sequence="10"/> -->
+
+
+   </data>
+</odoo>
+
+

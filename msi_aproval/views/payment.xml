@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+
+ 
+        <record id="tbl_msi_approval_payment" model="ir.ui.view">
+            <field name="name">tbl_msi_approval_payment</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="act_appr1" string="Approve 1" type="object" class="oe_highlight" groups="msi_aproval.group1_payment_approval" states='appr1'/>
+                    <button name="act_appr2" string="Approve 2" type="object" class="oe_highlight" groups="msi_aproval.group2_payment_approval" states='appr2'/>
+                    <button name="act_appr3" string="Approve 3" type="object" class="oe_highlight" groups="msi_aproval.group3_payment_approval" states='appr3'/>
+                    <button name="act_appr4" string="Approve 4" type="object" class="oe_highlight" groups="msi_aproval.group4_payment_approval" states='appr4'/>
+                    <button name="act_appr5" string="Approve 5" type="object" class="oe_highlight" groups="msi_aproval.group5_payment_approval" states='appr5'/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='partner_bank_account_id']" position="replace">
+                    <field name="partner_bank_account_id" attrs="{'required': [('show_partner_bank_account', '=', True)], 'readonly': [('state', '!=', 'draft')]}" context="{'default_partner_id': partner_id}"/>
+                </xpath> -->
+	          </field>
+	      </record>
+  </data>
+</odoo>

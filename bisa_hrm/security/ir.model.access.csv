@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_bisa_hrm_plan,mgr_tbl_bisa_hrm_plan,model_tbl_bisa_hrm_plan,,1,1,1,1
+access_tbl_bisa_hrm_assigment,mgr_tbl_bisa_hrm_assigment,model_tbl_bisa_hrm_assigment,,1,1,1,1
+access_tbl_bisa_hrm_p5m,mgr_tbl_bisa_hrm_p5m,model_tbl_bisa_hrm_p5m,,1,1,1,1
+access_tbl_bisa_hrm_p5m_quest,mgr_tbl_bisa_hrm_p5m_quest,model_tbl_bisa_hrm_p5m_quest,,1,1,1,1
+access_tbl_bisa_hrm_absensi_p5m,mgr_tbl_bisa_hrm_absensi_p5m,model_tbl_bisa_hrm_absensi_p5m,,1,1,1,1
+access_tbl_bisa_hrm_p2h,mgr_tbl_bisa_hrm_p2h,model_tbl_bisa_hrm_p2h,,1,1,1,1
+access_tbl_bisa_hrm_data_p2h,mgr_tbl_bisa_hrm_data_p2h,model_tbl_bisa_hrm_data_p2h,,1,1,1,1
+access_tbl_bisa_hrm_time_sheet,mgr_tbl_bisa_hrm_time_sheet,model_tbl_bisa_hrm_time_sheet,,1,1,1,1
+access_tbl_bisa_hrm_kontrak,mgr_tbl_bisa_hrm_kontrak,model_tbl_bisa_hrm_kontrak,,1,1,1,1

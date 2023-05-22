@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="action_print_payroll_tmpl_sent_print">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <div class="page" style="font-size: 10px !important;">
+                    <div class="oe_structure"/>
+                        <center>
+                            <strong style="font-size: 10px !important;">SLIP GAJI</strong>
+                        </center>
+
+                    <div class="row mt32 mb32" id="informations">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tanggal</strong>
+                            <p class="m-0"><strong>NIK/Nama</strong></p>
+                            <p class="m-0"><strong>Department</strong></p>
+                            <p class="m-0"><strong>Divisi</strong></p>
+                            <p class="m-0"><strong>Lokasi</strong></p>
+                        </div>
+                        <div>
+                            <strong>:</strong>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <span t-field="o.date"/>
+                            <p class="m-0"><span t-field="o.name"/>-<span t-field="o.employee.nama_depan"/></p>
+                            <p class="m-0" t-field="o.dept"/>
+                            <p class="m-0" t-field="o.divisi"/>
+                            <p class="m-0" t-field="o.loc"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Periode</strong>
+                            <p class="m-0"><strong>Employee Category</strong></p>
+                            <p class="m-0"><strong>Contract</strong></p>
+                            <p class="m-0"><strong>Golongan Gaji</strong></p>
+                            <p class="m-0"><strong>Cost Center</strong></p>
+                        </div>
+                        <div>
+                            <strong>:</strong>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <span t-field="o.periode"/>
+                            <p class="m-0" t-field="o.type_id"/>
+                            <p class="m-0" t-field="o.contract_id"/>
+                            <p class="m-0" t-field="o.gol_gaji"/>
+                            <p class="m-0" t-field="o.analytic_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <p class="m-0"><strong>No Rekening</strong></p>
+                            <p class="m-0"><strong>Bank</strong></p>
+                            <p class="m-0"><strong>Print</strong></p>
+                        </div>
+
+                        <div>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                            <p class="m-0"><strong>:</strong></p>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <p class="m-0" t-field="o.employee.no_rekening"/>
+                            <p class="m-0" t-field="o.employee.nama_bank"/>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+                        </div>
+
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">Penerimaan</th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="o.detail_payroll" t-as="line">
+                                <t t-if="line.tipe == 'Allowance'">
+                                    <tr>
+                                        <td class="text-left">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-left">
+                                            Rp
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.nominal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">Total</th>
+                                <th class="text-left">Rp</th>
+                                <th class="text-right"><span t-field="o.total_allow"/></th>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">POTONGAN</th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="o.detail_payroll" t-as="line">
+                                <t t-if="line.tipe == 'Deduction'">
+                                    <tr>
+                                        <td class="text-left">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-left">
+                                            Rp
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.nominal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">Total</th>
+                                <th class="text-left">Rp</th>
+                                <th class="text-right"><span t-field="o.total_ded"/></th>
+                            </tr>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">Pajak</th>
+                                <th class="text-left">Rp</th>
+                                <th class="text-right"><span t-field="o.total_tax"/></th>
+                            </tr>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <th class="text-left">Total Penghasilan Bersih/THP</th>
+                                <th class="text-left">Rp</th>
+                                <th class="text-right"><span t-field="o.total_thp"/></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="page-break-after:always;"/>
+
+                    <t t-if="o.detail_overtime">
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <!-- <th class="text-left">Hari</th> -->
+                                <th class="text-left">Tanggal</th>
+                                <th class="text-left">Jadual Tanggal Masuk</th>
+                                <th class="text-left">Jadual Tanggal Pulang</th>
+                                <th class="text-left">Aktual Tanggal Masuk</th>
+                                <th class="text-left">Aktual Tanggal Pulang</th>
+                                <th class="text-left">Jadual SPKL Masuk</th>
+                                <th class="text-left">Jadual SPKL Pulang</th>
+                                <th class="text-left">Total Lembur (Jam)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="o.detail_overtime" t-as="line">
+                                    <tr>
+                                        <!-- <td class="text-left">
+                                            <span t-field="line.nama_hari"/>
+                                        </td> -->
+                                        <td class="text-left">
+                                            <span t-field="line.sc_date_a"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.sc_date_in"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.sc_date_out"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.act_date_in"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.act_date_out"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.lembur_spkl_start"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span t-field="line.lembur_spkl_end"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.total_lembur"/>
+                                        </td>
+                                    </tr>
+                            </t>
+                            <tr>
+                                <t t-set="colspan" t-value="6"/>
+                                <!-- <th class="text-left"></th> -->
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-left"></th>
+                                <th class="text-right"><span t-field="o.total_lembur"/></th>
+                            </tr>
+                        </tbody>                        
+                    </table>
+                    </t>
+                </div>
+
+            </t>
+         </t>
+    </template>
+
+
+    <template id="action_print_payroll_tmpl_sent">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_hr_payroll.action_print_payroll_tmpl_sent_print" />
+        </t>
+    </template>
+
+</odoo>

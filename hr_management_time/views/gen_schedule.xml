@@ -1,0 +1,100 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_shift_gen_schedule_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_shift_gen_schedule.tree</field>
+            <field name="model">tbl_msi_shift_gen_schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="periode" string='Mulai Periode'/>
+                                    <field name="date_awal"/>
+                                    <field name="date_akhir" invisible="1"/>
+                                    <field name="ket"/>
+                                    <field name="ref"/>
+                                    <field name="type"/>
+                                    <field name="employee"/>
+                                    <field name="nik"/>
+                                    <field name="group1"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_shift_gen_schedule_form">
+        <field name="name">tbl_msi_shift_gen_schedule.form</field>
+        <field name="model">tbl_msi_shift_gen_schedule</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_management_time.grup_time_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_management_time.grup_time_appr"/>
+                    <button name="action_generate" string="Generate Schedule" type="object" states="approve" groups="hr_management_time.grup_time_mgr"/>
+                    <button name="action_done" string="Finish" type="object" states="generate" groups="hr_management_time.grup_time_mgr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,generate,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+
+                                    <field name="periode" string='Mulai Periode'/>
+                                    <field name="roster"/>
+                                    <field name="jam_kerja" widget="many2many_tags" invisible="1"/>
+
+		                </group>
+		                <group>
+                                    <field name="type"/>
+                                    <field name="employee"  attrs="{'invisible': [('type', '!=', 'employee')]}"/>
+                                    <field name="nik" attrs="{'invisible': [('type', '!=', 'employee')]}"/>
+                                    <field name="group1" attrs="{'invisible': [('type', '=', 'employee')]}"/>
+                                    <field name="group" attrs="{'invisible': [('type', '=', 'employee')]}" widget="many2many_tags" invisible="1"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+                                    <field name="ket"/>
+		                </group>
+		                <group>
+                                    <field name="ref"/>
+                                    <field name="user"/>
+                                    <field name="jml_group" invisible="1"/>
+                                    <field name="jml_jam_kerja" invisible="1"/>
+		               </group>
+			</group>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_gen_schedule">
+           <field name="name">Generate Schedule</field>
+           <field name="res_model">tbl_msi_shift_gen_schedule</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Generate Schedule" id="menu_rekap_gen_schedule_left" parent="menu_gen_sche_top" action="menu_action_gen_schedule" sequence="10"/>
+
+
+</data>
+</odoo>

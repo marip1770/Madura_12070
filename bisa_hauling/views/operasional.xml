@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <record id="view_tbl_bisa_hauling_assigment_opr_line_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hauling_assigment_opr_line.tree</field>
+            <field name="model">tbl_bisa_hauling_assigment_opr_line</field>
+            <field name="arch" type="xml">
+                <tree string="Operasional" create="false" edit="false">
+                    <field name="user_driver" invisible="1" readonly="1"/>
+                    <field name="driver" readonly="1"/>
+                    <field name="id_unit" readonly="1"/>
+                    <field name="start_time"/>
+                    <field name="geo_start_longtitude"/>
+                    <field name="geo_start_latitude"/>
+                    <field name="end_shift"/>
+                    <field name="geo_shift_end_longtitude"/>
+                    <field name="geo_shift_end_latitude"/>
+                    <field name="start_shift"/>
+                    <field name="geo_shift_start_longtitude"/>
+                    <field name="geo_shift_start_latitude"/>
+                    <field name="end_time"/>
+                    <field name="geo_end_longtitude"/>
+                    <field name="geo_end_latitude"/>
+                    <field name="no_register"/>
+                    <field name="berat_timbangan"/>
+                    <field name="uom"/>
+                    <field name="picture"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+      
+        <!-- Action Hauling Operasional -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_hauling_assigment_opr_line">
+            <field name="name">Operasional</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_assigment_opr_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tbl_bisa_hauling_assigment_opr_line_tree"/>
+            <field name="domain" >[('tipe','=','hauling')]</field>
+        </record>
+
+
+        <menuitem name="Operasional" id="menu_operasional_left_hauling" parent="menu_hauling_operasional_top" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+        <menuitem name="Operasional" id="menu_operasional_left_hrm" parent="menu_hrm_management" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+        <menuitem name="Operasional" id="menu_operasional_left_rental" parent="menu_rental_management" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+        <menuitem name="Operasional" id="menu_operasional_left_port" parent="menu_port_management" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+        <menuitem name="Operasional" id="menu_operasional_left_fuel" parent="menu_fuel_truck_management" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+        <menuitem name="Operasional" id="menu_operasional_left_water" parent="menu_water_truck_management" action="menu_action_tbl_bisa_hauling_assigment_opr_line" sequence="9"/>
+ 
+    </data>
+</odoo>

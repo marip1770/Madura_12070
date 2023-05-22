@@ -1,0 +1,213 @@
+<odoo>
+  <data>
+
+
+        <record id="view_tbl_payrol_proses_raw_tree" model="ir.ui.view">
+            <field name="name">tbl_payrol_proses_raw.tree</field>
+            <field name="model">tbl_payrol_proses_raw</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="date"/>
+                                    <field name="periode"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_payrol_proses_raw_form">
+        <field name="name">tbl_payrol_proses_raw.form</field>
+        <field name="model">tbl_payrol_proses_raw</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_get_att" string="Get Attendance" type="object" states="submit"/>
+                    <button name="action_get_lembur" string="Get Lembur" type="object" states="submit"/>
+                    <button name="action_get_hm" string="Get HM" type="object" states="submit"/>
+                    <button name="action_get_retase" string="Get Retase" type="object" states="submit"/>
+                    <button name="action_get_kinerja" string="Get Kinerja" type="object" states="submit"/>
+                    <button name="action_get_cuti" string="Get Cuti" type="object" states="submit"/>
+                    <button name="action_get_sanksi" string="Get Sanksi" type="object" states="submit" invisible="1"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_cancel" string="Cancel" type="object" states="approve"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,cancel"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="date"/>
+                                    <field name="periode"/>
+		                </group>
+		                <group>
+
+                                    <field name="user"/>
+                                    <field name="ket"/>
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            <field name="detail">
+				<tree string="Detail Action">
+                                    <field name="date"/>
+                                    <field name="tipe"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="late"/>
+                                    <field name="early" invisible="1"/>
+                                    <field name="nominal"/>
+
+				 </tree>
+		             </field>
+                        </page>
+
+	     </notebook>
+          </sheet>
+
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_payroll_proses_dataraw">
+           <field name="name">Proses Data Raw</field>
+           <field name="res_model">tbl_payrol_proses_raw</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Proses Data Raw" id="menu_payroll_proses_dataraw_left" parent="menu_data_top" action="menu_action_payroll_proses_dataraw" sequence="10"/>
+
+  
+        <record id="view_tbl_payrol_raw_tree" model="ir.ui.view">
+            <field name="name">tbl_payrol_raw.tree</field>
+            <field name="model">tbl_payrol_raw</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="date"/>
+                                    <field name="tipe"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="late"/>
+                                    <field name="early" invisible="1"/>
+                                    <field name="nominal"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_payrol_raw_form">
+        <field name="name">tbl_payrol_raw.form</field>
+        <field name="model">tbl_payrol_raw</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="date"/>
+                                    <field name="tipe"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="late"/>
+                                    <field name="early" invisible="1"/>
+                                    <field name="nominal"/>
+                                    <field name="state"/>
+		                </group>
+		                <group>
+
+
+		               </group>
+			</group>
+
+
+          </sheet>
+
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_payroll_dataraw">
+           <field name="name">Data Raw</field>
+           <field name="res_model">tbl_payrol_raw</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+           <field name="domain">[('state', '=', 'approve')]</field>
+       </record>
+
+    <menuitem name="Data Raw" id="menu_payroll_dataraw_left" parent="menu_data_top" action="menu_action_payroll_dataraw" sequence="30"/>
+
+
+
+  
+        <record id="view_tbl_payrol_raw_import_tree" model="ir.ui.view">
+            <field name="name">tbl_payrol_raw_import.tree</field>
+            <field name="model">tbl_payrol_raw_import</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="date"/>
+                                    <field name="periode"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+
+                                    <field name="gapok"/>
+                                    <field name="jabatan"/>
+                                    <field name="tanggung_jawab"/>
+                                    <field name="hm"/>
+                                    <field name="retase"/>
+                                    <field name="lembur"/>
+                                    <field name="hadir"/>
+                                    <field name="kinerja"/>
+                                    <field name="transport"/>
+                                    <field name="bersih_unit"/>
+                                    <field name="uang_saku"/>
+                                    <field name="makan"/>
+
+                                    <field name="field"/>
+                                    <field name="komunikasi"/>
+                                    <field name="bonus"/>
+
+                                    <field name="pab"/>
+                                    <field name="hd"/>
+                                    <field name="se"/>
+                                    <field name="spkl"/>
+
+                                    <field name="a_pph21"/>
+                                    <field name="a_jk"/>
+
+                                    <field name="a_jkk"/>
+                                    <field name="a_jkm"/>
+                                    <field name="a_jht"/>
+                                    <field name="a_jp"/>
+                                    <field name="a_bpjs_kesehatan"/>
+
+
+
+                                    <field name="d_jht"/>
+                                    <field name="d_jp"/>
+                                    <field name="d_bpjs_kesehatan"/>
+                                    <field name="d_bpjs_tenagakerja"/>
+                                    <field name="d_pph21"/>
+                                    <field name="d_lainnya"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="menu_action_data_import">
+           <field name="name">Data Import</field>
+           <field name="res_model">tbl_payrol_raw_import</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Data Import" id="menu_data_import_left" parent="menu_data_top" action="menu_action_data_import" sequence="50"/>
+</data>
+</odoo>

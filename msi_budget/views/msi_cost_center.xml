@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Order -->
+        <record id="view_msi_account_cost_center_form" model="ir.ui.view">
+            <field name="name">msi_account_cost_center.form</field>
+            <field name="model">account.cost.center</field>
+            <field name="inherit_id" ref="account_cost_center.account_cost_center_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="department_ids" widget="many2many_tags" domain="[('details', '=', id)]"/>
+                    <field name="group_head_id"/>
+            	</xpath>
+    		</field>
+    	</record>
+        <record id="view_msi_account_cost_center_tree" model="ir.ui.view">
+            <field name="name">msi_account_cost_center.tree</field>
+            <field name="model">account.cost.center</field>
+            <field name="inherit_id" ref="account_cost_center.account_cost_center_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="department_ids" widget="many2many_tags"/>
+                    <field name="group_head_id"/>
+
+                </xpath>
+            </field>
+        </record>
+    <record model="ir.ui.view" id="view_tbl_msi_account_cost_center_lines_department_form_msi">
+        <field name="name">tbl_msi_account_cost_center_lines_department.form</field>
+        <field name="model">tbl_msi_account_cost_center_department</field>
+        <field name="arch" type="xml">
+            <form string="Departement Cost Center">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_retase_management" name="Retase"  web_icon="hr_retase,static/description/icon.png"/>
+
+    <menuitem name="Retase" id="menu_retase_top" parent="menu_retase_management" sequence="10"/>
+    <menuitem name="Proses Payroll" id="menu_proses_payroll_top" parent="menu_retase_management" sequence="20"/>
+
+
+    <menuitem name="Seting" id="menu_retase_seting_top" parent="menu_retase_management" sequence="100"/>
+   </data>
+</odoo>
+
+

@@ -1,0 +1,117 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_shift_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_shift.tree</field>
+            <field name="model">tbl_msi_shift</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="duty_on"/>
+                                    <field name="duty_off"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_shift_form">
+        <field name="name">tbl_msi_shift.form</field>
+        <field name="model">tbl_msi_shift</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                	  <group>
+                                    <field name="name"/>
+                                    <field name="reguler"/>
+                                    <field name="duty_on"/>
+                                    <field name="duty_off"/>
+
+		           </group>
+		           <group  attrs="{'invisible': [('reguler', '=', True)]}">
+		              <field name="detail">
+				<tree string="Detail Action" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="siklus"/>
+				 </tree>
+		              </field>
+
+
+		          </group>
+			</group>
+                	<group>
+                	  <group>
+
+
+		           </group>
+		           <group  attrs="{'invisible': [('reguler', '!=', True)]}">
+		              <field name="detail_hari" >
+				<tree string="Detail Action" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="jam_kerja"/>
+                                    <field name="siklus"/>
+				 </tree>
+		              </field>
+
+		          </group>
+			</group>
+
+
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_shift">
+           <field name="name">Roster</field>
+           <field name="res_model">tbl_msi_shift</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Roster" id="menu_shift_left" parent="menu_hr_seting_top" action="menu_action_shift" sequence="20"/>
+
+
+    <record model="ir.ui.view" id="tbl_msi_shift_detail_form">
+        <field name="name">tbl_msi_shift_detail.form</field>
+        <field name="model">tbl_msi_shift_detail</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+
+
+		                </group>
+		                <group>
+
+
+		               </group>
+			</group>
+
+
+			</sheet>
+
+			</form>
+		</field>
+	</record>
+
+</data>
+</odoo>

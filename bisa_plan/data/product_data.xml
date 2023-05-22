@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_plan" model="ir.module.category">
+            <field name="name">Plan Maintenance</field>
+            <field name="description">Plan Maintenance</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<odoo>
+
+
+
+    <data noupdate="0">
+        <record id="grup_overtime_mgr" model="res.groups">
+            <field name="name">OverTime Manager</field>
+            <field name="comment">Manager</field>
+            <field name="category_id" ref="module_category_overtime"/>
+        </record>
+
+        <record id="grup_overtime_appr2" model="res.groups">
+            <field name="name">Approve 2</field>
+            <field name="comment">Approve 1</field>
+            <field name="category_id" ref="module_category_overtime"/>
+        </record>
+
+        <record id="grup_overtime_appr1" model="res.groups">
+            <field name="name">Approve 1</field>
+            <field name="comment">Approve 1</field>
+            <field name="category_id" ref="module_category_overtime"/>
+        </record>
+
+
+        <record id="grup_overtime_user" model="res.groups">
+            <field name="name">OverTime user</field>
+            <field name="comment">User</field>
+            <field name="category_id" ref="module_category_overtime"/>
+        </record>
+
+
+    </data>
+</odoo>

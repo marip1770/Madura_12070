@@ -1,0 +1,395 @@
+<odoo>
+    <data>
+        <!-- Kontrak -->
+        <record id="view_tbl_hrm_kontrak_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_kontrak.tree</field>
+            <field name="model">tbl_bisa_hrm_kontrak</field>
+            <field name="arch" type="xml">
+                <tree string="Contract">
+                    <field name="nomor"/>
+                    <field name="vendor"/>
+                    <!-- <field name="lokasi"/> -->
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                    <field name="nilai_kontrak"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_hrm_kontrak_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_kontrak.form</field>
+            <field name="model">tbl_bisa_hrm_kontrak</field>
+            <field name="arch" type="xml">
+                <form string="Contract">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <!-- <field name="vendor" domain="[('supplier', '=', True)]"/> -->
+                                <field name="vendor"/>
+                                <!-- <field name="lokasi"/> -->
+                                <field name="tgl_awal"/>
+                                <field name="tgl_akhir"/>
+                                <!-- <field name="nilai_kontrak"/> -->
+                            </group>
+                            <group>
+                                <field name="no_projek"/>
+                                <field name="produk"/>
+                                <field name="lokasi"/>
+                                <field name="quantity"/>
+                                <field name="harga"/>
+                                <field name="total"/>
+                                <field name="nilai_kontrak"/>
+                            </group>
+                        </group>
+                        <!-- <notebook>
+                            <page string="Detail">
+                                <field name="detail_kontrak">
+                                    <tree editable="bottom">
+                                        <field name="produk"/>
+                                        <field name="lokasi"/>
+                                        <field name="quantity"/>
+                                        <field name="harga"/>
+                                        <field name="total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Kontrak -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_kontrak">
+            <field name="name">Contract</field>
+            <field name="res_model">tbl_bisa_hrm_kontrak</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Sub Menu Kontrak-->
+        <menuitem name="Contract" id="menu_hrm_kontrak_left" parent="menu_hrm_kontrak_top" action="menu_action_hrm_kontrak" sequence="10"/>
+        
+        <!-- Action Plan -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_plan">
+            <field name="name">Plan</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Plan -->
+        <menuitem name="Plan" id="menu_hrm_plan_left" parent="menu_hrm_pna_top" action="menu_action_hrm_plan" sequence="10"/>
+
+        <!-- Action Assigment -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_assigment">
+            <field name="name">Assigment</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Assigment -->
+        <menuitem name="Assigment" id="menu_hrm_assigment_left" parent="menu_hrm_pna_top" action="menu_action_hrm_assigment" sequence="11"/>
+        
+        <!-- P5M -->
+        <record id="view_tbl_hrm_p5m_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_p5m.tree</field>
+            <field name="model">tbl_bisa_hrm_p5m</field>
+            <field name="arch" type="xml">
+                <tree string="P5M">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_p5m_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_p5m.form</field>
+            <field name="model">tbl_bisa_hrm_p5m</field>
+            <field name="arch" type="xml">
+                <form string="P5M">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group>
+                            <group>
+                                <field name="tanggal"/>
+                                <field name="departemen"/>
+                                <field name="lokasi"/>
+                                <field name="pemateri"/>
+                                <field name="jml_peserta"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Pertanyaan">
+                                <field name="pertanyaan">
+                                    <tree string="Pertanyaan" editable="bottom">
+                                        <field name="tanya"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Absensi">
+                                <field name="data1">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="sn"/>
+                                        <field name="nama"/>
+                                        <field name="Departemen"/>
+                                        <field name="tanda_tangan"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      
+        <!-- Action P5M -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_p5m">
+            <field name="name">P5M</field>
+            <field name="res_model">tbl_bisa_hrm_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu P5M-->
+        <menuitem name="P5M" id="menu_hrm_p5m_left" parent="menu_hrm_bnp_top" action="menu_action_hrm_p5m" sequence="10"/>
+
+
+        <!-- P2H -->
+        <record id="view_tbl_hrm_p2h_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_p2h.tree</field>
+            <field name="model">tbl_bisa_hrm_p2h</field>
+            <field name="arch" type="xml">
+                <tree string="P2H">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_p2h_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_p2h.form</field>
+            <field name="model">tbl_bisa_hrm_p2h</field>
+            <field name="arch" type="xml">
+                <form string="P2H">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group>
+                            <!-- <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group> -->
+                        </group>
+                        <!-- <notebook>
+                            <page string="Data"> -->
+                                <field name="data2">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="nama"/>
+                                        <field name="sn"/>
+                                        <field name="jabatan"/>
+                                        <field name="tidur_jam" widget="float_time"/>
+                                        <field name="bangun_jam" widget="float_time"/>
+                                        <field name="total_istirahat"/>
+                                        <field name="tanda_tangan"/>
+                                    </tree>
+                                </field>
+                            <!-- </page>
+                            <page string="Tabel">
+                                <field name="data1">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="sn"/>
+                                        <field name="nama"/>
+                                        <field name="Departemen"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      
+        <!-- Action P2H -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_p2h">
+            <field name="name">P2H</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu P2H-->
+        <menuitem name="P2H" id="menu_hrm_p2h_left" parent="menu_hrm_bnp_top" action="menu_action_hrm_p2h" sequence="11"/>
+
+        <!-- Time Sheet -->
+        <record id="view_tbl_hrm_time_sheettree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_time_sheet.tree</field>
+            <field name="model">tbl_bisa_hrm_time_sheet</field>
+            <field name="arch" type="xml">
+                <tree string="Time Sheet">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_time_hrm_sheet_form">
+            <field name="name">tbl_bisa_hrm_time_sheet.form</field>
+            <field name="model">tbl_bisa_hrm_time_sheet</field>
+            <field name="arch" type="xml">
+                <form string="Time Sheet">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="operator"/>
+                                <field name="tanggal"/>
+                            </group>
+                            <group>
+                                <field name="shift"/>
+                                <field name="work_location"/>
+                            </group>
+                            <group>
+                                <field name="code_unit"/>
+                                <field name="kind_of_equipment"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="wh_start"/>
+                                    <field name="wh_stop"/>
+                                    <field name="wh_total"/>
+                                </group>
+                                <group>
+                                    <field name="hm_start"/>
+                                    <field name="hm_stop"/>
+                                    <field name="hm_total"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="remarks_activity"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Time Sheet -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_time_sheet">
+            <field name="name">Time Sheet</field>
+            <field name="res_model">tbl_bisa_hrm_time_sheet</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Time Sheet -->
+        <menuitem name="Time Sheet" id="menu_hrm_time_sheet_left" parent="menu_hrm_bnp_top" action="menu_action_hrm_time_sheet" sequence="12"/>
+
+
+        <!-- Action Report -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_report">
+            <field name="name">Report</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Report -->
+        <menuitem name="Report" id="menu_hrm_report_left" parent="menu_hrm_report_top" action="menu_action_hrm_report" sequence="10"/>
+
+        <!-- Action Billing -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_billing">
+            <field name="name">Billing</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Billing -->
+        <menuitem name="Billing" id="menu_hrm_billing_left" parent="menu_hrm_billing_top" action="menu_action_hrm_billing" sequence="10"/>
+
+        <!-- Action Breakdown -->
+        <record model="ir.actions.act_window" id="menu_action_hrm_breakdown">
+            <field name="name">Breakdown</field>
+            <field name="res_model">tbl_bisa_hrm_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Breakdown -->
+        <menuitem name="Breakdown" id="menu_hrm_breakdown_left" parent="menu_hrm_breakdown_top" action="menu_action_hrm_breakdown" sequence="10"/>
+
+
+        <!-- <record id="view_tbl_ops_hrm_tree" model="ir.ui.view">
+            <field name="name">tbl_ops_hrm.tree</field>
+            <field name="model">tbl_ops_hrm</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_ops_hrm_form">
+        <field name="name">tbl_ops_hrm.form</field>
+        <field name="model">tbl_ops_hrm</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="tanggal"/>
+
+                    </group>
+                    <group>
+                                    <field name="user"/>
+                   </group>
+                  </group>
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                    </group>
+                    <group/>
+                  </group>
+
+
+      </sheet>
+
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_hrm">
+           <field name="name">Road Maintenance</field>
+           <field name="res_model">tbl_ops_hrm</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Road Maintenance" id="menu_hrm_left" parent="menu_hrm_top" action="menu_action_hrm" sequence="10"/> -->
+
+  </data>
+</odoo>

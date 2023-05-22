@@ -1,0 +1,141 @@
+<odoo>
+    <data noupdate="0">
+        <record id="group1_so_approval" model="res.groups">
+            <field name="name">Appr SO Grup1</field>
+            <field name="comment">Appr SO Grup1</field>
+            <field name="category_id" ref="msi_aproval.module_category_so approval"/>
+        </record>
+        <record id="group1_so_approva2" model="res.groups">
+            <field name="name">Appr SO Grup2</field>
+            <field name="comment">Appr SO Grup2</field>
+            <field name="category_id" ref="msi_aproval.module_category_so approval"/>
+        </record>
+        <record id="group3_so_approval" model="res.groups">
+            <field name="name">Appr SO Grup3</field>
+            <field name="comment">Appr SO Grup3</field>
+            <field name="category_id" ref="msi_aproval.module_category_so approval"/>
+        </record>
+        <!-- Payment -->
+        <record id="group1_payment_approval" model="res.groups">
+            <field name="name">Appr Payment Grup1</field>
+            <field name="comment">Appr Payment Grup1</field>
+            <field name="category_id" ref="msi_aproval.module_category_payment approval"/>
+        </record>
+        <record id="group2_payment_approval" model="res.groups">
+            <field name="name">Appr Payment Grup2</field>
+            <field name="comment">Appr Payment Grup2</field>
+            <field name="category_id" ref="msi_aproval.module_category_payment approval"/>
+        </record>
+        <record id="group3_payment_approval" model="res.groups">
+            <field name="name">Appr Payment Grup3</field>
+            <field name="comment">Appr Payment Grup3</field>
+            <field name="category_id" ref="msi_aproval.module_category_payment approval"/>
+        </record>
+        <record id="group4_payment_approval" model="res.groups">
+            <field name="name">Appr Payment Grup4</field>
+            <field name="comment">Appr Payment Grup4</field>
+            <field name="category_id" ref="msi_aproval.module_category_payment approval"/>
+        </record>
+        <record id="group5_payment_approval" model="res.groups">
+            <field name="name">Appr Payment Grup5</field>
+            <field name="comment">Appr Payment Grup5</field>
+            <field name="category_id" ref="msi_aproval.module_category_payment approval"/>
+        </record>
+        <!-- PR -->
+        <record id="group1_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup1</field>
+            <field name="comment">Appr PR Grup1</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+        <record id="group2_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup2</field>
+            <field name="comment">Appr PR Grup2</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+
+        <record id="group3_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup3</field>
+            <field name="comment">Appr PR Grup3</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+
+        <record id="group4_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup4</field>
+            <field name="comment">Appr PR Grup4</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+
+        <record id="group5_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup5</field>
+            <field name="comment">Appr PO Grup5</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+
+        <record id="group6_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup6</field>
+            <field name="comment">Appr PR Grup6</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+
+        <record id="group7_pr_approval" model="res.groups">
+            <field name="name">Appr PR Grup7</field>
+            <field name="comment">Appr PO Grup7</field>
+            <field name="category_id" ref="msi_aproval.module_category_pr approval"/>
+        </record>
+        <!-- PO -->
+        <record id="group1_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup1</field>
+            <field name="comment">Appr PO Grup1</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group2_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup2</field>
+            <field name="comment">Appr PO Grup2</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group3_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup3</field>
+            <field name="comment">Appr PO Grup3</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group4_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup4</field>
+            <field name="comment">Appr PO Grup4</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group5_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup5</field>
+            <field name="comment">Appr PO Grup5</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group6_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup6</field>
+            <field name="comment">Appr PO Grup6</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+        <record id="group7_po_approval" model="res.groups">
+            <field name="name">Appr PO Grup7</field>
+            <field name="comment">Appr PO Grup7</field>
+            <field name="category_id" ref="msi_aproval.module_category_po approval"/>
+        </record>
+<!-- 
+        <record id="group1_advance_approval" model="res.groups">
+            <field name="name">Appr Advance Grup1</field>
+            <field name="comment">Appr PO Grup1</field>
+            <field name="category_id" ref="msi_aproval.module_category_advance approval"/>
+        </record>
+        <record id="group2_advance_approval" model="res.groups">
+            <field name="name">Appr Advance Grup2</field>
+            <field name="comment">Appr PO Grup2</field>
+            <field name="category_id" ref="msi_aproval.module_category_advance approval"/>
+        </record>
+        <record id="group3_advance_approval" model="res.groups">
+            <field name="name">Appr Advance Grup3</field>
+            <field name="comment">Appr PO Grup3</field>
+            <field name="category_id" ref="msi_aproval.module_category_advance approval"/>
+        </record> -->
+
+
+
+    </data>
+</odoo> 

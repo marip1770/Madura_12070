@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_mutasi" model="ir.module.category">
+            <field name="name">Promosi</field>
+            <field name="description">Promosi</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

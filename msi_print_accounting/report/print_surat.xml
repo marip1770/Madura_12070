@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_print_invoice"
+            string="Invoice"
+            model="account.invoice" 
+            report_type="doc"
+            file="msi_print_accounting.action_print_invoice1"
+            name="msi_print_accounting.action_print_invoice1"
+            print_report_name="('Invoice - %s' % (object.number))"
+        />
+        <report 
+            id="action_print_invoice_kwitansi"
+            string="Invoice Kwitansi"
+            model="account.invoice" 
+            report_type="doc"
+            file="msi_print_accounting.action_print_invoice_kwitansi1"
+            name="msi_print_accounting.action_print_invoice_kwitansi1"
+            print_report_name="('Kwitansi - %s' % (object.number))"
+        />
+        <report 
+            id="action_print_voucher_pengeluaran"
+            string="Voucher Pengeluaran"
+            model="account.payment" 
+            report_type="doc"
+            file="msi_print_accounting.action_print_voucher_pengeluaran1"
+            name="msi_print_accounting.action_print_voucher_pengeluaran1"
+            print_report_name="('Voucher - %s' % (object.name))"
+        />
+        <report 
+            id="action_print_voucher_penerimaan"
+            string="Voucher Penerimaan"
+            model="account.payment" 
+            report_type="doc"
+            file="msi_print_accounting.action_print_voucher_penerimaan1"
+            name="msi_print_accounting.action_print_voucher_penerimaan1"
+            print_report_name="('Voucher - %s' % (object.name))"
+        />
+        <report 
+            id="action_print_kwitansi"
+            string="Kwitansi"
+            model="account.payment" 
+            report_type="doc"
+            file="msi_print_accounting.action_print_kwitansi1"
+            name="msi_print_accounting.action_print_kwitansi1"
+            print_report_name="('Kwitansi - %s' % (object.no_kwitansi))"
+        />
+
+    </data>
+</odoo>

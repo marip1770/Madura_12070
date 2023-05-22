@@ -1,0 +1,72 @@
+ <odoo>
+
+    <menuitem id="menu_msi_budget" name="Budget Report"  parent="account.menu_finance_reports" sequence="90"/>
+
+        
+        <record model="ir.ui.view" id="tbl_msi_budget_form">
+        <field name="name">tbl_msi_budget.form</field>
+        <field name="model">tbl_msi_budget</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_get" string="Proses" type="object"/>
+                    <button name="action_print" string="Print" type="object"/>
+                </header>
+                <sheet>
+
+                  <group>
+                      <group>
+                                    <field name="tahun"/>
+                                    <field name="bulan"/>
+                      </group>
+                      <group>
+                      </group>
+                   </group>
+	             <notebook>
+                        <page string="Detail">
+		            	   <field name="detail">
+				            	<tree string="Detail Action" editable="bottom" create="false">
+				                	<field name="budget"/>
+				                	<field name="spasi"/>
+				                	<field name="bulan_budget"/>
+				                	<field name="bulan_aktual"/>
+                          <field name="bulan_varian"/>
+				                	<field name="bulan_budget_persen"/>
+				                	<field name="spasi"/>
+				                	<field name="y2d_budget"/>
+				                	<field name="y2d_aktual"/>
+                          <field name="y2d_varian"/>
+				                	<field name="y2d_budget_persen"/>
+				                	<field name="spasi"/>
+				                	<field name="tahun_budget"/>
+				                	<field name="tahun_aktual"/>
+                          <field name="tahun_varian"/>
+				                	<field name="tahun_budget_persen"/>
+
+
+				            	</tree>
+			            </field>
+                        </page>
+
+                      </notebook>
+
+
+      </sheet>
+
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_msi_budget">
+           <field name="name">Budget Report</field>
+           <field name="res_model">tbl_msi_budget</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+       </record>
+
+    <menuitem name="Budget Report" id="menu_msi_budget_report" parent="menu_msi_budget" action="menu_action_msi_budget" sequence="10"/>
+
+
+
+</odoo>

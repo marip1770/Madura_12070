@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchase_order">
+            <t t-call="web.html_container">
+                <!-- <t t-call="web.external_layout"> -->
+                    <tr t-foreach="docs" t-as="o">
+                        <th><span t-field="o.activity_ids"></span></th>
+                        <th><span t-field="o.company_id"></span></th>
+                        <th><span t-field="o.create_date"></span></th>
+                        <!-- <br></br> -->
+                            <div>
+                                <div>
+                                    <div>
+
+                                    </div>
+                                    
+                                </div>
+                            
+                            </div>
+                        </tr>
+                <!-- </t> -->
+            </t>
+        </template>
+    </data>
+
+</odoo>

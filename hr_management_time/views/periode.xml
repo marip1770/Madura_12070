@@ -1,0 +1,54 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_periode_tahun_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_periode_tahun.tree</field>
+            <field name="model">tbl_msi_periode_tahun</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="tahun"/>
+                                    <field name="date_awal"/>
+                                    <field name="date_akhir"/>
+                                    <field name="ket"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+      <record model="ir.actions.act_window" id="menu_action_period_year">
+           <field name="name">Period Year</field>
+           <field name="res_model">tbl_msi_periode_tahun</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Period Year" id="menu_period_year_left" parent="menu_hr_seting_top" action="menu_action_period_year" sequence="60"/>
+
+
+        <record id="view_tbl_msi_periode_bulan_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_periode_bulan.tree</field>
+            <field name="model">tbl_msi_periode_bulan</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="date_awal"/>
+                                    <field name="date_akhir"/>
+                                    <field name="ket"/>
+                </tree>
+            </field>
+        </record>
+
+
+      <record model="ir.actions.act_window" id="menu_period_month_year">
+           <field name="name">Period Month</field>
+           <field name="res_model">tbl_msi_periode_bulan</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Period Month" id="menu_period_month_left" parent="menu_hr_seting_top" action="menu_period_month_year" sequence="70"/>
+
+
+</data>
+</odoo>

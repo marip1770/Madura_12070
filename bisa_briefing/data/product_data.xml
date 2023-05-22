@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_briefing" model="ir.module.category">
+            <field name="name">Briefing</field>
+            <field name="description">Briefing</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

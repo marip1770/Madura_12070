@@ -1,0 +1,182 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_master_route_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_master_route.tree</field>
+            <field name="model">tbl_msi_master_route</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="asal"/>
+                                    <field name="tujuan"/>
+                                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.ui.view" id="tbl_msi_master_route_form">
+        <field name="name">tbl_msi_master_route.form</field>
+        <field name="model">tbl_msi_master_route</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="asal"/>
+                                    <field name="tujuan"/>
+                                    <field name="rate"/>
+                    </group>
+                    <group>
+
+                   </group>
+                   </group>
+
+
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+        <record id="view_tbl_msi_master_transport_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_master_transport.tree</field>
+            <field name="model">tbl_msi_master_transport</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.ui.view" id="tbl_msi_master_transport_form">
+        <field name="name">tbl_msi_master_transport.form</field>
+        <field name="model">tbl_msi_master_transport</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="rate"/>
+                    </group>
+                    <group>
+
+                   </group>
+                   </group>
+
+
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+        <record id="view_tbl_msi_lokasi_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_lokasi.tree</field>
+            <field name="model">tbl_msi_lokasi</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.ui.view" id="tbl_msi_lokasi_form">
+        <field name="name">tbl_msi_lokasi.form</field>
+        <field name="model">tbl_msi_lokasi</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                    </group>
+                    <group>
+
+                   </group>
+                   </group>
+
+
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+        <record id="view_tbl_msi_driver_position_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_driver_position.tree</field>
+            <field name="model">tbl_msi_driver_position</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="id_employee" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="nik"/>
+                                    <field name="position"/>
+                                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.ui.view" id="tbl_msi_driver_position_form">
+        <field name="name">tbl_msi_driver_position.form</field>
+        <field name="model">tbl_msi_driver_position</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="nik"/>
+                                    <field name="position"/>
+                                    <field name="rate"/>
+                    </group>
+                    <group>
+
+                   </group>
+                   </group>
+
+
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_master_route">
+           <field name="name">Master Route</field>
+           <field name="res_model">tbl_msi_master_route</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_master_transport">
+           <field name="name">Master Transport</field>
+           <field name="res_model">tbl_msi_master_transport</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_lokasi">
+           <field name="name">Master Lokasi</field>
+           <field name="res_model">tbl_msi_lokasi</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_driver_position">
+           <field name="name">Master Driver</field>
+           <field name="res_model">tbl_msi_driver_position</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Master Route" id="menu_tbl_msi_master_route" parent="menu_retase_seting_top" action="menu_action_tbl_msi_master_route" sequence="10"/>
+    <menuitem name="Master Transport" id="menu_tbl_msi_master_transport" parent="menu_retase_seting_top" action="menu_action_tbl_msi_master_transport" sequence="20"/>
+    <menuitem name="Master Lokasi" id="menu_tbl_msi_lokasi" parent="menu_retase_seting_top" action="menu_action_tbl_msi_lokasi" sequence="30"/>
+    <menuitem name="Master Driver" id="menu_tbl_msi_driver_position" parent="menu_retase_seting_top" action="menu_action_tbl_msi_driver_position" sequence="40"/>
+
+
+
+</data>
+</odoo>

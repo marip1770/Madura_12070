@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <record id="module_category_contract_management" model="ir.module.category">
+            <field name="name">Contract Management</field>
+            <field name="description">Contract Management</field>
+            <field name="sequence">60</field>
+        </record>
+    </data>
+</odoo>

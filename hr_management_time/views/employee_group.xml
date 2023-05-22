@@ -1,0 +1,71 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_employee_group_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_employee_group.tree</field>
+            <field name="model">tbl_msi_employee_group</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_employee_group_form">
+        <field name="name">tbl_msi_employee_group.form</field>
+        <field name="model">tbl_msi_employee_group</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+
+		                </group>
+		                <group>
+
+
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="employee"/>
+
+				                </tree>
+				            </field>
+                        </page>
+
+
+
+
+	     </notebook>
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_employee_group">
+           <field name="name">Shift Group</field>
+           <field name="res_model">tbl_msi_employee_group</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Shift Group" id="menu_employee_group_left" parent="menu_hr_seting_top" action="menu_action_employee_group" sequence="50"/>
+
+
+</data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Order -->
+        <record id="view_tbl_msi_acc_settlement_form" model="ir.ui.view">
+            <field name="name">tbl_msi_acc_settlement.form</field>
+            <field name="model">tbl_msi_acc_settlement</field>
+            <field name="inherit_id" ref="msi_sales_quotations.tbl_msi_acc_settlement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='detail_settlement_id']/tree/field[@name='analytic_id']" position="after">               
+                                <field name="cost_center_id" invisible="0"/>                   
+                </xpath>
+		</field>
+	</record>
+    </data>
+</odoo>

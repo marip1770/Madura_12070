@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Order -->
+        <record id="view_msi_budget_expense_sheet_form" model="ir.ui.view">
+            <field name="name">msi_budget_expense_sheet.form</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="department_id"/>                   
+                    <field name="group_head_id"/>                   
+            	</xpath>
+		</field>
+	</record>
+        <record id="view_msi_budget_expense_form" model="ir.ui.view">
+            <field name="name">msi_budget_expense.form</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="department_id"/>
+                    <field name="group_head_id"/>                   
+                </xpath>
+                <xpath expr="//field[@name='analytic_tag_ids']" position="before">
+                    <field name="cost_center_id"/>                   
+                </xpath>
+                <xpath expr="//field[@name='total_amount']" position="after">
+                    <field name="amount_budget"/>                   
+                </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

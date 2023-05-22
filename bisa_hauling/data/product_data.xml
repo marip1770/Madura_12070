@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_hauling" model="ir.module.category">
+            <field name="name">Hauling</field>
+            <field name="description">Hauling</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

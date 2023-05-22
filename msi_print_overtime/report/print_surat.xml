@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_print_payroll"
+            string="Payroll Individual"
+            model="tbl_msi_payroll_line" 
+            report_type="qweb-pdf"
+            file="msi_print_payroll.action_print_payroll1" 
+            name="msi_print_payroll.action_print_payroll1"
+            print_report_name="('Payroll - %s' % (object.employee.name))"
+        />
+
+    </data>
+
+
+
+
+
+
+
+
+</odoo>

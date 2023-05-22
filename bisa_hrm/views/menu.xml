@@ -1,0 +1,16 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_hrm_management" name="Road Maintenance"  web_icon="bisa_hrm,static/description/icon.png"/>
+
+    <menuitem name="Contract" id="menu_hrm_kontrak_top" parent="menu_hrm_management" sequence="10"/>
+    <menuitem name="Plan and Assigment" id="menu_hrm_pna_top" parent="menu_hrm_management" sequence="11"/>
+    <menuitem name="Brief and Prepare" id="menu_hrm_bnp_top" parent="menu_hrm_management" sequence="12"/>
+    <menuitem name="Report" id="menu_hrm_report_top" parent="menu_hrm_management" sequence="13"/>
+    <menuitem name="Billing" id="menu_hrm_billing_top" parent="menu_hrm_management" sequence="14"/>
+    <menuitem name="Breakdown" id="menu_hrm_breakdown_top" parent="menu_hrm_management" sequence="15"/>
+    <!-- <menuitem name="Road Maintenance" id="menu_hrm_top" parent="menu_hrm_management" sequence="10"/> -->
+
+   </data>
+</odoo>
+
+

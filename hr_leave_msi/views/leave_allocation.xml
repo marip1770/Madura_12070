@@ -1,0 +1,333 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_leave_allocation_set_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_leave_allocation_set.tree</field>
+            <field name="model">tbl_msi_leave_allocation_set</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="periode_tahun"/>
+                                    <field name="alokasi_cuti"/>
+                                    <field name="cuti_bersama"/>
+                                    <field name="cuti_tersedia"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_leave_allocation_set_form">
+        <field name="name">tbl_msi_leave_allocation_set.form</field>
+        <field name="model">tbl_msi_leave_allocation_set</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_leave_msi.grup_leave_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_leave_msi.grup_leave_appr"/>
+                    <button name="action_done" string="Finish" type="object" states="approve" groups="hr_leave_msi.grup_leave_mgr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+                                    <field name="periode_tahun"/>
+                                       <field name="set_cuti"/>
+                                       <label for="nama_group"/>
+                                    <div>
+                                       <field name="nama_group"/>
+                                      <button name="action_get" string="Get Data" type="object"/>
+                                   </div>
+		                </group>
+		                <group>
+                                    <field name="alokasi_cuti"/>
+                                    <field name="cuti_bersama"/>
+                                    <field name="cuti_tersedia"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+
+		                </group>
+		                <group>
+                                    <field name="user"/>
+		               </group>
+			</group>
+
+	             <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="date"/>
+				                	<field name="employee"/>
+				                	<field name="nik"/>
+				                	<field name="dept"/>
+				                	<field name="divisi"/>
+				                	<field name="loc"/>
+				                	<field name="job"/>
+
+				                	<field name="start_date"/>
+				                	<field name="periode_tahun"/>
+				                	<field name="alokasi_cuti_sebelum"/>
+				                	<field name="alokasi_cuti"/>
+				                	<field name="cuti_bersama"/>
+				                	<field name="cuti_terpakai"/>
+				                	<field name="cuti_tersedia"/>
+				                	<field name="state"/>
+				                </tree>
+			            </field>
+                        </page>
+
+                      </notebook>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_set_leave_allocation">
+           <field name="name">Set Leave Allocation</field>
+           <field name="res_model">tbl_msi_leave_allocation_set</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Set Leave Allocation" id="menu_set_leave_allocation_left" parent="menu_leave_allocation_top" action="menu_action_set_leave_allocation" sequence="10"/>
+
+        <record id="view_tbl_msi_leave_allocation_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_leave_allocation.tree</field>
+            <field name="model">tbl_msi_leave_allocation</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+				                	<field name="date"/>
+				                	<field name="employee"/>
+				                	<field name="nik"/>
+				                	<field name="dept"/>
+				                	<field name="divisi"/>
+				                	<field name="loc"/>
+				                	<field name="job"/>
+
+				                	<field name="start_date"/>
+				                	<field name="periode_tahun"/>
+				                	<field name="alokasi_cuti_sebelum"/>
+				                	<field name="alokasi_cuti"/>
+				                	<field name="cuti_bersama"/>
+				                	<field name="cuti_terpakai"/>
+				                	<field name="cuti_tersedia"/>
+                                                        <field name="is_active"/>
+				                	<field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_leave_allocation_form">
+        <field name="name">tbl_msi_leave_allocation.form</field>
+        <field name="model">tbl_msi_leave_allocation</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="date"/>
+		                </group>
+		                <group>
+
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+				                	<field name="employee"/>
+				                	<field name="nik"/>
+				                	<field name="dept"/>
+				                	<field name="divisi"/>
+				                	<field name="loc"/>
+				                	<field name="job"/>
+		                </group>
+		                <group>
+                                    <field name="periode_tahun"/>
+                                    <field name="alokasi_cuti_sebelum"/>
+                                    <field name="alokasi_cuti"/>
+                                    <field name="cuti_bersama"/>
+                                    <field name="cuti_terpakai"/>
+                                    <field name="cuti_tersedia"/>
+		               </group>
+			</group>
+
+
+                	<group>
+                		<group>
+                                    <field name="is_active"/>
+		                </group>
+		                <group>
+                                    <field name="user"/>
+		               </group>
+			</group>
+
+	             <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="date"/>
+				                	<field name="employee" invisible="1"/>
+				                	<field name="nik" invisible="1"/>
+				                	<field name="dept" invisible="1"/>
+				                	<field name="divisi" invisible="1"/>
+				                	<field name="loc" invisible="1"/>
+				                	<field name="job" invisible="1"/>
+				                	<field name="periode_tahun" invisible="1"/>
+				                	<field name="start_date"/>
+				                	<field name="end_date"/>
+				                	<field name="durasi"/>
+				                	<field name="tipe_cuti"/>
+				                	<field name="potong_cuti"/>
+				                	<field name="desc"/>
+				                	<field name="kontak_selama_cuti"/>
+				                </tree>
+			            </field>
+                        </page>
+
+                      </notebook>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_leave_allocation">
+           <field name="name">Leave Allocation</field>
+           <field name="res_model">tbl_msi_leave_allocation</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Leave Allocation" id="menu_leave_allocation_left" parent="menu_leave_allocation_top" action="menu_action_leave_allocation" sequence="20"/>
+
+
+
+
+
+        <record id="view_tbl_msi_leave_req_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_leave_req.tree</field>
+            <field name="model">tbl_msi_leave_req</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                        <field name="name"/>
+		        <field name="date"/>
+		        <field name="details"/>
+			<field name="employee"/>
+			<field name="nik"/>
+			<field name="dept"/>
+			<field name="divisi"/>
+			<field name="loc"/>
+			<field name="job"/>
+			<field name="periode_tahun"/>
+			<field name="start_date"/>
+			<field name="end_date"/>
+			<field name="durasi"/>
+			<field name="tipe_cuti"/>
+			<field name="potong_cuti"/>
+			<field name="desc"/>
+			<field name="kontak_selama_cuti"/>
+			<field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_leave_req_form">
+        <field name="name">tbl_msi_leave_req.form</field>
+        <field name="model">tbl_msi_leave_req</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_leave_msi.grup_leave_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_leave_msi.grup_leave_appr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+		                    <field name="date"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+			<field name="employee"/>
+			<field name="nik"/>
+			<field name="dept"/>
+			<field name="divisi"/>
+			<field name="loc"/>
+			<field name="job"/>
+		                </group>
+		                <group>
+			<field name="periode_tahun"/>
+			<field name="start_date"/>
+			<field name="end_date"/>
+			<field name="durasi"/>
+		               </group>
+			</group>
+
+
+                	<group>
+                		<group>
+		                </group>
+		                <group>
+			<field name="tipe_cuti"/>
+			<field name="potong_cuti"/>
+			<field name="desc"/>
+			<field name="kontak_selama_cuti"/>
+		               </group>
+			</group>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_leave_request">
+           <field name="name">Leave Request</field>
+           <field name="res_model">tbl_msi_leave_req</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Leave Request" id="menu_leave_request_left" parent="menu_leave_top" action="menu_action_leave_request" sequence="10"/>
+
+
+
+</data>
+</odoo>

@@ -1,0 +1,178 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_cuti_tipe_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_cuti_tipe.tree</field>
+            <field name="model">tbl_msi_cuti_tipe</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="alloc_date"/>
+                                    <!-- <field name="tipe"/>
+                                    <field name="is_pc"/>
+                                    <field name="is_uang_cuti"/> -->
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_cuti_tipe_form">
+        <field name="name">tbl_msi_cuti_tipe.form</field>
+        <field name="model">tbl_msi_cuti_tipe</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="alloc_date"/>
+                                    <!-- <field name="tipe"/>
+                                    <field name="is_pc"/>
+                                    <field name="is_uang_cuti"/> -->
+		                </group>
+		                <group>
+
+		               </group>
+			</group>
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_leave_type">
+           <field name="name">Leave Type</field>
+           <field name="res_model">tbl_msi_cuti_tipe</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Leave Type" id="menu_leave_type_left" parent="menu_leave_seting_top" action="menu_action_leave_type" sequence="10"/>
+
+
+        <record id="view_tbl_msi_master_uang_cuti_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_master_uang_cuti.tree</field>
+            <field name="model">tbl_msi_master_uang_cuti</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="nominal"/>
+                                    <field name="is_cuti_pertama"/>
+                                    <field name="is_cuti_minimal"/>
+                                    <field name="durasi"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_master_uang_cuti_form">
+        <field name="name">tbl_msi_master_uang_cuti.form</field>
+        <field name="model">tbl_msi_master_uang_cuti</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name" domain="[('is_uang_cuti', '=', True)]"/>
+                                    <field name="nominal"/>
+                                    <field name="is_cuti_pertama"/>
+                                    <field name="is_cuti_minimal"/>
+                                    <field name="durasi" attrs="{'invisible': [('is_cuti_minimal', '!=', True)]}"/>
+		                </group>
+		                <group>
+
+		               </group>
+			</group>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_master_uang_cuti">
+           <field name="name">Uang Cuti</field>
+           <field name="res_model">tbl_msi_master_uang_cuti</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Uang Cuti" id="menu_master_uang_cuti_left" parent="menu_leave_seting_top" action="menu_master_uang_cuti" sequence="20"/>
+
+
+        <record id="view_tbl_msi_leave_group_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_leave_group.tree</field>
+            <field name="model">tbl_msi_leave_group</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="alokasi"/>
+
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_leave_group_form">
+        <field name="name">tbl_msi_leave_group.form</field>
+        <field name="model">tbl_msi_leave_group</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="alokasi"/>
+		               </group>
+			</group>
+                    <button name="action_get" string="Get Employee" type="object"/>
+	             <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="employee"/>
+				                	<field name="nik"/>
+				                	<field name="dept"/>
+				                	<field name="divisi"/>
+				                	<field name="loc"/>
+				                	<field name="job"/>
+
+				                </tree>
+			            </field>
+                        </page>
+
+             </notebook>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_leave_group">
+           <field name="name">Leave Group</field>
+           <field name="res_model">tbl_msi_leave_group</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Leave Group Allocation" id="menu_leave_group_left" parent="menu_leave_seting_top" action="menu_action_leave_group" sequence="90"/>
+
+
+</data>
+</odoo>

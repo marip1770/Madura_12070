@@ -1,0 +1,94 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_hari_kerja_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_hari_kerja.tree</field>
+            <field name="model">tbl_msi_hari_kerja</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="shift"/>
+                                    <field name="jam_kerja"/>
+                                    <field name="period_month"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_hari_kerja_form">
+        <field name="name">tbl_msi_hari_kerja.form</field>
+        <field name="model">tbl_msi_hari_kerja</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="shift"/>
+                                    <field name="jam_kerja"/>
+                                    <field name="period_month"/>
+		                </group>
+		                <group>
+                                    <field name="reguler"/>
+
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Reguler" attrs="{'invisible': [('reguler', '=', False)]}">
+                                <group>
+                    <button name="action_submit" string="Generate" type="object"/>
+                                </group>
+
+		            		<field name="detail_reguler">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="day"/>
+				                	<field name="jam_in"/>
+				                	<field name="jam_out"/>
+
+				                </tree>
+				            </field>
+                        </page>
+
+                        <page string="Non Reguler" attrs="{'invisible': [('reguler', '=', True)]}">
+                                <group>
+                    <button name="action_submit" string="Generate" type="object"/>
+                                </group>
+		            		<field name="detail_non_reguler">
+				            	<tree string="Detail Action" editable="bottom">
+				                	<field name="day"/>
+				                	<field name="date"/>
+				                	<field name="jam_in"/>
+				                	<field name="jam_out"/>
+
+				                </tree>
+				            </field>
+                        </page>
+
+
+	     </notebook>
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_hari_kerja">
+           <field name="name">Hari Kerja</field>
+           <field name="res_model">tbl_msi_hari_kerja</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Hari Kerja" id="menu_hari_kerja_left" parent="menu_hr_seting_top" action="menu_action_hari_kerja" sequence="40"/>
+
+
+</data>
+</odoo>

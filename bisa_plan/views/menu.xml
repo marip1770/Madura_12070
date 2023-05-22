@@ -1,0 +1,14 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_plan_management" name="Plan Maintenance"  web_icon="bisa_plan,static/description/icon.png"/>
+
+    <menuitem name="Form Request" id="menu_wrd_top" parent="menu_plan_management" sequence="10"/>
+    <menuitem name="Work Order" id="menu_wr_top" parent="menu_plan_management" sequence="11"/>
+    <menuitem name="Seting" id="menu_maintenance_seting_top" parent="menu_plan_management" sequence="12"/> 
+    <!-- <menuitem name="Plan Maintenance" id="menu_plan_top" parent="menu_plan_management" sequence="10"/> -->
+
+
+   </data>
+</odoo>
+
+

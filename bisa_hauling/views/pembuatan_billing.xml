@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+
+        <record id="view_tbl_pembuatan_billing_tree" model="ir.ui.view">
+            <field name="name">tbl_pembuatan_billing.tree</field>
+            <field name="model">tbl_pembuatan_billing</field>
+            <field name="arch" type="xml">
+                <tree string="Contract">
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="nama_projek"/>
+                    <field name="produk"/>
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                    <field name="user"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_pembuatan_billing_form" model="ir.ui.view">
+            <field name="name">tbl_pembuatan_billing.form</field>
+            <field name="model">tbl_pembuatan_billing</field>
+            <field name="arch" type="xml">
+                <form string="Contract">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="nama_projek"/>
+                    <field name="tipe"/>
+                            </group>
+                            <group>
+                    <field name="user"/>
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                            </group>
+                        </group>
+                        <field name="details">
+                                    <tree editable="bottom">
+                                        <!-- <field name="produk"/> -->
+                                        <field name="nama_projek"/>
+                                        <field name="quantity"/>
+                                        <field name="harga"/>
+                                        <field name="rf"/>
+                                        <field name="new_harga"/>
+                                        <field name="distance"/>
+                                        <!-- <field name="uom"/> -->
+                                        <field name="total"/>
+                                        <!-- <field name="tipe" invisible="1"/> -->
+                                    </tree>
+                                </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Hauling Kontrak -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_pembuatan_billing">
+            <field name="name">Pembuatan Billing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_pembuatan_billing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+<!--             <field name="view_id" ref="view_tbl_hauling_kontrak_tree"/>
+            <field name="domain" >[('tipe','=','hauling')]</field> -->
+        </record>
+
+
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_hauling" parent="menu_hauling_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_hrm" parent="menu_hrm_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_rental" parent="menu_rental_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_port" parent="menu_port_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_fuel" parent="menu_fuel_truck_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+        <menuitem name="Pembuatan Billing" id="menu_pembuatan_billing_left_water" parent="menu_water_truck_management" action="menu_action_tbl_pembuatan_billing" sequence="90"/>
+ 
+    </data>
+</odoo>

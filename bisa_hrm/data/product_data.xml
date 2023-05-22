@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_hrm" model="ir.module.category">
+            <field name="name">Road Maintenance</field>
+            <field name="description">Road Maintenance</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

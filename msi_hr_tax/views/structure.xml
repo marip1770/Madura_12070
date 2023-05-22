@@ -1,0 +1,197 @@
+<odoo>
+  <data> 
+
+        <record id="view_tbl_tax_biaya_jabatan_tree" model="ir.ui.view">
+            <field name="name">tbl_tax_biaya_jabatan.tree</field>
+            <field name="model">tbl_tax_biaya_jabatan</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="nilai_maks"/>
+                                    <field name="nilai_persen"/>
+                                    <field name="ket"/>
+
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_tax_biaya_jabatan_form">
+        <field name="name">tbl_tax_biaya_jabatan.form</field>
+        <field name="model">tbl_tax_biaya_jabatan</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="nilai_maks"/>
+                                    <field name="nilai_persen"/>
+                                    <field name="ket"/>
+		                </group>
+		                <group>
+
+		               </group>
+                	</group>
+                </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="activity_ids" widget="mail_activity"/>
+                     <field name="message_ids" widget="mail_thread"/>
+                 </div>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_tax_biayajabatan">
+           <field name="name">Biaya Jabatan</field>
+           <field name="res_model">tbl_tax_biaya_jabatan</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Biaya Jabatan" id="menu_tax_biayajabatan_left" parent="menu_seting_tax_top" action="menu_tax_biayajabatan" sequence="10"/> 
+
+        <record id="view_tbl_tax_period_tree" model="ir.ui.view">
+            <field name="name">tbl_tax_period.tree</field>
+            <field name="model">tbl_tax_period</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" create="false" edit="false">
+                                    <field name="name"/>
+                                    <field name="date_awal"/>
+                                    <field name="date_akhir"/>
+                                    <field name="ket"/>
+
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_tax_period_form">
+        <field name="name">tbl_tax_period.form</field>
+        <field name="model">tbl_tax_period</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi" create="false" edit="false">
+
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="tahun"/>
+                                    <field name="date_awal"/>
+                                    <field name="date_akhir"/>
+                                    <field name="ket"/>
+		                </group>
+		                <group>
+
+		               </group>
+                	</group>
+                </sheet>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_tax_period">
+           <field name="name">Tax Period</field>
+           <field name="res_model">tbl_tax_period</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Tax Period" id="menu_tax_period_left" parent="menu_seting_tax_top" action="menu_action_tax_period" sequence="100"/>
+
+        <record id="view_tbl_generate_tax_period_tree" model="ir.ui.view">
+            <field name="name">tbl_generate_tax_period.tree</field>
+            <field name="model">tbl_generate_tax_period</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_generate_tax_period_form">
+        <field name="name">tbl_generate_tax_period.form</field>
+        <field name="model">tbl_generate_tax_period</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                    <button name="action_generate" string="Generate" type="object" states="draft"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="ket"/>
+                    </group>
+                    <group>
+
+                   </group>
+                  </group>
+                </sheet>
+     </form>
+    </field>
+  </record>
+
+      <record model="ir.actions.act_window" id="menu_action_generate_tax_period">
+           <field name="name">Generate Tax Period</field>
+           <field name="res_model">tbl_generate_tax_period</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Generate Tax Period" id="menu_generate_tax_period_left" parent="menu_seting_tax_top" action="menu_action_generate_tax_period" sequence="95"/>
+
+        <record id="view_tbl_tax_tahun_tree" model="ir.ui.view">
+            <field name="name">tbl_tax_tahun.tree</field>
+            <field name="model">tbl_tax_year</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_tax_tahun_form">
+        <field name="name">tbl_tax_tahun.form</field>
+        <field name="model">tbl_tax_year</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="value"/>
+
+		                </group>
+		                <group>
+
+		               </group>
+                	</group>
+                </sheet>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_tax_tahun">
+           <field name="name">Tax Tahun</field>
+           <field name="res_model">tbl_tax_year</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Tax Tahun" id="menu_tax_tahun_left" parent="menu_seting_tax_top" action="menu_action_tax_tahun" sequence="101"/>
+
+
+</data>
+</odoo>

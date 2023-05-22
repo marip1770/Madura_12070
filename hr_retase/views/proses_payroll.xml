@@ -1,0 +1,89 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_proses_payroll_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_proses_payroll.tree</field>
+            <field name="model">tbl_msi_proses_payroll</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+                                    <field name="periode"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_proses_payroll_form">
+        <field name="name">tbl_msi_proses_payroll.form</field>
+        <field name="model">tbl_msi_proses_payroll</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="periode"/>
+		                </group>
+		                <group>
+                                    <field name="user"/>
+		                </group>
+			            </group>
+
+                  <group>
+                    <group>
+                      <button name="act_get_data" string="Get Data" type="object" states="draft"/>
+                    </group>
+                    <group/>
+                  </group>
+
+	            <notebook>
+                        <page string="Detail">
+		           <field name="detail">
+			      <tree string="Detail Action" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="route_id"/>
+                                    <field name="transportasi_id"/>
+                                    <field name="jam"/>
+				</tree>
+			   </field>
+                        </page>
+
+
+
+
+	            </notebook>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_proses_payroll">
+           <field name="name">Proses Payroll</field>
+           <field name="res_model">tbl_msi_proses_payroll</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+
+</data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_msi_users_form" model="ir.ui.view">
+            <field name="name">res.msi_users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='tz']" position="after">
+
+
+                    <field name="employee_id"/>
+                    <field name="akses_id" widget="many2many_tags"/>
+
+            	</xpath>
+		</field>
+	</record>
+    </data>
+</odoo>

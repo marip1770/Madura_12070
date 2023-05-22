@@ -1,0 +1,18 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_payroll_tax" name="Payroll Tax"  web_icon="msi_hr_tax,static/description/icon.png"/>
+
+    <menuitem name="Data Payroll" id="menu_payroll_tax_top" parent="menu_payroll_tax" sequence="10"/>
+
+    <menuitem name="Proses" id="menu_payroll_tax_proses_top" parent="menu_payroll_tax" sequence="20"/>
+
+    <menuitem name="Payroll Tax" id="menu_payroll_tax_rekap_top" parent="menu_payroll_tax" sequence="30"/>
+
+
+    <menuitem name="Seting" id="menu_seting_tax_top" parent="menu_payroll_tax" sequence="100"/>
+
+
+   </data>
+</odoo>
+
+

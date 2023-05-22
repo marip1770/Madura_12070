@@ -1,0 +1,805 @@
+<odoo>
+    <data>
+        <!-- Fuel Truck -->
+        <!-- Fuel Truck Kontrak -->
+        <record id="view_tbl_fuel_truck_kontrak_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_kontrak.tree</field>
+            <field name="model">tbl_bisa_hauling_kontrak</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Contract" create="false">
+                    <field name="nomor"/>
+                    <field name="produk"/>
+                    <field name="vendor"/>
+                    <field name="lokasi"/>
+                    <field name="nama_projek"/>
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                    <field name="nilai_kontrak" invisible="1"/>
+                    <field name="state"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kontrak_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_kontrak.form</field>
+            <field name="model">tbl_bisa_hauling_kontrak</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Contract" create="false" edit="false">
+                      <header>
+                        <button string="Confirm" name="action_create_plan" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="produk"/>
+                                <field name="vendor"/>
+                                <field name="lokasi"/>
+                                <field name="nama_projek"/>
+                                <field name="tgl_awal"/>
+                                <field name="tgl_akhir"/>
+                                <field name="quantity"/>
+                                <field name="qty_day"/>
+                                <field name="uom"/>
+                                <field name="harga"/>
+                                <field name="total"/>
+                                <field name="nilai_kontrak" invisible="1"/>
+                                <field name="tipe" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Fuel Truck Kontrak -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_kontrak">
+            <field name="name">Contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_kontrak</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_kontrak_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kontrak_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_kontrak_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_kontrak"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kontrak_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_kontrak_form"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_kontrak"/>
+        </record>
+
+        <!-- Sub Menu Fuel Truck Kontrak-->
+        <menuitem name="Contract" id="menu_fuel_truck_kontrak_left" parent="menu_fuel_truck_kontrak_top" action="menu_action_fuel_truck_kontrak" sequence="10" groups="bisa_hauling.grup_fuel_truck_usr"/>
+        
+        <!-- Action Fuel Truck Plan -->
+        <record id="view_tbl_fuel_truck_plan_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_plan.tree</field>
+            <field name="model">tbl_bisa_hauling_plan</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Planning">
+                    <field name="tanggal"/>
+                    <field name="no_kontrak"/>
+                    <field name="produk"/>
+                    <field name="vendor"/>
+                    <field name="lokasi"/>
+                    <field name="nama_projek"/>
+                    <field name="quantity"/>
+                    <field name="uom"/>
+                    <field name="state"/>
+                    <field name="total" invisible="1"/>
+                    <field name="nilai" invisible="1"/>
+                    <field name="tipe" invisible="1"/>
+                    <!-- <button string="Assigment" name="open_wizard" type="object" class="oe_highlight"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_plan_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_plan.form</field>
+            <field name="model">tbl_bisa_hauling_plan</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Planning">
+                    <header>
+                        <button string="Confirm" name="action_create_assigment" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal" readonly="1"/>
+                                <field name="no_kontrak" readonly="1"/>
+                                <field name="produk" readonly="1"/>
+                                <field name="vendor" readonly="1"/>
+                                <field name="lokasi" readonly="1"/>
+                                <field name="nama_projek" readonly="1"/>
+                                <field name="quantity" readonly="1"/>
+                                <field name="uom" readonly="1"/>
+                                <field name="total" invisible="1" readonly="1"/>
+                                <field name="nilai" invisible="1" readonly="1"/>
+                                <field name="tipe" invisible="1" readonly="1"/>
+                            </group>
+                        </group>
+                    <notebook>
+                            <page string="Detail">
+                                <button string="Get" name="get_schedule_um" type="object" class="btn-primary"/>
+                                <field name="detail_assigment_line">
+                                    <tree editable="bottom" create="false">
+                                        <field name="no_kontrak" invisible="1"/>
+                                        <field name="driver"/>
+                                        <field name="tipe_driver" invisible="1"/>
+                                        <field name="unit_id" domain="[('tipe','=', tipe_driver)]"/>
+                                        <field name="lokasi"/>
+                                        <field name="route" domain="[('lokasi','=',lokasi)]"/>
+                                        <field name="lokasi_asal"/>
+                                        <field name="lokasi_tujuan"/>
+                                        <!-- <field name="tipe" invisible="1"/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Fuel Truck Plan -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_plan">
+            <field name="name">Planning</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_plan_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_plan_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_plan_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_plan"/>
+        </record>
+        
+        <record id="view_tbl_fuel_truck_plan_form_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_plan_form"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_plan"/>
+        </record>
+
+        <!-- Sub Menu Fuel Truck Plan -->
+        <menuitem name="Planning" id="menu_fuel_truck_plan_left" parent="menu_fuel_truck_pna_top" action="menu_action_fuel_truck_plan" sequence="10" groups="bisa_hauling.grup_fuel_truck_usr"/>
+        
+        <!-- Fuel Truck Assigment -->
+        <record id="view_tbl_fuel_truck_assigment_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_assigment.tree</field>
+            <field name="model">tbl_bisa_hauling_assigment</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Assigment">
+                    <field name="tanggal"/>
+                    <field name="produk"/>
+                    <field name="no_kontrak"/>
+                    <field name="nama_projek"/>
+                    <field name="name"/>
+                    <field name="lokasi"/>
+                    <field name="route"/>
+                    <field name="lokasi_asal"/>
+                    <field name="lokasi_tujuan"/>
+                    <field name="driver"/>
+                    <field name="user_driver" invisible="1"/>
+                    <field name="unit_id"/>
+                    <field name="qty_rencana"/>
+                    <field name="qty_aktual"/>
+                    <field name="uom"/>
+                    <field name="state"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_assigment_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_assigment.form</field>
+            <field name="model">tbl_bisa_hauling_assigment</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Assigment">
+                    <header>
+                        <button name="action_p5m" type="object" string="P5M" class="oe_highlight" states="start"/>
+                        <button name="action_kesiapan" type="object" string="Kesiapan" class="oe_highlight" states="p5m"/>
+                        <button name="action_p2h" type="object" string="P2H" class="oe_highlight" states="kesiapan"/>
+                        <button name="action_operasional" type="object" string="Operasional" class="oe_highlight" states="p2h"/>
+                        <button name="action_done" type="object" string="Done" class="oe_highlight" states="operasional"/>
+                        <field name="state" widget="statusbar" statusbar_visible="start,p5m,kesiapan,p2h,operasional,done,maintenance,cancel"/>                    
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal" readonly="1"/>
+                                <field name="name" readonly="1"/>
+                                <field name="no_kontrak" readonly="1"/>
+                                <field name="nama_projek" readonly="1"/>
+                                <field name="lokasi" readonly="1"/>
+                                <field name="produk" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="driver" readonly="1"/>
+                                <field name="user_driver" readonly="1" invisible="1"/>
+                                <field name="unit_id" readonly="1"/>
+                                <field name="route" readonly="1"/>
+                                <field name="lokasi_asal" readonly="1" invisible="1"/>
+                                <field name="lokasi_tujuan" readonly="1" invisible="1"/>
+                                <field name="qty_rencana" readonly="1"/>
+                                <field name="qty_aktual" readonly="1"/>
+                                <field name="uom" readonly="1"/>
+                                <field name='field_jumlah_nilai' readonly="1" invisible="1"/>
+                                <field name="tipe" invisible="1" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Operasional" attrs="{'invisible': [('state', 'in', ('start', 'p5m', 'kesiapan', 'p2h'))]}">
+                                <field name="operasional_line">
+                                    <tree editable="bottom">
+                                        <field name="tanggal" readonly="1"/>
+                                        <field name="user_driver" invisible="1" readonly="1"/>
+                                        <field name="driver" readonly="1"/>
+                                        <field name="id_unit" readonly="1"/>
+                                        <field name="lokasi" readonly="1" invisible="1"/>
+                                        <field name="route" readonly="1"/>
+                                        <field name="start_time"/>
+                                        <field name="geo_start_longtitude"/>
+                                        <field name="geo_start_latitude"/>
+                                        <field name="end_shift"/>
+                                        <field name="geo_shift_end_longtitude"/>
+                                        <field name="geo_shift_end_latitude"/>
+                                        <field name="start_shift"/>
+                                        <field name="geo_shift_start_longtitude"/>
+                                        <field name="geo_shift_start_latitude"/>
+                                        <field name="end_time"/>
+                                        <field name="geo_end_longtitude"/>
+                                        <field name="geo_end_latitude"/>
+                                        <field name="start_pengisian"/>
+                                        <field name="geo_pengisian_start_longtitude"/>
+                                        <field name="geo_pengisian_start_latitude"/>
+                                        <field name="end_pengisian"/>
+                                        <field name="geo_pengisian_end_longtitude"/>
+                                        <field name="geo_pengisian_end_latitude"/>
+                                        <field name="fuel_meter_start"/>
+                                        <field name="fuel_meter_end"/>
+                                        <field name="hm_km"/>
+                                        <field name="picture"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                             <page string="P5M" attrs="{'invisible': [('state', 'in', ('start', 'kesiapan', 'p2h', 'operasional'))]}">
+                                <field name="p5m_line">
+                                    <tree editable="bottom" create="false">
+                                        <field name="user_driver" invisible="1" readonly="1"/>
+                                        <field name="field_pertanyaan_p5m" readonly="1"/>
+                                        <field name="normal_value" invisible="1" readonly="1"/>
+                                        <field name="field_jawaban_p5m"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Kesiapan" attrs="{'invisible': [('state', 'in', ('start', 'p5m', 'p2h', 'operasional'))]}">
+                                <field name="kesiapan_line">
+                                    <tree editable="bottom" create="false">
+                                        <field name="user_driver" invisible="1" readonly="1"/>
+                                        <field name="field_pertanyaan_kesiapan" readonly="1"/>
+                                        <field name="normal_value" invisible="1" readonly="1" widget="float_time"/>
+                                        <field name="field_jawaban_kesiapan" widget="float_time"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="P2H" attrs="{'invisible': [('state', 'in', ('start', 'p5m', 'kesiapan', 'operasional'))]}">
+                                <field name="p2h_line">
+                                    <tree editable="bottom" create="false">
+                                        <field name="unit_id" invisible="1" readonly="1"/>
+                                        <field name="field_pertanyaan_p2h" readonly="1"/>
+                                        <field name="normal_value" invisible="1" readonly="1"/>
+                                        <field name="field_jawaban_p2h"/>
+                                        <field name="field_nilai" readonly="1" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Fuel Truck Assigment -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_assigment">
+            <field name="name">Assigment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_assigment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_fuel_truck_assigment_tree"/> -->
+            <field name="view_ids" 
+                    eval="[(5,0,0),
+                        (0, 0, {'sequence':2, 'view_mode': 'tree', 'view_id': ref('bisa_hauling.view_tbl_fuel_truck_assigment_tree')}),
+                        (0, 0, {'sequence':3, 'view_mode': 'form', 'view_id': ref('bisa_hauling.view_tbl_fuel_truck_assigment_form')}),
+                    ]"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <!-- <record id="view_tbl_fuel_truck_assigment_tree_view" model="ir.actions.act_window.view">
+            <field eval="7" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_assigment_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_assigment"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_assigment_form_view" model="ir.actions.act_window.view">
+            <field eval="8" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_assigment_form"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_assigment"/>
+        </record> -->
+
+        <!-- Sub Menu Fuel Truck Assigment -->
+        <menuitem name="Assigment" id="menu_fuel_truck_assigment_left" parent="menu_fuel_truck_pna_top" action="menu_action_fuel_truck_assigment" sequence="11" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Fuel Truck P5M -->
+        <record id="view_tbl_fuel_truck_p5m_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_ft_p5m.tree</field>
+            <field name="model">tbl_bisa_hauling_p5m</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="P5M">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p5m_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_p5m.form</field>
+            <field name="model">tbl_bisa_hauling_p5m</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="P5M">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                                <field name="departemen"/>
+                                <field name="lokasi"/>
+                                <field name="nama_projek"/>
+                                <field name="pemateri"/>
+                                <field name="tipe" invisible="0"/>
+                            </group>
+                            <!-- <group> -->
+                                <!-- <field name="tanggal" invisible="1"/> -->
+                                <!-- <field name="jml_peserta" invisible="1"/> -->
+                            <!-- </group> -->
+                        </group>
+                        <notebook>
+                            <page string="Pertanyaan">
+                                <field name="data_p5m_line">
+                                    <tree editable="bottom">
+                                        <field name="pertanyaan_p5m"/>
+                                        <field name="normal_value"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <!-- <page string="Absensi">
+                                <field name="absensi_line">
+                                    <tree editable="bottom">
+                                        <field name="serial_number"/>
+                                        <field name="nama"/>
+                                        <field name="departemen"/>
+                                        <field name="tanda_tangan"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page> -->
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      
+        <!-- Action Fuel Truck P5M -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_p5m">
+            <field name="name">P5M</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_p5m_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p5m_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_p5m_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_p5m"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p5m_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_p5m_form"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_p5m"/>
+        </record>
+
+        <!-- Sub Menu Fuel Truck P5M-->
+        <menuitem name="P5M" id="menu_fuel_truck_p5m_left" parent="menu_fuel_truck_bnp_top" action="menu_action_fuel_truck_p5m" sequence="11" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Fuel Truck Kesiapan Bekerja -->
+        <record id="view_tbl_fuel_truck_kesiapan_bekerja_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_kesiapan_bekerja.tree</field>
+            <field name="model">tbl_bisa_hauling_kesiapan_bekerja</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Kesiapan Bekerja">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kesiapan_bekerja_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_kesiapan_bekerja.form</field>
+            <field name="model">tbl_bisa_hauling_kesiapan_bekerja</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Kesiapan Bekerja">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                                <field name="lokasi"/>
+                                <field name="nama_projek"/>
+                                <field name="tipe" invisible="0"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="data_kesiapan_line">
+                                    <tree editable="bottom">
+                                        <field name="pertanyaan_kesiapan"/>
+                                        <field name="normal_value" widget="float_time"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Fuel Truck Kesiapan Bekerja -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_kesiapan_bekerja">
+            <field name="name">Kesiapan Bekerja</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_kesiapan_bekerja</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_kesiapan_bekerja_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kesiapan_bekerja_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_kesiapan_bekerja_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_kesiapan_bekerja"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_kesiapan_bekerja_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_kesiapan_bekerja_form"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_kesiapan_bekerja"/>
+        </record>
+
+        <!-- Sub Menu Fuel Truck Kesiapan Bekerja-->
+        <menuitem name="Kesiapan Bekerja" id="menu_fuel_truck_kesiapan_bekerja_left" parent="menu_fuel_truck_bnp_top" action="menu_action_fuel_truck_kesiapan_bekerja" sequence="12" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Fuel Truck P2H -->
+        <record id="view_tbl_fuel_truck_p2h_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_p2h.tree</field>
+            <field name="model">tbl_bisa_hauling_p2h</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="P2H">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p2h_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_p2h.form</field>
+            <field name="model">tbl_bisa_hauling_p2h</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="P2H">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                                <field name="lokasi"/>
+                                <field name="nama_projek"/>
+                                <field name="tipe" invisible="0"/>
+                                <field name="tipe_unit"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="data_p2h_line">
+                                    <tree editable="bottom">
+                                        <field name="pertanyaan_p2h"/>
+                                        <field name="normal_value"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Fuel Truck P2H -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_p2h">
+            <field name="name">P2H</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_p2h_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p2h_tree_view" model="ir.actions.act_window.view">
+            <field eval="9" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_p2h_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_p2h"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_p2h_form_view" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_p2h_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_p2h"/>
+        </record>
+        
+        <!-- Sub Menu Fuel Truck P2H-->
+        <menuitem name="P2H" id="menu_fuel_truck_p2h_left" parent="menu_fuel_truck_bnp_top" action="menu_action_fuel_truck_p2h" sequence="13" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Fuel Truck Konsolidasi -->
+        <record id="view_tbl_fuel_truck_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_konsolidasi</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Konsolidasi" editable="bottom">
+                    <field name="tanggal"/>
+                    <field name="no_register"/>
+                    <field name="berat"/>
+                    <field name="berat_aktual"/>
+                    <field name="selisih"/>
+                    <field name="tipe" invisible="0"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action Fuel Truck Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_fuel_truck_konsolidasi">
+            <field name="name">Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_konsolidasi_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_fuel_truck_konsolidasi"/>
+        </record>
+
+        <!-- Sub Menu Fuel Truck Konsolidasi -->
+        <menuitem name="Konsolidasi" id="menu_fuel_truck_konsolidasi_left" parent="menu_fuel_truck_report_top" action="menu_action_fuel_truck_konsolidasi" sequence="10" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <record id="view_tbl_bisa_fuel_truck_assigment_opr_line_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_assigment_opr_line.tree</field>
+            <field name="model">tbl_bisa_hauling_assigment_opr_line</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Operasional" create="false" edit="false">
+                    <field name="tanggal" readonly="1"/>
+                    <field name="user_driver" invisible="1" readonly="1"/>
+                    <field name="driver" readonly="1"/>
+                    <field name="id_unit" readonly="1"/>
+                    <field name="lokasi" readonly="1" invisible="1"/>
+                    <field name="route" readonly="1"/>
+                    <field name="start_time"/>
+                    <field name="geo_start_longtitude"/>
+                    <field name="geo_start_latitude"/>
+                    <field name="end_shift"/>
+                    <field name="geo_shift_end_longtitude"/>
+                    <field name="geo_shift_end_latitude"/>
+                    <field name="start_shift"/>
+                    <field name="geo_shift_start_longtitude"/>
+                    <field name="geo_shift_start_latitude"/>
+                    <field name="end_time"/>
+                    <field name="geo_end_longtitude"/>
+                    <field name="geo_end_latitude"/>
+                    <field name="start_pengisian"/>
+                    <field name="geo_pengisian_start_longtitude"/>
+                    <field name="geo_pengisian_start_latitude"/>
+                    <field name="end_pengisian"/>
+                    <field name="geo_pengisian_end_longtitude"/>
+                    <field name="geo_pengisian_end_latitude"/>
+                    <field name="fuel_meter_start"/>
+                    <field name="fuel_meter_end"/>
+                    <field name="hm_km"/>
+                    <field name="picture"/>
+                    <field name="tipe" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+      
+        <!-- Action Hauling Operasional -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_fuel_truck_assigment_opr_line">
+            <field name="name">Operasional</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_assigment_opr_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_tbl_bisa_fuel_truck_assigment_opr_line_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_fuel_truck_assigment_opr_line_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_fuel_truck_assigment_opr_line_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_fuel_truck_assigment_opr_line"/>
+        </record>
+
+        <menuitem name="Operasional" id="menu_fuel_truck_operasional_left" parent="menu_fuel_truck_report_top" action="menu_action_tbl_bisa_fuel_truck_assigment_opr_line" sequence="9" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <record id="view_tbl_fuel_truck_pembuatan_billing_tree" model="ir.ui.view">
+            <field name="name">tbl_pembuatan_billing.tree</field>
+            <field name="model">tbl_pembuatan_billing</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Pembuatan Billing">
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="nama_projek"/>
+                    <field name="produk"/>
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                    <field name="user"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_fuel_truck_pembuatan_billing_form" model="ir.ui.view">
+            <field name="name">tbl_pembuatan_billing.form</field>
+            <field name="model">tbl_pembuatan_billing</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Pembuatan Billing">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                    <field name="name"/>
+                    <field name="tanggal"/>
+                    <field name="nama_projek"/>
+                    <field name="produk"/>
+                            </group>
+                            <group>
+                    <field name="user"/>
+                    <field name="tgl_awal"/>
+                    <field name="tgl_akhir"/>
+                            </group>
+                        </group>
+                        <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="produk"/>
+                                        <field name="nama_projek"/>
+                                        <field name="quantity"/>
+                                        <field name="uom"/>
+                                        <field name="harga"/>
+                                        <field name="total"/>
+                                        <!-- <field name="tipe"/> -->
+                                    </tree>
+                                </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action HRM Biling -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_pembuatan_billing">
+            <field name="name">Pembuatan Billing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_pembuatan_billing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_pembuatan_billing_tree"/>
+            <!-- <field name="domain" >[('tipe','=','fuel_truck')]</field> -->
+        </record>
+
+        <record id="view_tbl_fuel_truck_pembuatan_billing_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_pembuatan_billing_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_pembuatan_billing"/>
+        </record>
+
+        <record id="view_tbl_fuel_truck_pembuatan_billing_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_fuel_truck_pembuatan_billing_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_pembuatan_billing"/>
+        </record>
+
+        <menuitem name="Pembuatan Billing" id="menu_fuel_truck_pembuatan_billing_left" parent="menu_fuel_truck_billing_top" action="menu_action_tbl_pembuatan_billing" sequence="10" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Action Fuel Truck Breakdown -->
+        <!-- <record model="ir.actions.act_window" id="menu_action_fuel_truck_breakdown">
+            <field name="name">Breakdown</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tbl_fuel_truck_p5m_tree"/>
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record> -->
+
+        <!-- Sub Menu Fuel Truck Breakdown -->
+        <!-- <menuitem name="Breakdown" id="menu_fuel_truck_breakdown_left" parent="menu_fuel_truck_breakdown_top" action="menu_action_fuel_truck_breakdown" sequence="10"/> -->
+    </data>
+</odoo>

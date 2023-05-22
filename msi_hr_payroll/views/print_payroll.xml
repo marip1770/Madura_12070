@@ -1,0 +1,218 @@
+<odoo>
+  <data>  
+
+
+    <record model="ir.ui.view" id="tbl_msi_payroll_line_form">
+        <field name="name">tbl_msi_payroll_line.form</field>
+        <field name="model">tbl_msi_payroll_line</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_payslip_sent" string="Sent Email" type="object" /> 
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="date"/>
+		                </group>
+		                <group>
+                                    <field name="periode"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="loc"/>
+
+		                </group>
+		                <group>
+                                    <field name="type_id"/>
+                                    <field name="contract_id"/>
+                                    <field name="gol_gaji"/>
+                                    <field name="analytic_id"/>
+                                    <field name="details_print"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+
+
+		                </group>
+		                <group>
+                                    <field name="user"/>
+
+		               </group>
+			</group>
+
+
+
+	     <notebook>
+                        <page string="Manual">
+		            <field name="detail_manual">
+				<tree string="detail_manual" editable="bottom">
+                                    <field name="name" domain="[('is_auto','=',False)]"/>
+                                    <field name="kode"/>
+                                    <field name="tipe"/>
+                                    <field name="nominal"/>
+				 </tree>
+		             </field>
+                        </page>
+                        <page string="Detail">
+		            <field name="detail_payroll">
+				<tree string="detail_payroll" editable="bottom">
+                                    <field name="name" />
+                                    <field name="kode"/>
+                                    <field name="tipe"/>
+                                    <field name="nominal"/>
+				 </tree>
+		             </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="gaji">
+                                <field name="total_allow"/>
+                                <field name="total_ded"/>
+                                <field name="total_net"/>
+                                <field name="total_tunj_tax"/>
+                                <field name="total_tax"/>
+
+
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="total_thp" />
+                                </div>
+                                <field name="total_thp" nolabel="1" class="oe_subtotal_footer_separator" />
+                            </group>
+
+                        </page>
+                        <page string="Tax Info">
+                	<group>
+                		<group>
+                                    <field name="account_id"/>
+
+		                </group>
+		                <group>
+                                    <field name="tax_id"/>
+
+		               </group>
+			</group>
+                        </page>
+                        <page string="Overtime">
+                            <group>
+                                <button name="action_ambil_data" string="Get Data" type="object" /> 
+                            </group>
+                            <field name="detail_overtime">
+                      <tree string="Detail Action" editable="bottom"><!-- create="false" edit="false" delete="false"-->
+                                    <field name="nama_hari"/>
+                                    <field name="sc_date_a"/>
+                                    <field name="sc_date_in"/>
+                                    <field name="sc_date_out"/>
+                                    <field name="act_date_in"/>
+                                    <field name="act_date_out"/>
+                                    <field name="lembur_spkl_start"/>
+                                    <field name="lembur_spkl_end"/>
+                                    <field name="total_lembur"/>
+                        </tree>
+                    </field>
+                    <group>
+                        <group>
+                            <field name="total_lembur"/>
+                        </group>
+                        <group/>
+                    </group>
+                        </page>
+
+	     </notebook>
+          </sheet>
+
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_payroll_print_individual">
+           <field name="name">Print Individual</field>
+           <field name="res_model">tbl_msi_payroll_line</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+           <field name="domain">[('state', '=', 'close')]</field>
+           <field name="context">{'search_default_periode': 1}</field>
+       </record>
+
+    <menuitem name="Print Individual" id="menu_payroll_print_individual_left" parent="menu_payroll_print_top" action="menu_payroll_print_individual" sequence="10"/>
+
+
+        <record id="view_tbl_msi_print_payroll_batch_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_print_payroll_batch.tree</field>
+            <field name="model">tbl_msi_print_payroll_batch</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_print_payroll_batch_form">
+        <field name="name">tbl_msi_print_payroll_batch.form</field>
+        <field name="model">tbl_msi_print_payroll_batch</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_get" string="Get Data" type="object" states="draft"/> 
+                    <button name="action_print" string="Print" type="object" states="draft"/>
+                    <button name="action_sent" string="Sent Email" type="object" states="draft"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="periode"/>
+                                    <field name="tipe"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            <field name="detail_print">
+				<tree string="Detail Action" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="employee"/>
+				 </tree>
+		             </field>
+                        </page>
+
+	     </notebook>
+          </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="activity_ids" widget="mail_activity"/>
+                     <field name="message_ids" widget="mail_thread"/>
+                 </div>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_payroll_print_batch">
+           <field name="name">Batch Print/Email</field>
+           <field name="res_model">tbl_msi_print_payroll_batch</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field> 
+       </record>
+
+    <menuitem name="Batch Print/Email" id="menu_payroll_print_batch_left" parent="menu_payroll_print_top" action="menu_payroll_print_batch" sequence="20"/>
+
+
+
+
+</data>
+</odoo>

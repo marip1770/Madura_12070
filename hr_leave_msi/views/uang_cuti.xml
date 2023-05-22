@@ -1,0 +1,187 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_uang_cuti_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_uang_cuti.tree</field>
+            <field name="model">tbl_msi_uang_cuti</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                        <field name="name"/>
+		        <field name="date"/>
+			<field name="employee"/>
+			<field name="nik"/>
+			<field name="dept"/>
+			<field name="divisi"/>
+			<field name="loc"/>
+			<field name="job"/>
+			<field name="periode_tahun"/>
+			<field name="cuti_tersedia"/>
+			<field name="nominal"/>
+                        <field name="user"/>
+                        <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_uang_cuti_form">
+        <field name="name">tbl_msi_uang_cuti.form</field>
+        <field name="model">tbl_msi_uang_cuti</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+			            <field name="employee"/>
+			            <field name="nik"/>
+			            <field name="dept"/>
+			            <field name="divisi"/>
+			            <field name="loc"/>
+			            <field name="job"/>
+		                </group>
+		                <group>
+                                    <field name="periode_tahun"/>
+                                    <field name="cuti_tersedia"/>
+                                    <field name="nominal"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+
+		                </group>
+		                <group>
+                                    <field name="user"/>
+		               </group>
+			</group>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_uang_cuti">
+           <field name="name">Uang Cuti Tahunan</field>
+           <field name="res_model">tbl_msi_uang_cuti</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <!-- <menuitem name="Uang Cuti Tahunan" id="menu_uang_cuti_left" parent="menu_uang_cuti_top" action="menu_uang_cuti" sequence="10"/> -->
+
+         <record id="view_tbl_msi_uang_sisa_cuti_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_uang_sisa_cuti.tree</field>
+            <field name="model">tbl_msi_uang_sisa_cuti</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                        <field name="name"/>
+		        <field name="date"/>
+			<field name="employee"/>
+			<field name="nik"/>
+			<field name="dept"/>
+			<field name="divisi"/>
+			<field name="loc"/>
+			<field name="job"/>
+			<field name="periode_tahun"/>
+			<field name="cuti_tersedia"/>
+                        <field name="cuti_diuangkan"/>
+                        <field name="cuti_sisa"/>
+			<field name="nominal"/>
+                        <field name="user"/>
+                        <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_uang_sisa_cuti_form">
+        <field name="name">tbl_msi_uang_sisa_cuti.form</field>
+        <field name="model">tbl_msi_uang_sisa_cuti</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+			            <field name="employee"/>
+			            <field name="nik"/>
+			            <field name="dept"/>
+			            <field name="divisi"/>
+			            <field name="loc"/>
+			            <field name="job"/>
+		                </group>
+		                <group>
+                                    <field name="periode_tahun"/>
+                                    <field name="cuti_tersedia"/>
+                                    <field name="cuti_diuangkan"/>
+                                    <field name="cuti_sisa"/>
+                                    <field name="nominal"/>
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+
+		                </group>
+		                <group>
+                                    <field name="user"/>
+		               </group>
+			</group>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_uang_sisa_cuti">
+           <field name="name">Uang Sisa Cuti Tahunan</field>
+           <field name="res_model">tbl_msi_uang_sisa_cuti</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <!-- <menuitem name="Uang Sisa Cuti Tahunan" id="menu_uang_sisa_cuti_left" parent="menu_uang_cuti_top" action="menu_uang_sisa_cuti" sequence="20"/> -->
+
+ 
+
+
+
+</data>
+</odoo>

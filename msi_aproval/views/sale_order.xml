@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+
+ 
+        <record id="tbl_sales_approval" model="ir.ui.view">
+            <field name="name">tbl_sales_approval</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_cancel']" position="replace">
+
+                    <button name="action_cancel" states="draft,appr1,appr2,sent,sale" type="object" string="Cancel"/>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="act_appr1" string="Approve 1" type="object" class="oe_highlight"  groups="msi_aproval.group1_so_approval" states='appr1'/>
+                    <button name="act_appr2" string="Approve 2" type="object" class="oe_highlight"  groups="msi_aproval.group1_so_approva2" states='appr2'/>
+                </xpath>
+	          </field>
+	      </record>
+  </data>
+</odoo>

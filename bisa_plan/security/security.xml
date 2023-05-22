@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="0">
+        <record id="grup_maintenance_usr" model="res.groups">
+            <field name="name">Maintenance Usr</field>
+            <field name="comment">User</field>
+            <field name="category_id" ref="module_category_maintenance"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,135 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_hourmeter_input_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_hourmeter_input.tree</field>
+            <field name="model">tbl_msi_hourmeter_input</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_msi_hourmeter_input_form">
+        <field name="name">tbl_msi_hourmeter_input.form</field>
+        <field name="model">tbl_msi_hourmeter_input</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_hourmeter.grup_hourmeter_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_hourmeter.grup_hourmeter_appr"/>
+                    <button name="action_done" string="Finish" type="object" states="approve" groups="hr_hourmeter.grup_hourmeter_mgr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="user"/>
+                    </group>
+                    <group>
+
+                   </group>
+      </group>
+
+              <notebook>
+                        <page string="Detail">
+               <field name="detail">
+            <tree string="Detail Action" editable="bottom">
+                                    <field name="employee"/>
+                                    <field name="name"/>
+                                    <field name="mesin_id"/>
+                                    <field name="jam"/>
+                                    <field name="persen"/>
+        </tree>
+         </field>
+                        </page>
+
+
+
+
+              </notebook>
+
+
+      </sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_input_hourmeter">
+           <field name="name">Form Input Hourmeter</field>
+           <field name="res_model">tbl_msi_hourmeter_input</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Form Input Hourmeter" id="menu_input_hourmeter_left" parent="menu_hourmeter_top" action="menu_action_input_hourmeter" sequence="10"/>
+
+    <record model="ir.ui.view" id="tbl_msi_hourmeter_form">
+        <field name="name">tbl_msi_hourmeter.form</field>
+        <field name="model">tbl_msi_hourmeter</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="date"/>
+                                    <field name="employee"/>
+                                    <field name="name"/>
+                                    <field name="mesin_id"/>
+                                    <field name="jam"/>
+		                </group>
+		                <group>
+
+		               </group>
+			</group>
+
+
+			</sheet>
+			</form>
+		</field>
+	</record>
+
+        <record id="view_tbl_msi_hourmeter_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_hourmeter.tree</field>
+            <field name="model">tbl_msi_hourmeter</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="date"/>
+                                    <field name="employee"/>
+                                    <field name="name"/>
+                                    <field name="mesin_id"/>
+                                    <field name="jam"/>
+                                    <field name="persen"/>
+                                    <field name="nominal"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_hourmeter">
+           <field name="name">Data</field>
+           <field name="res_model">tbl_msi_hourmeter</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Data" id="menu_data_hourmeter" parent="menu_hourmeter_top" action="menu_action_hourmeter" sequence="20"/>
+
+</data>
+</odoo>

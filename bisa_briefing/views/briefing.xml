@@ -1,0 +1,254 @@
+<odoo>
+  <data>
+
+          <!-- Action Plan -->
+        <record model="ir.actions.act_window" id="menu_action_plan">
+            <field name="name">Plan</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Plan -->
+        <menuitem name="Plan" id="menu_plan_left" parent="menu_pna_top" action="menu_action_plan" sequence="10"/>
+
+        <!-- Action Assigment -->
+        <record model="ir.actions.act_window" id="menu_action_assigment">
+            <field name="name">Assigment</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Assigment -->
+        <menuitem name="Assigment" id="menu_assigment_left" parent="menu_pna_top" action="menu_action_assigment" sequence="11"/>
+
+        <!-- P5M -->
+        <record id="view_tbl_p5m_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_p5m.tree</field>
+            <field name="model">tbl_bisa_p5m</field>
+            <field name="arch" type="xml">
+                <tree string="P5M">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_p5m_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_p5m.form</field>
+            <field name="model">tbl_bisa_p5m</field>
+            <field name="arch" type="xml">
+                <form string="P5M">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group>
+                            <group>
+                                <field name="tanggal"/>
+                                <field name="departemen"/>
+                                <field name="lokasi"/>
+                                <field name="pemateri"/>
+                                <field name="jml_peserta"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Pertanyaan">
+                                <field name="pertanyaan">
+                                    <tree string="Pertanyaan" editable="bottom">
+                                        <field name="tanya"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Absensi">
+                                <field name="data1">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="sn"/>
+                                        <field name="nama"/>
+                                        <field name="Departemen"/>
+                                        <field name="tanda_tangan"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      
+        <!-- Action P5M -->
+        <record model="ir.actions.act_window" id="menu_action_p5m">
+            <field name="name">P5M</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu P5M-->
+        <menuitem name="P5M" id="menu_p5m_left" parent="menu_bnp_top" action="menu_action_p5m" sequence="10"/>
+
+
+        <!-- P2H -->
+        <record id="view_tbl_p2h_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_p2h.tree</field>
+            <field name="model">tbl_bisa_p2h</field>
+            <field name="arch" type="xml">
+                <tree string="P2H">
+                    <field name="nomor"/>
+                    <field name="tgl_terbit"/>
+                    <field name="revisi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_p2h_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_p2h.form</field>
+            <field name="model">tbl_bisa_p2h</field>
+            <field name="arch" type="xml">
+                <form string="P2H">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group>
+                            <!-- <group>
+                                <field name="nomor"/>
+                                <field name="tgl_terbit"/>
+                                <field name="revisi"/>
+                            </group> -->
+                        </group>
+                        <!-- <notebook>
+                            <page string="Data"> -->
+                                <field name="data2">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="nama"/>
+                                        <field name="sn"/>
+                                        <field name="jabatan"/>
+                                        <field name="tidur_jam" widget="float_time"/>
+                                        <field name="bangun_jam" widget="float_time"/>
+                                        <field name="total_istirahat"/>
+                                        <field name="tanda_tangan"/>
+                                    </tree>
+                                </field>
+                            <!-- </page>
+                            <page string="Tabel">
+                                <field name="data1">
+                                    <tree string="Data" editable="bottom">
+                                        <field name="sn"/>
+                                        <field name="nama"/>
+                                        <field name="Departemen"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      
+        <!-- Action P2H -->
+        <record model="ir.actions.act_window" id="menu_action_p2h">
+            <field name="name">P2H</field>
+            <field name="res_model">tbl_bisa_p2h</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu P2H-->
+        <menuitem name="P2H" id="menu_p2h_left" parent="menu_bnp_top" action="menu_action_p2h" sequence="11"/>
+
+        <!-- Action Report -->
+        <record model="ir.actions.act_window" id="menu_action_report">
+            <field name="name">Report</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Report -->
+        <menuitem name="Report" id="menu_report_left" parent="menu_report_top" action="menu_action_report" sequence="10"/>
+
+        <!-- Action Billing -->
+        <record model="ir.actions.act_window" id="menu_action_billing">
+            <field name="name">Billing</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Billing -->
+        <menuitem name="Billing" id="menu_billing_left" parent="menu_billing_top" action="menu_action_billing" sequence="10"/>
+
+        <!-- Action Breakdown -->
+        <record model="ir.actions.act_window" id="menu_action_breakdown">
+            <field name="name">Breakdown</field>
+            <field name="res_model">tbl_bisa_p5m</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Sub Menu Breakdown -->
+        <menuitem name="Breakdown" id="menu_breakdown_left" parent="menu_breakdown_top" action="menu_action_breakdown" sequence="10"/>
+        <!-- <record id="view_tbl_ops_briefing_tree" model="ir.ui.view">
+            <field name="name">tbl_ops_briefing.tree</field>
+            <field name="model">tbl_ops_briefing</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_ops_briefing_form">
+        <field name="name">tbl_ops_briefing.form</field>
+        <field name="model">tbl_ops_briefing</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="tanggal"/>
+
+                    </group>
+                    <group>
+                                    <field name="user"/>
+                   </group>
+                  </group>
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                    </group>
+                    <group/>
+                  </group>
+
+
+      </sheet>
+
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_briefing">
+           <field name="name">Briefing</field>
+           <field name="res_model">tbl_ops_briefing</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Briefing" id="menu_briefing_left" parent="menu_briefing_top" action="menu_action_briefing" sequence="10"/> -->
+
+
+
+</data>
+</odoo>

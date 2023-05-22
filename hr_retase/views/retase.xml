@@ -1,0 +1,210 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_retase_input_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_retase_input.tree</field>
+            <field name="model">tbl_msi_retase_input</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_retase_input_form">
+        <field name="name">tbl_msi_retase_input.form</field>
+        <field name="model">tbl_msi_retase_input</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_retase.grup_retase_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_retase.grup_retase_appr"/>
+                    <button name="action_done" string="Finish" type="object" states="approve" groups="hr_retase.grup_retase_mgr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="user"/>
+		                </group>
+		                <group>
+
+		               </group>
+			</group>
+
+	            <notebook>
+                        <page string="Detail">
+		           <field name="detail">
+			      <tree string="Detail Action" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="route_id" invisible="1"/>
+                                    <field name="transportasi_id"/>
+                                    <field name="jam"/>
+                                    <field name="pencapaian"/>
+				</tree>
+			   </field>
+                        </page>
+
+
+
+
+	            </notebook>
+
+
+			</sheet>
+			</form>
+		</field>
+	</record>  
+
+        <record id="view_tbl_msi_retase_input_driver_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_retase_input_driver.tree</field>
+            <field name="model">tbl_msi_retase_input_driver</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_retase_input_driver_form">
+        <field name="name">tbl_msi_retase_input_driver.form</field>
+        <field name="model">tbl_msi_retase_input_driver</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_retase.grup_retase_mgr"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit" groups="hr_retase.grup_retase_appr"/>
+                    <button name="action_done" string="Finish" type="object" states="approve" groups="hr_retase.grup_retase_mgr"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                                    <field name="name"/>
+                                    <field name="user"/>
+                        </group>
+                        <group>
+
+                       </group>
+            </group>
+
+                <notebook>
+                        <page string="Detail">
+                   <field name="detail">
+                  <tree string="Detail Action" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="driver"/>
+                                    <field name="route_id" invisible="1"/>
+                                    <!-- <field name="transportasi_id"/> -->
+                                    <field name="jam"/>
+                                    <!-- <field name="pencapaian"/> -->
+                </tree>
+               </field>
+                        </page>
+
+
+
+
+                </notebook>
+
+
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="view_tbl_msi_retase_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_retase.tree</field>
+            <field name="model">tbl_msi_retase</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="date"/>
+                                    <field name="employee"/>
+                                    <field name="route_id" invisible="1"/>
+                                    <field name="transportasi_id"/>
+                                    <field name="jam"/>
+                                    <field name="pencapaian"/>
+                                    <field name="nominal"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_msi_retase_driver_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_retase_driver.tree</field>
+            <field name="model">tbl_msi_retase_driver</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="date"/>
+                                    <field name="driver"/>
+                                    <field name="id_employee" invisible="1"/>
+                                    <field name="route_id" invisible="1"/>
+                                    <!-- <field name="transportasi_id"/> -->
+                                    <field name="jam"/>
+                                    <!-- <field name="pencapaian"/> -->
+                                    <field name="nominal"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.actions.act_window" id="menu_action_input_retase">
+        <field name="name">Form Input Retase Transport</field>
+        <field name="res_model">tbl_msi_retase_input</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="menu_action_input_retase_driver">
+        <field name="name">Form Input Retase Driver</field>
+        <field name="res_model">tbl_msi_retase_input_driver</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="menu_action_retase">
+        <field name="name">Data Transport</field>
+        <field name="res_model">tbl_msi_retase</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="menu_action_retase_driver">
+        <field name="name">Data Driver</field>
+        <field name="res_model">tbl_msi_retase_driver</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Form Input Retase Transport" id="menu_input_retase_left" parent="menu_retase_top" action="menu_action_input_retase" sequence="10"/>
+    <menuitem name="Form Input Retase Driver" id="menu_input_retase_driver_left" parent="menu_retase_top" action="menu_action_input_retase_driver" sequence="20"/>
+
+    <menuitem name="Data Transport" id="menu_data_retase" parent="menu_retase_top" action="menu_action_retase" sequence="30"/>
+    <menuitem name="Data Driver" id="menu_data_retase_driver" parent="menu_retase_top" action="menu_action_retase_driver" sequence="40"/>
+
+
+
+</data>
+</odoo>

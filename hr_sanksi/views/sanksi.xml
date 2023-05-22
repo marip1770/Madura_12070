@@ -1,0 +1,76 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_hr_sanksi_tree" model="ir.ui.view">
+            <field name="name">tbl_hr_sanksi.tree</field>
+            <field name="model">tbl_hr_sanksi</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_hr_sanksi_form">
+        <field name="name">tbl_hr_sanksi.form</field>
+        <field name="model">tbl_hr_sanksi</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="tanggal"/>
+
+                    </group>
+                    <group>
+                                    <field name="user"/>
+                   </group>
+                  </group>
+                  <group>
+                    <group>
+                                    <field name="name"/>
+                                    <field name="nik"/>
+                                    <field name="tipe"/>
+                    </group>
+                    <group/>
+                  </group>
+                  <group>
+                    <group>
+                                    <field name="desc"/>
+
+                    </group>
+                    <group>
+                                    <field name="tindak_lanjut"/>
+                   </group>
+                  </group>
+
+
+      </sheet>
+
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_sanksi">
+           <field name="name">Transaksi</field>
+           <field name="res_model">tbl_hr_sanksi</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Transaksi" id="menu_sanksi_left" parent="menu_sanksi_top" action="menu_action_sanksi" sequence="10"/>
+
+
+
+</data>
+</odoo>

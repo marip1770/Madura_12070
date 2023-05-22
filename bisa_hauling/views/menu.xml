@@ -1,0 +1,110 @@
+<odoo>
+  <data>  
+    <!-- Hauling -->
+    <menuitem id="menu_hauling_management" name="Hauling"  web_icon="bisa_hauling,static/description/icon.png" groups="bisa_hauling.grup_hauling_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_hauling_kontrak_top" parent="menu_hauling_management" sequence="10" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_hauling_pna_top" parent="menu_hauling_management" sequence="11" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Template" id="menu_hauling_bnp_top" parent="menu_hauling_management" sequence="12" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Konsolidasi" id="menu_hauling_konsolidasi_top" parent="menu_hauling_management" sequence="13" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Report" id="menu_hauling_report_top" parent="menu_hauling_management" sequence="14" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Billing" id="menu_hauling_billing_top" parent="menu_hauling_management" sequence="15" groups="bisa_hauling.grup_hauling_usr"/>
+    <menuitem name="Breakdown" id="menu_hauling_breakdown_top" parent="menu_hauling_management" sequence="16" groups="bisa_hauling.grup_hauling_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- HRM -->
+    <menuitem id="menu_hrm_management" name="Road Maintenance"  web_icon="bisa_hauling,static/description/icon1.png" groups="bisa_hauling.grup_hrm_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_hrm_kontrak_top" parent="menu_hrm_management" sequence="10" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_hrm_pna_top" parent="menu_hrm_management" sequence="11" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Template" id="menu_hrm_bnp_top" parent="menu_hrm_management" sequence="12" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Konsolidasi" id="menu_hrm_konsolidasi_top" parent="menu_hrm_management" sequence="13" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Report" id="menu_hrm_report_top" parent="menu_hrm_management" sequence="14" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Billing" id="menu_hrm_billing_top" parent="menu_hrm_management" sequence="15" groups="bisa_hauling.grup_hrm_usr"/>
+    <menuitem name="Breakdown" id="menu_hrm_breakdown_top" parent="menu_hrm_management" sequence="16" groups="bisa_hauling.grup_hrm_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- Rental -->
+    <menuitem id="menu_rental_management" name="Rental"  web_icon="bisa_hauling,static/description/icon2.png" groups="bisa_hauling.grup_rental_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_rental_kontrak_top" parent="menu_rental_management" sequence="10" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_rental_pna_top" parent="menu_rental_management" sequence="11" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Template" id="menu_rental_bnp_top" parent="menu_rental_management" sequence="12" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Konsolidasi" id="menu_rental_konsolidasi_top" parent="menu_rental_management" sequence="13" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Report" id="menu_rental_report_top" parent="menu_rental_management" sequence="14" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Billing" id="menu_rental_billing_top" parent="menu_rental_management" sequence="15" groups="bisa_hauling.grup_rental_usr"/>
+    <menuitem name="Breakdown" id="menu_rental_breakdown_top" parent="menu_rental_management" sequence="16" groups="bisa_hauling.grup_rental_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- Port -->
+    <menuitem id="menu_port_management" name="Port Service"  web_icon="bisa_hauling,static/description/icon3.png" groups="bisa_hauling.grup_port_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_port_kontrak_top" parent="menu_port_management" sequence="10" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_port_pna_top" parent="menu_port_management" sequence="11" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Template" id="menu_port_bnp_top" parent="menu_port_management" sequence="12" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Konsolidasi" id="menu_port_konsolidasi_top" parent="menu_port_management" sequence="13" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Report" id="menu_port_report_top" parent="menu_port_management" sequence="14" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Billing" id="menu_port_billing_top" parent="menu_port_management" sequence="15" groups="bisa_hauling.grup_port_usr"/>
+    <menuitem name="Breakdown" id="menu_port_breakdown_top" parent="menu_port_management" sequence="16" groups="bisa_hauling.grup_port_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- Fuel Truck -->
+    <menuitem id="menu_fuel_truck_management" name="Fuel Truck"  web_icon="bisa_hauling,static/description/icon4.png" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_fuel_truck_kontrak_top" parent="menu_fuel_truck_management" sequence="10" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_fuel_truck_pna_top" parent="menu_fuel_truck_management" sequence="11" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Template" id="menu_fuel_truck_bnp_top" parent="menu_fuel_truck_management" sequence="12" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Konsolidasi" id="menu_fuel_truck_konsolidasi_top" parent="menu_fuel_truck_management" sequence="13" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Report" id="menu_fuel_truck_report_top" parent="menu_fuel_truck_management" sequence="14" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Billing" id="menu_fuel_truck_billing_top" parent="menu_fuel_truck_management" sequence="15" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <menuitem name="Breakdown" id="menu_fuel_truck_breakdown_top" parent="menu_fuel_truck_management" sequence="16" groups="bisa_hauling.grup_fuel_truck_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- Water Truck -->
+    <menuitem id="menu_water_truck_management" name="Water Truck"  web_icon="bisa_hauling,static/description/icon5.png" groups="bisa_hauling.grup_water_truck_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_water_truck_kontrak_top" parent="menu_water_truck_management" sequence="10" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_water_truck_pna_top" parent="menu_water_truck_management" sequence="11" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Template" id="menu_water_truck_bnp_top" parent="menu_water_truck_management" sequence="12" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Konsolidasi" id="menu_water_truck_konsolidasi_top" parent="menu_water_truck_management" sequence="13" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Report" id="menu_water_truck_report_top" parent="menu_water_truck_management" sequence="14" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Billing" id="menu_water_truck_billing_top" parent="menu_water_truck_management" sequence="15" groups="bisa_hauling.grup_water_truck_usr"/>
+    <menuitem name="Breakdown" id="menu_water_truck_breakdown_top" parent="menu_water_truck_management" sequence="16" groups="bisa_hauling.grup_water_truck_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+
+    <!-- TLS -->
+    <menuitem id="menu_tls_management" name="Transfer Loading System"  web_icon="bisa_hauling,static/description/icon5.png" groups="bisa_hauling.grup_tls_usr"/>
+
+    <!-- <menuitem id="menu_produksi_top" name=""parent="menu_hauling_management" sequence="10"/> -->
+    <!-- MENU -->
+    <!-- <menuitem name="Operasional" id="menu_hauling_operasional_top" parent="menu_hauling_management" sequence="9"/> -->
+    <menuitem name="Contract" id="menu_tls_kontrak_top" parent="menu_tls_management" sequence="10" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Planning and Assigment" id="menu_tls_pna_top" parent="menu_tls_management" sequence="11" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Template" id="menu_tls_bnp_top" parent="menu_tls_management" sequence="12" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Konsolidasi" id="menu_tls_konsolidasi_top" parent="menu_tls_management" sequence="13" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Report" id="menu_tls_report_top" parent="menu_tls_management" sequence="14" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Billing" id="menu_tls_billing_top" parent="menu_tls_management" sequence="15" groups="bisa_hauling.grup_tls_usr"/>
+    <menuitem name="Breakdown" id="menu_tls_breakdown_top" parent="menu_tls_management" sequence="16" groups="bisa_hauling.grup_tls_usr"/>
+    <!-- <menuitem name="Hauling" id="menu_hauling_top" parent="menu_hauling_management" sequence="10"/> -->
+   </data>
+</odoo>
+
+

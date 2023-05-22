@@ -1,0 +1,137 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_payroll_bulanan_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_bulanan.tree</field>
+            <field name="model">tbl_msi_payroll_bulanan</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_payroll_bulanan_form">
+        <field name="name">tbl_msi_payroll_bulanan.form</field>
+        <field name="model">tbl_msi_payroll_bulanan</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_get" string="Get Data" type="object" states="draft"/>
+                    <button name="action_payroll_struktur" string="Proses Payroll Struktur" type="object" states="data"/>
+                    <button name="action_proses_payroll_line" string="Proses Payroll Line" type="object" states="proses"/>
+                    <button name="action_proses_tax_kirim" string="Proses Tax" type="object" states="tax_send"/>
+                    <button name="action_proses_ulang" string="Proses Ulang" type="object" states="tax_send"/>
+                    <button name="action_proses_ulang" string="Proses Ulang" type="object" states="tax_receive"/>
+                    <button name="action_proses_tax_terima" string="Cek Tax" type="object" states="tax_receive"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_proses_ulang" string="Proses Ulang" type="object" states="submit"/>
+                    <button name="action_closing" string="Closing" type="object" states="approve"/>
+                    <button name="action_proses_ulang" string="Proses Ulang" type="object" states="approve"/>
+                    <button name="action_import_manual_detail" string="Import Manual Detail" type="object" invisible="1"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,proses,tax_send,tax_receive,submit,approve"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="periode" options="{'no_create': True}"/>
+                                    <field name="tahun" invisible="1"/>
+                                    <field name="tipe"/>
+                                    <field name="source"/>
+                                    <field name="tipe_proses"/>
+                                    <field name="dept" attrs="{'invisible': [('tipe_proses','!=','department')]}"/>
+                                    <field name="struktur_gaji" attrs="{'invisible': [('tipe_proses','!=','struktur')]}"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+				<label for="file_import" style="font-weight: 600;font-size: 13px;" class="oe_form_label oe_inline o_form_label oe_align_right o_align_right" />
+				<span class="oe_inline">
+					<field name='file_name' class="oe_inline" invisible='1' />
+
+					<field name='file_import' style="margin-left:10px" class="oe_inline" filename='file_name' />
+					<button class='btn btn-primary oe_inline'   attrs="{'invisible': [('file_import', '=',False)]}"
+							style="margin-left: 10px;font-weight: 500; border: 2px solid #fff; box-shadow: 2px 3px 2px 1px #21b799; border-radius: 5px;"
+							name='input_file' type='object' string='Validate' />
+				</span>
+
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            <field name="detail">
+				<tree string="Detail Action">
+                                    <field name="id" readonly="1"/>
+                                    <field name="date"/>
+                                    <field name="periode"/>
+                                    <field name="tahun" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="loc"/>
+                                    <field name="analytic_id"/>
+                                    <field name="contract_id"/>
+                                    <field name="gol_gaji"/>
+
+				 </tree>
+		             </field>
+                        </page>
+
+	     </notebook>
+          </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="activity_ids" widget="mail_activity"/>
+                     <field name="message_ids" widget="mail_thread"/>
+                 </div>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_payroll_bulanan">
+           <field name="name">Payroll Bulanan</field>
+           <field name="res_model">tbl_msi_payroll_bulanan</field>
+           <field name="view_type">form</field>
+           <field name="domain">[('tipe', '=', 'regular')]</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Payroll Regular" id="menu_payroll_bulanan_left" parent="menu_payroll_top" action="menu_payroll_bulanan" sequence="10"/>
+
+      <record model="ir.actions.act_window" id="menu_payroll_adhoc">
+           <field name="name">Payroll Adhoc</field>
+           <field name="res_model">tbl_msi_payroll_bulanan</field>
+           <field name="view_type">form</field>
+           <field name="domain">[('tipe', '=', 'adhoc')]</field>
+           <field name="context">{'default_tipe': 'adhoc'}</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Payroll Adhoc" id="menu_payroll_adhoc_left" parent="menu_payroll_top" action="menu_payroll_adhoc" sequence="20"/>
+
+      <record model="ir.actions.act_window" id="menu_payroll_exit">
+           <field name="name">Payroll Exit</field>
+           <field name="res_model">tbl_msi_payroll_bulanan</field>
+           <field name="view_type">form</field>
+           <field name="domain">[('tipe', '=', 'exit')]</field>
+           <field name="context">{'default_tipe': 'exit'}</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Payroll Exit" id="menu_payroll_exit_left" parent="menu_payroll_top" action="menu_payroll_exit" sequence="30"/>
+
+
+
+
+</data>
+</odoo>

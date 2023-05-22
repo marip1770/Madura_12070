@@ -1,0 +1,17 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_time_management" name="Time Attendance"  web_icon="hr_management_time,static/description/icon.png"/>
+
+    <menuitem name="Time Attendance" id="menu_time_attendance_top" parent="menu_time_management" sequence="10"/>
+
+    <menuitem name="Generate Schedule" id="menu_gen_sche_top" parent="menu_time_management" sequence="20"/>
+
+    <menuitem name="Rekap Time Attendance" id="menu_rekap_time_attendance_top" parent="menu_time_management" sequence="30"/>
+
+    <menuitem name="Form" id="menu_hr_form_top" parent="menu_time_management" sequence="40"/>
+
+    <menuitem name="Seting" id="menu_hr_seting_top" parent="menu_time_management" sequence="100"/>
+   </data>
+</odoo>
+
+

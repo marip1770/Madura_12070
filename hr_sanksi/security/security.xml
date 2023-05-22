@@ -1,0 +1,16 @@
+<odoo>
+
+
+
+    <data noupdate="0">
+        <record id="grup_sanksi_mgr" model="res.groups">
+            <field name="name">Sanksi Mgr</field>
+            <field name="comment">Manager</field>
+            <field name="category_id" ref="module_category_sanksi"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

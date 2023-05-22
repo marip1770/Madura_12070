@@ -1,0 +1,67 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_hari_libur_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_hari_libur.tree</field>
+            <field name="model">tbl_msi_hari_libur</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="periode_tahun"/>
+                                    <field name="status"/>
+                                    <field name="ket"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_hari_libur_form">
+        <field name="name">tbl_msi_hari_libur.form</field>
+        <field name="model">tbl_msi_hari_libur</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="periode_tahun"/>
+                                    <field name="status"/>
+                                    <field name="ket"/>
+
+		                </group>
+		                <group>
+
+
+		               </group>
+			</group>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_holiday">
+           <field name="name">Holiday</field>
+           <field name="res_model">tbl_msi_hari_libur</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Holiday" id="menu_holiday_left" parent="menu_hr_seting_top" action="menu_action_holiday" sequence="10"/>
+
+
+</data>
+</odoo>

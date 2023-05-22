@@ -1,0 +1,21 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_payroll" name="Payroll"  web_icon="msi_hr_payroll,static/description/icon.png"/>
+
+    <menuitem name="Data" id="menu_data_top" parent="menu_payroll" sequence="5"/>
+
+    <menuitem name="Proses" id="menu_payroll_top" parent="menu_payroll" sequence="10"/>
+
+    <menuitem name="Payroll" id="menu_payroll_rekap_top" parent="menu_payroll" sequence="20"/>
+
+    <menuitem name="Print" id="menu_payroll_print_top" parent="menu_payroll" sequence="30"/>
+
+    <menuitem name="Billing" id="menu_payroll_billing_top" parent="menu_payroll" sequence="40"/>
+
+    <menuitem name="Seting" id="menu_seting_top" parent="menu_payroll" sequence="100"/>
+
+
+   </data>
+</odoo>
+
+

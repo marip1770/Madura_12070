@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_alokasi_cuti" model="ir.sequence">
+            <field name="name">alokasi_cuti</field>
+            <field name="code">alokasi_cuti</field>
+            <field name="prefix">CA</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_cuti" model="ir.sequence">
+            <field name="name">cuti</field>
+            <field name="code">cuti</field>
+            <field name="prefix">CT</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_uang_cuti" model="ir.sequence">
+            <field name="name">uang_cuti</field>
+            <field name="code">uang_cuti</field>
+            <field name="prefix">UCT</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_uang_sisa_cuti" model="ir.sequence">
+            <field name="name">uang_sisa_cuti</field>
+            <field name="code">uang_sisa_cuti</field>
+            <field name="prefix">USC</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_ops_briefing_manager,mgr_tbl_ops_briefing,model_tbl_ops_briefing,,1,1,1,1
+access_tbl_bisa_plan,mgr_tbl_bisa_plan,model_tbl_bisa_plan,,1,1,1,1
+access_tbl_bisa_assigment,mgr_tbl_bisa_assigment,model_tbl_bisa_assigment,,1,1,1,1
+access_tbl_bisa_p5m,mgr_tbl_bisa_p5m,model_tbl_bisa_p5m,,1,1,1,1
+access_tbl_bisa_p5m_quest,mgr_tbl_bisa_p5m_quest,model_tbl_bisa_p5m_quest,,1,1,1,1
+access_tbl_bisa_absensi_p5m,mgr_tbl_bisa_absensi_p5m,model_tbl_bisa_absensi_p5m,,1,1,1,1
+access_tbl_bisa_p2h,mgr_tbl_bisa_p2h,model_tbl_bisa_p2h,,1,1,1,1
+access_tbl_bisa_data_p2h,mgr_tbl_bisa_data_p2h,model_tbl_bisa_data_p2h,,1,1,1,1
+

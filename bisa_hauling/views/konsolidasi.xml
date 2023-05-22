@@ -1,0 +1,856 @@
+<odoo>
+    <data>
+        <!-- Hauling -->
+        <record id="view_tbl_bisa_hauling_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hauling_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="arch" type="xml">
+                <tree string="Contract">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_hauling_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_hauling_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="arch" type="xml">
+                <form string="Contract">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_consol" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_validate" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="unit_id"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="berat_konsolidasi"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Hauling Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_hauling_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_hauling_kontrak_tree"/> -->
+            <field name="domain" >[('tipe','=','hauling')]</field>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_hauling" parent="menu_hauling_billing_top" action="menu_action_tbl_bisa_hauling_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_hauling_usr"/>
+
+        <!-- HRM -->
+        <record id="view_tbl_bisa_hrm_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_hrm_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_hrm_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action HRM Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_hrm_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_hrm_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','hrm')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_hrm_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_hrm_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_hrm_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_hrm_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_hrm_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_hrm_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_hrm" parent="menu_hrm_billing_top" action="menu_action_tbl_bisa_hrm_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_hrm_usr"/>
+
+        <!-- Rental -->
+        <record id="view_tbl_bisa_rental_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_rental_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="30"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_rental_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_rental_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="30"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Hauling Kontrak -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_rental_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_rental_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','rental')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_rental_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_rental_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_rental_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_rental_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_rental_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_rental_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_rental" parent="menu_rental_billing_top" action="menu_action_tbl_bisa_rental_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_rental_usr"/>
+
+        <!-- Port -->
+        <record id="view_tbl_bisa_port_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_port_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="40"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_port_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_port_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="40"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Port Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_port_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_port_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','port')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_port_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_port_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_port_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_port_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_port_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_port_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_port" parent="menu_port_billing_top" action="menu_action_tbl_bisa_port_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_port_usr"/>
+ 
+        <!-- Fuel Truck -->
+        <record id="view_tbl_bisa_fuel_truck_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_fuel_truck_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_fuel_truck_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Fuel Truck Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_fuel_truck_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_fuel_truck_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','fuel_truck')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_fuel_truck_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_fuel_truck_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_fuel_truck_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_fuel_truck_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_fuel_truck_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_fuel_truck_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_fuel" parent="menu_fuel_truck_billing_top" action="menu_action_tbl_bisa_fuel_truck_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_fuel_truck_usr"/>
+
+        <!-- Water Truck -->
+        <record id="view_tbl_bisa_water_truck_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_water_truck_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="60"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_water_truck_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_water_truck_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="60"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action Water Truck Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_water_truck_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_water_truck_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','water_truck')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_water_truck_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_water_truck_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_water_truck_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_water_truck_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_water_truck_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_water_truck_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_water" parent="menu_water_truck_billing_top" action="menu_action_tbl_bisa_water_truck_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_water_truck_usr"/>
+
+        <!-- TLS -->
+        <record id="view_tbl_bisa_tls_registrasi_konsolidasi_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_tls_registrasi_konsolidasi.tree</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="70"/>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Konsolidasi">
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+                    <field name="tanggal_awal"/>
+                    <field name="tanggal_akhir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_tls_registrasi_konsolidasi_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_tls_registrasi_konsolidasi.form</field>
+            <field name="model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="priority" eval="70"/>
+            <field name="arch" type="xml">
+                <form string="Registrasi Konsolidasi">
+                    <header>
+                        <button string="Get" name="action_get" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Consol" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Validate" name="action_create_bill" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tanggal_awal"/>
+                    <field name="project_id"/>
+                    <field name="lokasi_id"/>
+
+                                <field name="upload"/>
+                                <button string="Import" name="action_import" type="object" class="oe_highlight"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_akhir"/>
+                                <field name="tipe"/>
+                                <field name="kontrak"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Data Sistem">
+                                <field name="details">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="unit_id"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Data Pembanding">
+                                <field name="details1">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual" invisible="1"/>
+                                        <field name="selisih" invisible="1"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Konsolidasi">
+                                <field name="details2">
+                                    <tree editable="bottom">
+                                        <field name="tanggal"/>
+                                        <field name="no_register"/>
+                                        <field name="berat"/>
+                                        <field name="berat_aktual"/>
+                                        <field name="selisih"/>
+                                        <field name="tipe" invisible="1"/>
+                                        <field name="nama_projek"/>
+                                        <field name="produk"/>
+                                        <field name="tipe" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <!-- Action TLS Registrasi Konsolidasi -->
+        <record model="ir.actions.act_window" id="menu_action_tbl_bisa_tls_registrasi_konsolidasi">
+            <field name="name">Registrasi Konsolidasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_hauling_registrasi_konsolidasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_tbl_bisa_tls_registrasi_konsolidasi_tree"/> -->
+            <field name="domain" >[('tipe','=','tls')]</field>
+        </record>
+
+        <record id="view_tbl_bisa_tls_registrasi_konsolidasi_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_tls_registrasi_konsolidasi_tree"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_tls_registrasi_konsolidasi"/>
+        </record>
+
+        <record id="view_tbl_bisa_tls_registrasi_konsolidasi_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bisa_hauling.view_tbl_bisa_tls_registrasi_konsolidasi_form"/>
+            <field name="act_window.id" ref="menu_action_tbl_bisa_tls_registrasi_konsolidasi"/>
+        </record>
+
+        <menuitem name="Registrasi Konsolidasi" id="menu_registrasi_konsolidasi_left_tls" parent="menu_tls_billing_top" action="menu_action_tbl_bisa_tls_registrasi_konsolidasi" sequence="11" groups="bisa_hauling.grup_tls_usr"/>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+
+
+
+    <data noupdate="0">
+        <record id="grup_briefing_mgr" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="comment">Manager</field>
+            <field name="category_id" ref="module_category_briefing"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

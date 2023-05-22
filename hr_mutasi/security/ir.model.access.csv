@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_hr_mutasi_manager,mgr_tbl_hr_mutasi,model_tbl_hr_mutasi,grup_mutasi_mgr,1,1,1,1
+access_tbl_hr_tipe_mutasi_manager,mgr_tbl_hr_tipe_mutasi,model_tbl_hr_tipe_mutasi,grup_mutasi_mgr,1,1,1,1
+

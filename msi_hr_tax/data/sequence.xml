@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_project_loan" model="ir.sequence">
+            <field name="name">project_loan</field>
+            <field name="code">project_loan</field>
+            <field name="prefix">PL</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_project_progress" model="ir.sequence">
+            <field name="name">project_progress</field>
+            <field name="code">project_progress</field>
+            <field name="prefix">PPROG</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

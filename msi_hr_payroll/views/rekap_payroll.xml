@@ -1,0 +1,154 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_payroll_line_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_line.tree</field>
+            <field name="model">tbl_msi_payroll_line</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="date"/>
+                                    <field name="periode"/>
+                                    <field name="tahun" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="no_npwp"/>
+                                    <field name="ptkp"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="loc"/>
+                                    <field name="analytic_id"/>
+                                    <field name="contract_id"/>
+                                    <field name="type_id"/>
+ 
+                                    <field name="gol_gaji"/>
+                                    <field name="total_allow"/>
+                                    <field name="total_ded"/>
+                                    <field name="total_net"/>
+                                    <field name="total_tax"/>
+                                    <field name="total_thp"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_msi_payroll_line_search" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_line.search.form</field>
+            <field name="model">tbl_msi_payroll_line</field>
+            <field name="arch" type="xml">
+               <search string="Periode">
+                        <filter string="Periode" name="periode" context="{'group_by':'periode'}"/>
+               </search>
+            </field>
+        </record>
+
+    <record id="tbl_msi_payroll_line_pivot" model="ir.ui.view">
+         <field name="name">pivot.tbl_msi_payroll_line</field>
+         <field name="model">tbl_msi_payroll_line</field>
+         <field name="arch" type="xml">
+             <pivot string="Payroll Analysis" disable_linking="True">
+                 <field name="name" type="col"/>
+                 <field name="date" interval="month" type="row"/>
+                 <field name="total_thp" type="measure"/>
+             </pivot>
+         </field>
+    </record>
+
+
+
+      <record model="ir.actions.act_window" id="menu_payroll_rekap">
+           <field name="name">Rekap Payroll Final</field>
+           <field name="res_model">tbl_msi_payroll_line</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form,pivot</field>
+           <field name="domain">[('state', '=', 'close')]</field>
+           <field name="context">{'search_default_periode': 1}</field>
+       </record>
+
+    <menuitem name="Rekap Payroll Final" id="menu_payroll_rekap_left" parent="menu_payroll_rekap_top" action="menu_payroll_rekap" sequence="10"/>
+
+      <record model="ir.actions.act_window" id="menu_payroll_rekap_draft">
+           <field name="name">Rekap Payroll Draft</field>
+           <field name="res_model">tbl_msi_payroll_line</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form,pivot</field>
+           <field name="domain">[('state', '=', 'approve')]</field>
+           <field name="context">{'search_default_periode': 1}</field>
+       </record>
+
+    <menuitem name="Rekap Payroll Draft" id="menu_payroll_rekap_draft_left" parent="menu_payroll_rekap_top" action="menu_payroll_rekap_draft" sequence="5"/>
+
+
+        <record id="view_tbl_msi_payroll_line_detail_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_line_detail.tree</field>
+            <field name="model">tbl_msi_payroll_line_detail</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name" invisible="1"/>
+                                    <field name="periode"/>
+                                    <field name="tahun" invisible="1"/>
+                                    <field name="tipe"/>
+                                    <field name="employee"/>
+                                    <field name="nik"/>
+                                    <field name="no_npwp"/>
+                                    <field name="ptkp"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="nominal"/>
+                                    <field name="account_id"/>
+                                    <field name="analytic_id"/>
+                                    <field name="contract_id"/>
+                                    <field name="type_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_msi_payroll_line_detail_search" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_line_detail.search.form</field>
+            <field name="model">tbl_msi_payroll_line_detail</field>
+            <field name="arch" type="xml">
+               <search string="Periode">
+                        <filter string="Periode" name="periode" context="{'group_by':'periode'}"/>
+               </search>
+            </field>
+        </record>
+
+    <record id="tbl_msi_payroll_line_detail_pivot" model="ir.ui.view">
+         <field name="name">pivot.tbl_msi_payroll_line_detail</field>
+         <field name="model">tbl_msi_payroll_line_detail</field>
+         <field name="arch" type="xml">
+             <pivot string="Payroll Detail Analysis" disable_linking="True">
+                 <field name="name" type="col"/>
+                 <field name="tahun" type="row"/>
+                 <field name="nominal" type="measure"/>
+             </pivot>
+         </field>
+    </record>
+
+
+
+      <record model="ir.actions.act_window" id="menu_payroll_rekap_detail">
+           <field name="name">Rekap Detail Payroll Draft</field>
+           <field name="res_model">tbl_msi_payroll_line_detail</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,pivot</field>
+           <field name="domain">[('state', '=', 'approve')]</field>
+           <field name="context">{'search_default_periode': 1}</field>
+       </record>
+
+    <menuitem name="Rekap Detail Payroll Draft" id="menu_payroll_rekap_detail_left" parent="menu_payroll_rekap_top" action="menu_payroll_rekap_detail" sequence="20"/>
+
+      <record model="ir.actions.act_window" id="menu_payroll_rekap_final_detail">
+           <field name="name">Rekap Detail Payroll Final</field>
+           <field name="res_model">tbl_msi_payroll_line_detail</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,pivot</field>
+           <field name="domain">[('state', '=', 'close')]</field>
+           <field name="context">{'search_default_periode': 1}</field>
+       </record>
+
+    <menuitem name="Rekap Detail Payroll Final" id="menu_payroll_rekap_final_detail_left" parent="menu_payroll_rekap_top" action="menu_payroll_rekap_final_detail" sequence="30"/>
+
+
+
+</data>
+</odoo>

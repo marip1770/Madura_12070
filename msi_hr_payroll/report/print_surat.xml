@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_print_payroll_sent"
+            string="Payroll Individual Sent Email2"
+            model="tbl_msi_payroll_line" 
+            report_type="qweb-pdf"
+            file="msi_hr_payroll.action_print_payroll_tmpl_sent" 
+            name="msi_hr_payroll.action_print_payroll_tmpl_sent"
+            print_report_name="('Payroll - %s' % (object.employee.name))"
+        />
+
+    </data>
+
+
+</odoo>

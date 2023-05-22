@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_overtime" model="ir.module.category">
+            <field name="name">Overtime</field>
+            <field name="description">Overtime Management</field>
+            <field name="sequence">60</field>
+        </record>
+
+    </data>
+</odoo>

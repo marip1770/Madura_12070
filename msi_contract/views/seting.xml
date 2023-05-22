@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_tbl_employee_ptkp_tree" model="ir.ui.view">
+            <field name="name">tbl_employee_ptkp.tree</field>
+            <field name="model">tbl_employee_ptkp</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="value"/>
+                                    <field name="ket"/>
+
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_kategori_pajak">
+           <field name="name">PTKP</field>
+           <field name="res_model">tbl_employee_ptkp</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_kategori_pajak" name="PTKP"  action="action_kategori_pajak"  parent="hr.menu_human_resources_configuration"   sequence="100"  groups="hr_contract.group_hr_contract_manager"/>
+
+        <record id="view_tbl_contract_bpjs_kesehatan_tree" model="ir.ui.view">
+            <field name="name">tbl_contract_bpjs_kesehatan.tree</field>
+            <field name="model">tbl_contract_bpjs_kesehatan</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="karyawan"/>
+                                    <field name="perusahaan"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_bpjs_kesehatan">
+           <field name="name">BPJS Kesehatan</field>
+           <field name="res_model">tbl_contract_bpjs_kesehatan</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_bpjs_kesehatan" name="BPJS Kesehatan"  action="action_bpjs_kesehatan"   parent="hr.menu_human_resources_configuration"   sequence="101"  groups="hr_contract.group_hr_contract_manager"/>
+
+
+        <record id="view_tbl_contract_bpjs_jp_tree" model="ir.ui.view">
+            <field name="name">tbl_contract_bpjs_jp.tree</field>
+            <field name="model">tbl_contract_bpjs_jp</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="karyawan"/>
+                                    <field name="perusahaan"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_bpjs_jp">
+           <field name="name">Jaminan Pensiun</field>
+           <field name="res_model">tbl_contract_bpjs_jp</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_bpjs_jp" name="Jaminan Pensiun"  action="action_bpjs_jp"   parent="hr.menu_human_resources_configuration"   sequence="102"  groups="hr_contract.group_hr_contract_manager"/>
+
+
+        <record id="view_tbl_contract_bpjs_jkm_tree" model="ir.ui.view">
+            <field name="name">tbl_contract_bpjs_jkm.tree</field>
+            <field name="model">tbl_contract_bpjs_jkm</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="karyawan"/>
+                                    <field name="perusahaan"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_bpjs_jkm">
+           <field name="name">Jaminan Kematian</field>
+           <field name="res_model">tbl_contract_bpjs_jkm</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_bpjs_jkm" name="Jaminan Kematian" action="action_bpjs_jkm" parent="hr.menu_human_resources_configuration" sequence="103"  groups="hr_contract.group_hr_contract_manager"/>
+
+        <record id="view_tbl_contract_bpjs_jkk_tree" model="ir.ui.view">
+            <field name="name">tbl_contract_bpjs_jkk.tree</field>
+            <field name="model">tbl_contract_bpjs_jkk</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="karyawan"/>
+                                    <field name="perusahaan"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_bpjs_jkk">
+           <field name="name">Jaminan Kecelakaan Kerja</field>
+           <field name="res_model">tbl_contract_bpjs_jkk</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_bpjs_jkk" name="Jaminan Kecelakaan Kerja" action="action_bpjs_jkk" parent="hr.menu_human_resources_configuration" sequence="104"  groups="hr_contract.group_hr_contract_manager"/>
+
+
+        <record id="view_tbl_contract_bpjs_jht_tree" model="ir.ui.view">
+            <field name="name">tbl_contract_bpjs_jht.tree</field>
+            <field name="model">tbl_contract_bpjs_jht</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="karyawan"/>
+                                    <field name="perusahaan"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="action_bpjs_jht">
+           <field name="name">Jaminan Hari Tua</field>
+           <field name="res_model">tbl_contract_bpjs_jht</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+        <menuitem id="hr_menu_bpjs_jht" name="Jaminan Hari Tua" action="action_bpjs_jht" parent="hr.menu_human_resources_configuration" sequence="105"  groups="hr_contract.group_hr_contract_manager"/>
+
+    </data>
+</odoo>

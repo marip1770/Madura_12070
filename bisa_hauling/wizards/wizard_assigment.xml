@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tbl_assigment_wizard_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_wizard_assigment.wizard</field>
+            <field name="model">tbl_bisa_wizard_assigment</field>
+            <field name="arch" type="xml">
+                <form string="Assigment">
+                    <group>
+                        <field name="tanggal" readonly="1"/>
+                        <field name="lokasi" readonly="1"/>
+                        <field name="no_projek" readonly="1"/>
+                        <field name="qty_rencana" readonly="1"/>
+                        <field name="qty_aktual" readonly="1"/>
+                        <field name="uom" readonly="1"/>
+                        <field name="tipe" readonly="1" invisible="1"/>
+                    </group>
+                    <notebook>
+                            <page string="Detail">
+                                <button string="Get" name="get_schedule_um" type="object" class="btn-primary"/>
+                                <field name="detail_assigment_line">
+                                    <tree editable="bottom">
+                                        <field name="driver"/>
+                                        <field name="unit_id"/>
+                                        <field name="lokasi_asal"/>
+                                        <field name="lokasi_tujuan"/>
+                                        <!-- <field name="tipe" invisible="1"/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                    <footer>
+                        <button string="Confirm" name="action_create_assigment" type="object" class="btn-primary"/>
+                        <button string="Cancel" name="action_detail_assigment" type="object" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_assigment_wizard">
+            <field name="name">Assigment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tbl_bisa_wizard_assigment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="tbl_assigment_wizard_form"/>
+            <!-- <field name="target">new</field> -->
+        </record>
+    
+    </data>
+</odoo>
+    

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Partner -->
+
+    <record id="msi_print_invoice_form" model="ir.ui.view">
+        <field name="name">msi_print_invoice_form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="do_print_invoice" type="object" class="oe_highlight" string="Print Invoice"/>
+                    <button name="do_print_kwitansi" type="object" class="oe_highlight" string="Print Kwitansi"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="total" invisible="1"/>
+                    <field name="dasar_pengenaan_pajak" invisible="1"/>
+                    <field name="ppn" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="no_kontrak" attrs="{'readonly': [('state', 'in', ['open', 'in_payment', 'paid'])]}"/>
+                    <field name="faktur_pajak" attrs="{'readonly': [('state', 'in', ['open', 'in_payment', 'paid'])]}"/>
+                    <field name="no_rek"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                    <field name="price_unit1" invisible="1"/>
+                    <field name="price_subtotal1" invisible="1"/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                    <field name="hs_code"/>
+                    <field name="akl"/>
+                </xpath> -->
+            </field>
+        </record>
+
+        <record id="msi_print_payment_form" model="ir.ui.view">
+            <field name="name">msi_print_payment_form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="do_print_voucher_pengeluaran" type="object" class="oe_highlight" string="Print Voucher Pengeluaran"/>
+                    <button name="do_print_voucher_penerimaan" type="object" class="oe_highlight" string="Print Voucher Penerimaan"/>
+                    <button name="do_print_kwitansi" type="object" class="oe_highlight" string="Print Kwitansi"/>
+                </xpath>
+                <xpath expr="//field[@name='amount']" position="before">
+                    <field name="print_payment_date" invisible="1"/>
+                    <field name="print_payment_date" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field name="no_kwitansi"/>
+                    <field name="departemen"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_msi_employee_form" model="ir.ui.view">
+            <field name="name">msi_hr.employee.form</field>
+            <field name="model">hr.employee</field>
+
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="replace">
+                                
+                    <div>
+                               <field name="nama_depan"  class="oe_inline" placeholder="Nama Depan"/>-<field name="nama_tengah"  class="oe_inline"  placeholder="Nama Tengah"/>-<field name="nama_belakang"  class="oe_inline" placeholder="Nama Belakang"/>
+                    </div>
+                    <field name="name" placeholder="Employee's Name" required="True" invisible='1'/>
+                    <field name="nik"  class="oe_inline"  placeholder="NIK"/>
+                    <field name="new_nik"  class="oe_inline"  placeholder="NIK" invisible="1"/>
+                    <button string="Create NIK" name="create_nik" type="object" attrs="{'invisible': [('is_create', '=', True)]}"/>
+                    <field name="is_create" invisible="1"/>
+                                    
+            	</xpath>
+
+                <xpath expr="//field[@name='department_id']" position="after">
+                               <field name="divisi"/>
+                               <field name="lokasi"/>
+                               <field name="job_grading"/>
+            	</xpath>
+
+                <xpath expr="//field[@name='address_home_id']" position="after">
+                               <field name="alamat_surat"/>
+                                <field name="personal_email" placeholder="Personal Email" widget="email"/>
+                                <field name="sent_email"/>
+                               <field name="agama"/>
+                               <field name="darah"/>
+                               <field name="no_hp"/>
+                               <field name="no_ktp"/>
+                               <field name="no_akte"/>
+                               <field name="no_sim"/>
+                               <field name="no_kk"/>
+                               <field name="no_npwp"/>
+                               <field name="no_bpjs_tenagakerja"/>
+                               <field name="no_bpjs_kesehatan"/>
+                               <field name="tinggi"/>
+                               <field name="berat"/>
+                               <field name="cacat"/>
+                               <field name="tgl_mulai"/>
+                               <field name="is_exit"/>
+                               <field name="tgl_selesai"  attrs="{'invisible': [('is_exit', '!=', True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='country_of_birth']" position="after">
+                               <field name="umur"/>
+              </xpath>
+                <xpath expr="//page[@name='personal_information']" position="after">
+
+                            <page name="tax_personal" string="Bank-Tax" groups="hr.group_hr_user">
+                                <group>
+                                    <group>
+                                        <field name="ptkp"/>
+                                        <field name="tanggal_pajak_start"/>
+
+                                    </group>
+                                    <group >
+                                        <field name="nama_bank"/>
+                                        <field name="no_rekening"/>
+                                        <field name="nama_rekening"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="npwp"/>
+                                        <field name="no_npwp"  attrs="{'invisible': [('npwp', '!=', True)]}"/>
+
+                                    </group>
+                                    <group >
+
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page name="family_member" string="Family" groups="hr.group_hr_user">
+                                <group>
+                                    <group>
+                                        <field name="darurat_kontak"/>
+                                        <field name="darurat_alamat"/>
+                                        <field name="darurat_telp"/>
+                                    </group>
+                                    <group >
+
+                                    </group>
+                                </group>
+
+                                <field name="detail_family"> 
+                                   <tree string="Detail" editable="bottom">
+                                      <field name="name"/>
+                                      <field name="tgl_lahir" />
+                                      <field name="tempat_lahir"/>
+                                      <field name="hubungan"/>
+                                      <field name="status_pernikahan"/>
+                                     <field name="status_pajak" />
+                                     <field name="pekerjaan" />
+                                     <field name="tempat_bekerja" />
+                                 </tree>
+                               </field>
+                            </page>
+
+                            <page name="personal_education" string="Education" groups="hr.group_hr_user">
+
+                        <field name="detail_education"> 
+                             <tree string="Detail" editable="bottom">
+                                <field name="name"/>
+                                <field name="tingkat" />
+                                <field name="jurusan"/>
+                                <field name="tahun_mulai"/>
+                                <field name="tahun_lulus"/>
+                                <field name="izasah"/>
+                             </tree>
+                            </field>
+
+                         </page>
+
+                         <page name="work_experience" string="Work Experience" groups="hr.group_hr_user">
+
+                              <field name="detail_work_experience"> 
+                                  <tree string="Detail" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="jabatan" />
+                                     <field name="nama_atasan"/>
+                                     <field name="dari"/>
+                                     <field name="sampai"/>
+                                     <field name="gaji_awal" />
+                                     <field name="gaji_terakhir"/>
+                                     <field name="alasan_keluar"/>
+                                     <field name="uraian_pekerjaan"/>
+                                 </tree>
+                              </field>
+                              <group>
+                                     <field name="latihan_pengalaman_kerja"/>
+                              </group>
+                         </page>
+
+                         <page name="bahasa" string="Bahasa" groups="hr.group_hr_user">
+
+                              <field name="detail_bahasa"> 
+                                  <tree string="Detail" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="bicara" />
+                                     <field name="menulis"/>
+                                     <field name="pemahaman"/>
+                                 </tree>
+                              </field>
+
+                         </page>
+
+                         <page name="sertifikat" string="Sertifikat" groups="hr.group_hr_user">
+
+                              <field name="detail_sertifikat"> 
+                                  <tree string="Detail" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="desc" />
+                                     <field name="tipe"/>
+                                     <field name="tahun"/>
+                                 </tree>
+                              </field>
+
+                         </page>
+
+                         <page name="dokumen" string="Dokumen" groups="hr.group_hr_user">
+
+                              <field name="detail_dokumen"> 
+                                  <tree string="Detail" editable="bottom">
+                                     <field name="nama_dok"/>
+                                     <field name="ket_doc" />
+                                     <field name="tgl_mulai"/>
+                                     <field name="tgl_selesai"/>
+                                 </tree>
+                              </field>
+
+                         </page>                         
+
+                        <page name="training" string="Training" groups="hr.group_hr_user">
+
+                        <field name="detail_training"> 
+                             <tree string="Detail" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="desc" />
+                                     <field name="tipe"/>
+                                     <field name="tahun"/>
+                             </tree>
+                            </field>
+
+                        </page>
+
+                         <page name="other_info" string="Other Information" groups="hr.group_hr_user">
+                              <group>
+                                <group>
+                                  <field name="wajib_kerja"/>
+                                </group>
+                                <group/>
+                              </group>
+                              <field name="detail_wajib_kerja" attrs="{'invisible': [('wajib_kerja','=', False)]}"> 
+                                  <tree string="Detail" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="tgl_mulai"/>
+                                     <field name="tgl_selesai"/>
+                                     <field name="hasil"/>
+                                 </tree>
+                              </field>
+                              <group>
+                                <field name="keahlian_khusus_wajib_kerja" attrs="{'invisible': [('wajib_kerja','=', False)]}"/>
+                                <field name="detail_kegiatan_organisasi"> 
+                                    <tree string="Detail" editable="bottom">
+                                       <field name="name"/>
+                                       <field name="jabatan"/>
+                                       <field name="tahun"/>
+                                   </tree>
+                                </field>
+                                <field name="kegemaran"/>
+                                <field name="pernah_melamar_malindo"/>
+                                <field name="saudara_malindo"/>
+                                <field name="terlibat_kriminal"/>
+                                <field name="detail_referensi"> 
+                                    <tree string="Detail" editable="bottom">
+                                       <field name="name"/>
+                                       <field name="alamat"/>
+                                       <field name="no_tel"/>
+                                       <field name="pekerjaan"/>
+                                       <field name="lama_kenal"/>
+                                   </tree>
+                                </field>
+                              </group>
+                         </page>
+
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                               <field name="gross"/>
+            	</xpath>
+                <xpath expr="//field[@name='tz']" position="after">
+                               <field name="lokasi_gudang"/>
+            	</xpath>
+	</field>
+	</record>
+
+
+    <record model="ir.ui.view" id="tbl_employee_ptkp_form">
+        <field name="name">tbl_employee_ptkp.form</field>
+        <field name="model">tbl_employee_ptkp</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="value"/>
+                                    <field name="ket"/>
+
+		               </group>
+			</group>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+
+
+
+        <record id="view_department_form" model="ir.ui.view">
+         <field name="name">msihr.department.form</field>
+         <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                               <field name="kode"/>
+                               <field name="kode_department"/>
+            	</xpath>
+
+		</field>
+
+	</record>
+
+  <record id="view_employee_kanban_form" model="ir.ui.view">
+        <field name="name">msi_employee_kanban.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+              <xpath expr="//span[@t-if='record.job_id.raw_value']" position="before">
+                                    <br><span><field name="nik" class="o_kanban_record_subtitle"/></span></br>
+
+              </xpath>
+
+    </field>
+
+  </record>
+
+
+    </data>
+</odoo>

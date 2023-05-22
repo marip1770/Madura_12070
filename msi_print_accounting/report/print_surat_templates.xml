@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--invoice-->
+<template id="action_print_invoice_tmpl">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <div class="page">
+                    <div class="page">
+                        <h3>
+                        <strong><span>__________________________________________INVOICE________</span></strong>
+                        </h3>
+                </div>
+                <table width="100%" cellpadding="0">
+                        <tr>
+                            <td>
+
+                    <table>
+                        <tr>
+                            <td><span>Kepada</span></td>
+                            <td><span>:</span></td>
+                        </tr>
+                        <tr>
+                            <td/><td/><td><strong><span t-field="o.partner_id"/></strong></td>
+                        </tr>
+
+                        <tr>
+                            <td><storng><span t-field="o.partner_shipping_id"/></storng></td>
+                        </tr>
+                        <tr>
+                            <td><span>Phone</span></td>
+                            <td><span>:</span></td>
+                            <td><!--<span t-field="o.shipper"/>--></td>
+                        </tr>
+                    </table>
+                    
+                    </td>
+                    <td>
+
+
+                    <table>
+                        <tr>
+                            <td><span>NO.Invoice</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.sequence_number_next_prefix"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Tanggal</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.date_invoice"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Referensi</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Tanggal</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.date_due"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-condensed">
+                    <tr>
+                        <th>Keterangan</th>
+                        <th>Volume</th>
+                        <th>Harga Satuan(IDR)</th>
+                        <th>Jumlah(IDR)</th>
+                    </tr>
+                    <tr t-foreach="o.invoice_line_ids" t-as="x">
+                        <td><span t-field="x.product_id"/></td>
+                        <td><span t-field="x.uom_id"/></td>
+                        <td><span t-field="x.price_unit"/></td>
+                        <td><span t-field="x.price_subtotal"/></td>
+                    </tr>
+                </table>
+                        <table width="100%">
+                         <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">Dasar Pengenaan Pajak</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_untaxed"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">PPN 10%</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_tax"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">Total</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_total"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+                    <table width="100%">
+                        <tr>
+                            <td width="100%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 40px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <p class="text-left">Terbilang :
+                                <strong><span t-field="o.text_amount" style="text-transform:uppercase"/></strong>
+                                </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+                        <div>
+                        <h6 class="text-left">
+                            <span>Pembayaran melalui rekening kami : </span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>PT:Sumberdaya Arindo</span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>No.Rekening 110-501-1322</span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>Bank Panin KCP Tebet</span>
+                        </h6>
+                        <h6 class="text-right">
+                            <p>Jakarta,<span t-field="o.date_invoice"/></p>
+                        </h6>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <h6 class="text-right">
+                            <span style="width: %; border-bottom:1px solid black;">Andreas Christanto,S.T</span>
+                        </h6>
+                        <h6 class="text-right">
+                            <span>Direktur</span>
+                        </h6>
+                    </div>
+                    <br></br>
+                    <table width="100%">
+                        <tr>
+                            <td width="100%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 60px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <p class="text-left">Dokumen ini befungsi sebagai tanda terima(Kwitansi)yang sah apabila pembayaran telah diterima oleh PT Sumberdaya Arindo Melalui Rekening Bank yang tercantum dalam dokumen Invoice</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+    
+<template id="action_print_invoice_kwitansi_tmpl">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <div class="page">
+                    <div class="page">
+                        <h3>
+                        <strong><span>__________________________________________INVOICE________</span></strong>
+                        </h3>
+                </div>
+                <table width="100%" cellpadding="0">
+                        <tr>
+                            <td>
+
+                    <table>
+                        <tr>
+                            <td><span>Kepada</span></td>
+                            <td><span>:</span></td>
+                        </tr>
+                        <tr>
+                            <td/><td/><td><strong><span t-field="o.partner_id"/></strong></td>
+                        </tr>
+
+                        <tr>
+                            <td><storng><span t-field="o.partner_shipping_id"/></storng></td>
+                        </tr>
+                        <tr>
+                            <td><span>Phone</span></td>
+                            <td><span>:</span></td>
+                            <td><!--<span t-field="o.shipper"/>--></td>
+                        </tr>
+                    </table>
+                    
+                    </td>
+                    <td>
+
+
+                    <table>
+                        <tr>
+                            <td><span>NO.Invoice</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.sequence_number_next_prefix"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Tanggal</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.date_invoice"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Referensi</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><span>Tanggal</span></td>
+                            <td><span>:</span></td>
+                            <td><span t-field="o.date_due"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-condensed">
+                    <tr>
+                        <th>Keterangan</th>
+                        <th>Volume</th>
+                        <th>Harga Satuan(IDR)</th>
+                        <th>Jumlah(IDR)</th>
+                    </tr>
+                    <tr t-foreach="o.invoice_line_ids" t-as="x">
+                        <td><span t-field="x.product_id"/></td>
+                        <td><span t-field="x.uom_id"/></td>
+                        <td><span t-field="x.price_unit"/></td>
+                        <td><span t-field="x.price_subtotal"/></td>
+                    </tr>
+                </table>
+                        <table width="100%">
+                         <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">Dasar Pengenaan Pajak</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_untaxed"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">PPN 10%</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_tax"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="80%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><p class="text-right">Total</p></strong>
+                                </div>
+                            </td>
+                            <td width="20%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 30px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <strong><span t-field="o.amount_total"/></strong> 
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+                    <table width="100%">
+                        <tr>
+                            <td width="100%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 40px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <p class="text-left">Terbilang :
+                                <strong><span t-field="o.text_amount" style="text-transform:uppercase"/></strong>
+                                </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+                        <div>
+                        <h6 class="text-left">
+                            <span>Pembayaran melalui rekening kami : </span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>PT:Sumberdaya Arindo</span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>No.Rekening 110-501-1322</span>
+                        </h6>
+                        <h6 class="text-left">
+                            <span>Bank Panin KCP Tebet</span>
+                        </h6>
+                        <h6 class="text-right">
+                            <p>Jakarta,<span t-field="o.date_invoice"/></p>
+                        </h6>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <h6 class="text-right">
+                            <span style="width: %; border-bottom:1px solid black;">Andreas Christanto,S.T</span>
+                        </h6>
+                        <h6 class="text-right">
+                            <span>Direktur</span>
+                        </h6>
+                    </div>
+                    <br></br>
+                    <table width="100%">
+                        <tr>
+                            <td width="100%">
+                                <div style="background-color: #; border: 1px solid #17202A; height: 60px; margin: 0px 0px; padding: 5px; text-align: left; width: 100%;">
+                                <p class="text-left">Dokumen ini befungsi sebagai tanda terima(Kwitansi)yang sah apabila pembayaran telah diterima oleh PT Sumberdaya Arindo Melalui Rekening Bank yang tercantum dalam dokumen Invoice</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+<!--Voucher Pengeluaran-->
+<template id="action_print_voucher_pengeluaran_tmpl">
+ 
+    </template>
+<!--Voucher Penerimaan-->
+<template id="action_print_voucher_penerimaan_tmpl">
+ 
+    </template>
+<!--Kwitansi-->
+<template id="action_print_kwitansi_tmpl">
+ 
+    </template>
+
+
+<!--invoice-->
+    <template id="action_print_invoice1">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_print_accounting.action_print_invoice_tmpl" />
+        </t>
+    </template>
+
+    <template id="action_print_invoice_kwitansi1">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_print_accounting.action_print_invoice_kwitansi_tmpl" />
+        </t>
+    </template>
+<!--template Voucher Pengeluaran-->
+    <template id="action_print_voucher_pengeluaran1">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_print_accounting.action_print_voucher_pengeluaran_tmpl" />
+        </t>
+    </template>  
+<!--template Voucher Penerimaan-->
+    <template id="action_print_voucher_penerimaan1">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_print_accounting.action_print_voucher_penerimaan_tmpl" />
+        </t>
+    </template>   
+<!--template Kwitansi-->
+    <template id="action_print_kwitansi1">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="msi_print_accounting.action_print_kwitansi_tmpl" />
+        </t>
+    </template>        
+</odoo>

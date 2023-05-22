@@ -1,0 +1,14 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_overtime" name="Overtime"  web_icon="hr_overtime,static/description/icon.png"/>
+
+    <menuitem name="Overtime" id="menu_overtime_top" parent="menu_overtime" sequence="10"/>
+
+    <menuitem name="Rekap Overtime" id="menu_rekap_overtime_top" parent="menu_overtime" sequence="20"/>
+
+    <menuitem name="Billing" id="menu_billing_overtime_top" parent="menu_overtime" sequence="30"/>
+
+   </data>
+</odoo>
+
+

@@ -1,0 +1,307 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_msi_payroll_tax_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_tax.tree</field>
+            <field name="model">tbl_msi_payroll_tax</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_payroll_tax_form">
+        <field name="name">tbl_msi_payroll_tax.form</field>
+        <field name="model">tbl_msi_payroll_tax</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_get" string="Proses Data" type="object" states="draft"/>
+                    <button name="action_gross" string="Hitung Gross" type="object" states="hitung1"/>
+                    <button name="action_ulang" string="Hitung Ulang" type="object" states="hitung1"/>
+                    <button name="action_grossup" string="Hitung Gross Up Pajak" type="object" states="hitung2"/>
+                    <button name="action_ulang" string="Hitung Ulang" type="object" states="hitung2"/>
+                    <button name="action_submit" string="Submit" type="object" states="submit"/>
+                    <button name="action_ulang" string="Hitung Ulang" type="object" states="submit"/>
+                    <button name="action_approve" string="Approve" type="object" states="approve"/>
+                    <button name="action_ulang" string="Hitung Ulang" type="object" states="approve"/>
+                    <button name="action_closing" string="Closing" type="object" states="final"/>
+                    <button name="action_ulang" string="Hitung Ulang" type="object" states="final"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,hitung,submit,approve,final,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="periode" options="{'no_create': True}"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            <field name="detail">
+				<tree string="Detail Action" editable="bottom">
+                                    <field name="details_id"/>
+                                    <field name="periode"/>
+                                    <field name="employee"/>
+                                    <field name="tahun"/>
+                                    <field name="nik"/>
+                                    <field name="gross"/>
+                                    <field name="ptkp"/>
+                                    <field name="value_ptkp"/>
+                                    <field name="npwp"/>
+                                    <field name="tax_penalty"/>
+                                    <field name="start_date"/>
+                                    <field name="start_month"/>
+                                    <field name="mopp"/>
+                                    <field name="af"/>
+                                    <field name="cpt"/>
+                                    <field name="er"/>
+                                    <field name="er_value"/>
+                                    <field name="ret"/>
+                                    <field name="rget"/>
+                                    <field name="rgta"/>
+                                    <field name="iret"/>
+                                    <field name="irget"/>
+                                    <field name="irgta"/>
+                                    <field name="ptd"/>
+                                    <field name="annual_r"/>
+                                    <field name="adpadec"/>
+                                    <field name="max_pr"/>
+                                    <field name="max_pran"/>
+                                    <field name="min_pr"/>
+                                    <field name="pos_reb"/>
+
+                                    <field name="annual_net_r"/>
+                                    <field name="net_taxr"/>
+                                    <field name="annrtax"/>
+                                    <field name="annrtaxap"/>
+                                    <field name="cprtax"/>
+                                    <field name="annrig"/>
+
+                                    <field name="adpadec1"/>
+                                    <field name="max_pr1"/>
+                                    <field name="max_pran1"/>
+                                    <field name="min_pr1"/>
+                                    <field name="pos_reb1"/>
+
+                                    <field name="netrig"/>
+                                    <field name="netaxrig"/>
+                                    <field name="annrigtax"/>
+                                    <field name="annrigtaxap"/>
+                                    <field name="anngtax"/>
+                                    <field name="cpgtax"/>
+                                    <field name="rigtax"/>
+                                    <field name="annri"/>
+
+                                    <field name="adpadec2"/>
+                                    <field name="max_pr2"/>
+                                    <field name="max_pran2"/>
+                                    <field name="min_pr2"/>
+                                    <field name="pos_reb2"/>
+
+
+                                    <field name="net_ri"/>
+                                    <field name="net_taxri"/>
+                                    <field name="annual_ritax"/>
+                                    <field name="annual_ritax_ap"/>
+                                    <field name="cp_itax"/>
+                                    <field name="ri_taxded"/>
+                                    <field name="c_et"/>
+                                    <field name="c_ta"/>
+                                    <field name="annual_rige"/>
+
+                                    <field name="adpadec3"/>
+                                    <field name="max_pr3"/>
+                                    <field name="max_pran3"/>
+                                    <field name="min_pr3"/>
+                                    <field name="pos_reb3"/>
+
+                                    <field name="net_rige"/>
+                                    <field name="net_taxrige"/>
+                                    <field name="annual_rigetax"/>
+                                    <field name="annual_rigetax_ap"/>
+                                    <field name="e_tax"/>
+                                    <field name="rige_taxded"/>
+                                    <field name="tax_allow"/>
+                                    <field name="employee_tax"/>
+                                    <field name="total_tpty"/>
+				 </tree>
+		             </field>
+                        </page>
+
+	     </notebook>
+          </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="activity_ids" widget="mail_activity"/>
+                     <field name="message_ids" widget="mail_thread"/>
+                 </div>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_proses_tax">
+           <field name="name">Proses Tax</field>
+           <field name="res_model">tbl_msi_payroll_tax</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Proses Tax" id="menu_proses_tax_left" parent="menu_payroll_tax_proses_top" action="menu_proses_tax" sequence="10"/>
+
+    <record model="ir.ui.view" id="tbl_msi_payroll_tax_line_form">
+        <field name="name">tbl_msi_payroll_tax_line.form</field>
+        <field name="model">tbl_msi_payroll_tax_line</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+
+                <sheet>
+
+
+		<group>
+                    <group>
+                                    <field name="details_id"/>
+                                    <field name="periode"/>
+                                    <field name="employee"/>
+                                    <field name="tahun"/>
+                                    <field name="nik"/>
+                                    <field name="gross"/>
+                                    <field name="ptkp"/>
+                                    <field name="value_ptkp"/>
+                                    <field name="npwp"/>
+                                    <field name="tax_penalty"/>
+                                    <field name="start_date"/>
+                                    <field name="start_month"/>
+                                    <field name="mopp"/>
+                                    <field name="af"/>
+                                    <field name="cpt"/>
+                                    <field name="er"/>
+                                    <field name="er_value"/>
+                                    <field name="ret"/>
+                                    <field name="rget"/>
+                                    <field name="rgta"/>
+                                    <field name="iret"/>
+                                    <field name="irget"/>
+                                    <field name="irgta"/>
+                                    <field name="ptd"/>
+                                    <field name="annual_r"/>
+                                    <field name="adpadec"/>
+                                    <field name="max_pr"/>
+                                    <field name="max_pran"/>
+                                    <field name="min_pr"/>
+                                    <field name="pos_reb"/>
+
+                                    <field name="annual_net_r"/>
+                                    <field name="net_taxr"/>
+                                    <field name="annrtax"/>
+                                    <field name="annrtaxap"/>
+                                    <field name="cprtax"/>
+                                    <field name="annrig"/>
+
+                                    <field name="adpadec1"/>
+                                    <field name="max_pr1"/>
+                                    <field name="max_pran1"/>
+                                    <field name="min_pr1"/>
+                                    <field name="pos_reb1"/>
+
+                                    <field name="netrig"/>
+                                    <field name="netaxrig"/>
+                                    <field name="annrigtax"/>
+                                    <field name="annrigtaxap"/>
+                                    <field name="anngtax"/>
+                                    <field name="cpgtax"/>
+                                    <field name="rigtax"/>
+                                    <field name="annri"/>
+
+                                    <field name="adpadec2"/>
+                                    <field name="max_pr2"/>
+                                    <field name="max_pran2"/>
+                                    <field name="min_pr2"/>
+                                    <field name="pos_reb2"/>
+
+
+                                    <field name="net_ri"/>
+                                    <field name="net_taxri"/>
+                                    <field name="annual_ritax"/>
+                                    <field name="annual_ritax_ap"/>
+                                    <field name="cp_itax"/>
+                                    <field name="ri_taxded"/>
+                                    <field name="c_et"/>
+                                    <field name="c_ta"/>
+                                    <field name="annual_rige"/>
+
+                                    <field name="adpadec3"/>
+                                    <field name="max_pr3"/>
+                                    <field name="max_pran3"/>
+                                    <field name="min_pr3"/>
+                                    <field name="pos_reb3"/>
+
+                                    <field name="net_rige"/>
+                                    <field name="net_taxrige"/>
+                                    <field name="annual_rigetax"/>
+                                    <field name="annual_rigetax_ap"/>
+                                    <field name="e_tax"/>
+                                    <field name="rige_taxded"/>
+                                    <field name="tax_allow"/>
+                                    <field name="employee_tax"/>
+                                    <field name="total_tpty"/>
+
+
+                    </group>
+                    <group>
+                    </group>
+
+
+		</group>
+
+          </sheet>
+
+	   </form>
+	  </field>
+	</record>
+
+
+        <record id="view_tbl_msi_payroll_tax_line_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_payroll_tax_line.tree</field>
+            <field name="model">tbl_msi_payroll_tax_line</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="periode"/>
+                                    <field name="employee"/>
+                                    <field name="tahun"/>
+                                    <field name="nik"/>
+                                    <field name="gross"/>
+                                    <field name="ptkp"/>
+                                    <field name="value_ptkp"/>
+                                    <field name="npwp"/>
+                                    <field name="tax_allow"/>
+                                    <field name="employee_tax"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+      <record model="ir.actions.act_window" id="menu_data_tax">
+           <field name="name">Rekap Data Tax</field>
+           <field name="res_model">tbl_msi_payroll_tax_line</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Rekap Data Tax" id="menu_data_tax_left" parent="menu_payroll_tax_rekap_top" action="menu_data_tax" sequence="10"/>
+
+</data>
+</odoo>

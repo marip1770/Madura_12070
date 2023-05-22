@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_leave" model="ir.module.category">
+            <field name="name">Leave</field>
+            <field name="description">Leave Management</field>
+            <field name="sequence">61</field>
+        </record>
+
+    </data>
+</odoo>

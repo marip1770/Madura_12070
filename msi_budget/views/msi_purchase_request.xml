@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Order -->
+        <record id="view_msi_budget_purchase_request_form" model="ir.ui.view">
+            <field name="name">msi_budget_purchase_request.form</field>
+            <field name="model">purchase.request</field>
+            <field name="inherit_id" ref="purchase_request.view_purchase_request_form_msi"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='requested_by']" position="before">
+                    <field name="mpr_requested_by"/>                    
+            	</xpath>
+                <xpath expr="//field[@name='requested_by']" position="replace">
+                    <field name="requested_by" invisible="1"/>                    
+            	</xpath>
+                <xpath expr="//field[@name='assigned_to']" position="after">
+                    <field name="parent_id"/>                   
+                    <field name="update" invisible="1"/>                   
+            	</xpath>
+                <!-- <xpath expr="//field[@name='assigned_to']" position="replace">
+                    <field name="assigned_to" invisible="1"/>                   
+            	</xpath> -->
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='purchase_state']" position="after">               
+                                <field name="cost_center_id" invisible="0"/>               
+                                <field name="requested_dept" invisible="1"/>                   
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/form/sheet/group[@name='main']/group[1]/field[@name='cancelled']" position="after">               
+                                <field name="requested_dept" invisible="0"/>                   
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/form/sheet/group[@name='main']/group[1]/field[@name='analytic_account_id']" position="after">               
+                                <field name="cost_center_id" invisible="0"/>                   
+                </xpath>
+		</field>
+	</record>
+    </data>
+</odoo>

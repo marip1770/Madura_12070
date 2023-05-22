@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Order -->
+        <record id="view_msi_crossovered_budget_form" model="ir.ui.view">
+            <field name="name">msi_crossovered_budget.form</field>
+            <field name="model">crossovered.budget</field>
+            <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='crossovered_budget_line']/tree/field[@name='date_to']" position="after">
+                    <field name="avail_amount" sum="Avail Amount"/>
+                    <field name="group_head_id"/>
+                    <field name="department_ids" widget="many2many_tags" domain="[('details', '=', id)]"/>
+            	</xpath>
+                <xpath expr="//field[@name='crossovered_budget_line']/tree/field[@name='planned_amount']" position="after">
+                    <field name="original_amount"/>
+                    <field name="transfer_in"/>
+                    <field name="transfer_out"/>
+                </xpath>
+                <xpath expr="//button[@name='action_budget_cancel']" position="replace">
+                    <button string="Cancel Budget" name="action_budget_cancel" states="confirm,validate,done" type="object"/>
+                    <!-- <button string="Transfer Budget" name="action_budget_transfer" states="done" type="object"/> -->
+                    <!-- <button string="Update" name="action_update" type="object"/> -->
+                </xpath>
+		</field>
+	</record>
+    <record model="ir.ui.view" id="view_tbl_msi_crossovered_budget_lines_department_form_msi">
+        <field name="name">tbl_msi_crossovered_budget_lines_department.form</field>
+        <field name="model">tbl_msi_crossovered_budget_lines_department</field>
+        <field name="arch" type="xml">
+            <form string="Departement Budget">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+<record id="tbl_msi_transfer_budget_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_transfer_budget.tree</field>
+            <field name="model">tbl_msi_transfer_budget</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user_approve"/>
+                                    <field name="tanggal"/>
+                                    <field name="budget"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_msi_transfer_budget_form">
+        <field name="name">tbl_msi_transfer_budget.form</field>
+        <field name="model">tbl_msi_transfer_budget</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_cancel" string="Cancel" type="object" states="submit"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,done"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="tanggal"/>
+                                    <field name="name"/>
+                                    <field name="user_approve"/>
+                    </group>
+                    <group>
+                                    <field name="budget"/>
+
+                   </group>
+                  </group>
+                  <field name="details">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="nilai_availabel"/>
+                                    <field name="budget_tujuan"/>
+                                    <field name="nilai_transer"/>
+                                    <field name="keterangan"/>
+                                </tree>
+                            </field>
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_tbl_msi_transfer_budget">
+           <field name="name">Transfer Budget</field>
+           <field name="res_model">tbl_msi_transfer_budget</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Transfer Budget" id="menu_tbl_msi_transfer_budget" parent="account.menu_finance_entries_management" action="menu_action_tbl_msi_transfer_budget" sequence="70"/>
+    </data>
+</odoo>

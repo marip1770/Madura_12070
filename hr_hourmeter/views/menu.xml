@@ -1,0 +1,12 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_hourmeter_management" name="Hourmeter"  web_icon="hr_hourmeter,static/description/icon.png"/>
+
+    <menuitem name="Hourmeter" id="menu_hourmeter_top" parent="menu_hourmeter_management" sequence="10"/>
+
+
+    <menuitem name="Seting" id="menu_hourmeter_seting_top" parent="menu_hourmeter_management" sequence="100"/>
+   </data>
+</odoo>
+
+

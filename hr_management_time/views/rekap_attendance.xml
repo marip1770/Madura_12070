@@ -1,0 +1,210 @@
+<odoo>
+  <data> 
+
+        <record id="view_tbl_msi_proses_rekap_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_proses_rekap.tree</field>
+            <field name="model">tbl_msi_proses_rekap</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="state"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_proses_rekap_form">
+        <field name="name">tbl_msi_proses_rekap.form</field>
+        <field name="model">tbl_msi_proses_rekap</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_proses" string="Proses Attendance" type="object" states="draft"/>
+                    <button name="action_rekap" string="Proses Rekap" type="object" states="rekap"/>
+                    <button name="action_ulang" string="Proses Ulang" type="object" states="draft,rekap,review"/>
+                    <button name="action_close" string="Close Period" type="object" states="review"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,rekap,review,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+		                </group>
+		                <group>
+                                    <field name="pengecekan" invisible="1"/>
+		               </group>
+			</group>
+
+
+			</sheet>
+			</form>
+		</field>
+	</record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_proses_attendance">
+           <field name="name">Proses Rekap Attendance</field>
+           <field name="res_model">tbl_msi_proses_rekap</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Proses Rekap Attendance" id="menu_proses_rekap_time_attedance_left" parent="menu_rekap_time_attendance_top" action="menu_action_proses_attendance" sequence="20"/>
+
+ 
+        <record id="view_tbl_msi_rekap_attendance_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_rekap_attendance.tree</field>
+            <field name="model">tbl_msi_rekap_attendance</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="loc"/>
+                                    <field name="periode" invisible="1"/>
+                                    <field name="manual_jamkerja"/>
+                                    <field name="sc_name"/>
+                                    <field name="sc_date_a"/>
+                                    <field name="sc_date_in"/>
+                                    <field name="sc_date_out"/>
+                                    <field name="act_date_in"/>
+                                    <field name="act_date_out"/>
+                                    <field name="toleransi"/>
+                                    <field name="late"/>
+                                    <field name="early" invisible="1"/>
+                                    <field name="sc_hadir"/>
+                                    <field name="act_hadir"/>
+                                    <field name="manual_absen"/>
+                                    <field name="ket_hadir"/>
+                                    <field name="nama_hari"/>
+                                    <field name="status_hari"/>
+                                    <field name="istirahat"/>
+                                    <field name="durasi_kerja"/>
+                                    <field name="jad_lembur" invisible="1"/>
+                                    <field name="jad_lembur1"/>
+                                    <field name="lembur1"/>
+                                    <field name="lembur_spkl_start"/>
+                                    <field name="lembur_spkl_end"/>
+                                    <field name="lembur_spkl"/>
+                                    <field name="akt_lembur_spkl"/>
+                                    <field name="total_lembur"/>
+                                    <field name="lembur_1"/>
+                                    <field name="lembur_2"/>
+                                    <field name="lembur_3"/>
+                                    <field name="lembur_jam"/>
+                                    <field name="lembur_value"/>
+                                    <field name="ket"/>
+                                    <field name="parameter_ch" invisible="1"/>
+                 </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_msi_rekap_attendance_pivot" model="ir.ui.view">
+            <field name="name">tbl_msi_rekap_attendance.pivot</field>
+            <field name="model">tbl_msi_rekap_attendance</field>
+            <field name="arch" type="xml">
+                <pivot string="Rekap Attendance">
+                                    <field name="employee"/>
+                                    <field name="lembur_jam"/>
+                 </pivot>
+            </field>
+        </record>
+ 
+      <record model="ir.actions.act_window" id="menu_action_rekap_time_attendance">
+           <field name="name">View Rekap Attendance</field>
+           <field name="res_model">tbl_msi_rekap_attendance</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,pivot</field>
+       </record>
+
+    <menuitem name="View Rekap Attendance" id="menu_rekap_time_attedance_left" parent="menu_rekap_time_attendance_top" action="menu_action_rekap_time_attendance" sequence="30"/>
+
+    <record id="tbl_msi_rekap_attendance_view_calendar" model="ir.ui.view">
+       <field name="name">tbl_msi_rekap_attendance.calendar</field>
+       <field name="model">tbl_msi_rekap_attendance</field>
+       <field name="arch" type="xml">
+          <calendar string="Jadual"
+                 date_start="sc_date_in"
+                 date_stop="sc_date_out"
+                 event_open_popup="true"
+                 mode="month"
+                 color="sc_name"
+                 quick_add="False">
+           <field name="employee"/>
+           <field name="name"/>
+           <field name="sc_name"/>
+         </calendar>
+        </field>
+      </record>
+
+
+      <record model="ir.actions.act_window" id="menu_rekap_calendar">
+           <field name="name">Rekap Calendar</field>
+           <field name="res_model">tbl_msi_rekap_attendance</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">calendar</field>
+       </record>
+
+    <menuitem name="Rekap Calendar" id="menu_rekap_calendar_left" parent="menu_gen_sche_top" action="menu_rekap_calendar" sequence="20"/>
+
+        <record id="view_tbl_msi_shift_schedule_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_shift_schedule.tree</field>
+            <field name="model">tbl_msi_shift_schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="dept"/>
+                                    <field name="divisi"/>
+                                    <field name="loc"/>
+                                    <field name="periode"/>
+                                    <field name="tgl001"/>
+                                    <field name="tgl002"/>
+                                    <field name="tgl003"/>
+                                    <field name="tgl004"/>
+                                    <field name="tgl005"/>
+                                    <field name="tgl006"/>
+                                    <field name="tgl007"/>
+                                    <field name="tgl008"/>
+                                    <field name="tgl009"/>
+                                    <field name="tgl010"/>
+                                    <field name="tgl011"/>
+                                    <field name="tgl012"/>
+                                    <field name="tgl013"/>
+                                    <field name="tgl014"/>
+                                    <field name="tgl015"/>
+                                    <field name="tgl016"/>
+                                    <field name="tgl017"/>
+                                    <field name="tgl018"/>
+                                    <field name="tgl019"/>
+                                    <field name="tgl020"/>
+                                    <field name="tgl021"/>
+                                    <field name="tgl022"/>
+                                    <field name="tgl023"/>
+                                    <field name="tgl024"/>
+                                    <field name="tgl025"/>
+                                    <field name="tgl026"/>
+                                    <field name="tgl027"/>
+                                    <field name="tgl028"/>
+                                    <field name="tgl029"/>
+                                    <field name="tgl030"/>
+                                    <field name="tgl031"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="menu_action_schedule">
+           <field name="name">Schedule</field>
+           <field name="res_model">tbl_msi_shift_schedule</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+<!-- Test 
+    <menuitem name="View Schedule" id="menu_rekap_schedule_left" parent="menu_gen_sche_top" action="menu_action_schedule" sequence="90"/>
+-->
+</data>
+</odoo>

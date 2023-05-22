@@ -1,0 +1,16 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_leave_msi" name="Leave"  web_icon="hr_leave_msi,static/description/icon.png"/>
+
+    <menuitem name="Leave" id="menu_leave_top" parent="menu_leave_msi" sequence="10"/>
+
+    <menuitem name="Leave Allocation" id="menu_leave_allocation_top" parent="menu_leave_msi" sequence="20"/>
+    <!-- <menuitem name="Uang Cuti" id="menu_uang_cuti_top" parent="menu_leave_msi" sequence="90"/> -->
+
+    <menuitem name="Seting" id="menu_leave_seting_top" parent="menu_leave_msi" sequence="100"/>
+
+
+   </data>
+</odoo>
+
+

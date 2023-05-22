@@ -1,0 +1,82 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_jam_kerja_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_jam_kerja.tree</field>
+            <field name="model">tbl_msi_jam_kerja</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="jam_in" widget="float_time"/>
+                                    <field name="jam_out" widget="float_time"/>
+                                    <field name="overnight"/>
+                                    <field name="durasi"/>
+                                    <field name="overtime"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+    <record model="ir.ui.view" id="tbl_msi_jam_kerja_form">
+        <field name="name">tbl_msi_jam_kerja.form</field>
+        <field name="model">tbl_msi_jam_kerja</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="jam_in" widget="float_time"/>
+                                    <field name="jam_out" widget="float_time"/>
+
+		                </group>
+		                <group>
+                                    <field name="overnight"/>
+                                    <field name="durasi"/>
+                                    <field name="overtime"/>
+
+		               </group>
+			</group>
+
+                	<group>
+                		<group>
+                                    <field name="kode"/>
+                                    <field name="tol_terlambat"/>
+                                    <field name="max_lama_terlambat" invisible='1'/>
+                                    <field name="min_lama_cepat_pulang"  invisible='1'/>
+
+		                </group>
+		                <group>
+
+
+		               </group>
+			</group>
+
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_jam_kerja">
+           <field name="name">Jam Kerja</field>
+           <field name="res_model">tbl_msi_jam_kerja</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Jam Kerja" id="menu_jam_kerja_left" parent="menu_hr_seting_top" action="menu_action_jam_kerja" sequence="30"/>
+
+
+</data>
+</odoo>

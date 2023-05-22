@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="msi_email_template_lembur" model="mail.template">
+            <field name="name">Employee Overtime: Send by email Attach 22</field>
+            <field name="model_id" ref="hr_overtime.model_tbl_msi_overtime_print"/>
+            <field name="email_from">${object.create_uid.email |safe}</field>
+            <field name="email_to">${object.employee.personal_email | safe}</field>
+            <field name="subject">Payslip ${object.employee.name} Periode ${object.periode.name}</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Dear ${object.employee.name},
+        <br />
+        Please find the attached Payslip.<br/><br/>
+        Do not hesitate to contact us if you have any question.
+        <br/><br/>
+        Best Regards,<br/>
+        Human Resource
+    </p>
+</div>
+            </field>
+            <field name="report_template" ref="hr_overtime.action_print_overtime"/>
+            <field name="report_name">${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.create_uid.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

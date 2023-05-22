@@ -1,0 +1,119 @@
+<odoo>
+    <data>  
+
+<!--menu dikiri/Menu yang diatas kalau odoo 10-->    
+
+    <record model="ir.ui.view" id="tbl_msi_approval_tree">
+        <field name="name">tbl_msi_approval.tree</field>
+        <field name="model">tbl_msi_approval</field>
+        <field name="arch" type="xml">
+            <tree string="Approval" >
+                            <field name="tingkat_approval_so"/>
+                            <field name="tingkat_approval_payment"/>
+                            <field name="tingkat_approval_pr"/>
+                            <field name="tingkat_approval_po"/>
+                            <!-- <field name="tingkat_approval_advance"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="tbl_msi_approval_form">
+        <field name="name">tbl_msi_approval.form</field>
+        <field name="model">tbl_msi_approval</field>
+        <field name="arch" type="xml">
+            <form string="Approval">
+                <sheet>
+
+                    <group>
+                        <group string="Payment">
+                            <field name="tingkat_approval_payment"/>
+                            <field name="nominal_approve_payment0"/>
+                            <field name="grup_approve_payment1" attrs="{'invisible': [('tingkat_approval_payment', '=', '0')]}"/>
+                            <field name="nominal_approve_payment1" attrs="{'invisible': [('tingkat_approval_payment', '=', '0')]}"/>
+                            <field name="grup_approve_payment2" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1'))]}"/>
+                            <field name="nominal_approve_payment2" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1'))]}"/>
+                            <field name="grup_approve_payment3" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2'))]}"/>
+                            <field name="nominal_approve_payment3" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2'))]}"/>
+                            <field name="grup_approve_payment4" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2','3'))]}"/>
+                            <field name="nominal_approve_payment4" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2','3'))]}"/>
+                            <field name="grup_approve_payment5" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2','3','4'))]}"/>
+                            <field name="nominal_approve_payment5" attrs="{'invisible': [('tingkat_approval_payment', 'in', ('0','1','2','3','4'))]}"/>
+                        </group>
+                        <group string="Sales Order">
+                            <field name="tingkat_approval_so"/>
+                            <field name="grup_approve_so1" attrs="{'invisible': [('tingkat_approval_so', '=', '0')]}"/>
+                            <field name="grup_approve_so2" attrs="{'invisible': [('tingkat_approval_so', '!=', '2')]}"/>
+                        <group/>
+                    </group>
+                    <group>
+                        <group string="Purchase Request">
+                            <field name="tingkat_approval_pr"/>
+                            <field name="nominal_approve_pr0"/>
+                            <!-- <field name="nominal_approve_pr01"/> -->
+                            <field name="grup_approve_pr1" attrs="{'invisible': [('tingkat_approval_pr', '=', '0')]}"/>
+                            <field name="nominal_approve_pr1" attrs="{'invisible': [('tingkat_approval_pr', '=', '0')]}"/>
+                            <field name="grup_approve_pr2" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1'))]}"/>
+                            <field name="nominal_approve_pr2" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1'))]}"/>
+                            <field name="grup_approve_pr3" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2'))]}"/>
+                            <field name="nominal_approve_pr3" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2'))]}"/>
+                            <field name="grup_approve_pr4" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3'))]}"/>
+                            <field name="nominal_approve_pr4" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3'))]}"/>
+                            <field name="grup_approve_pr5" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4'))]}"/>
+                            <field name="nominal_approve_pr5" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4'))]}"/>
+                            <field name="grup_approve_pr6" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4','5'))]}"/>
+                            <field name="nominal_approve_pr6" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4','5'))]}"/>
+                            <field name="grup_approve_pr7" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4','5','6'))]}"/>
+                            <field name="nominal_approve_pr7" attrs="{'invisible': [('tingkat_approval_pr', 'in', ('0','1','2','3','4','5','6'))]}"/>
+                        </group>
+                        <group string="Purchase Order">
+                            <field name="tingkat_approval_po"/>
+                            <field name="nominal_approve_po0"/>
+                            <field name="grup_approve_po1" attrs="{'invisible': [('tingkat_approval_po', '=', '0')]}"/>
+                            <field name="nominal_approve_po1" attrs="{'invisible': [('tingkat_approval_po', '=', '0')]}"/>
+                            <field name="grup_approve_po2" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1'))]}"/>
+                            <field name="nominal_approve_po2" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1'))]}"/>
+                            <field name="grup_approve_po3" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2'))]}"/>
+                            <field name="nominal_approve_po3" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2'))]}"/>
+                            <field name="grup_approve_po4" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3'))]}"/>
+                            <field name="nominal_approve_po4" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3'))]}"/>
+                            <field name="grup_approve_po5" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4'))]}"/>
+                            <field name="nominal_approve_po5" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4'))]}"/>
+                            <field name="grup_approve_po6" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4','5'))]}"/>
+                            <field name="nominal_approve_po6" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4','5'))]}"/>
+                            <field name="grup_approve_po7" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4','5','6'))]}"/>
+                            <field name="nominal_approve_po7" attrs="{'invisible': [('tingkat_approval_po', 'in', ('0','1','2','3','4','5','6'))]}"/>
+                        </group>
+                    </group>
+
+                    <!-- <group>
+                        <group string="Advance">
+                            <field name="tingkat_approval_advance"/>
+                            <field name="nominal_approve_advance0"/>
+                            <field name="grup_approve_advance1" attrs="{'invisible': [('tingkat_approval_advance', '=', '0')]}"/>
+                            <field name="nominal_approve_advance1" attrs="{'invisible': [('tingkat_approval_advance', '=', '0')]}"/>
+                            <field name="grup_approve_advance2" attrs="{'invisible': [('tingkat_approval_advance', 'in', ('0','1'))]}"/>
+                            <field name="nominal_approve_advance2" attrs="{'invisible': [('tingkat_approval_advance', 'in', ('0','1'))]}"/>
+                            <field name="grup_approve_advance3" attrs="{'invisible': [('tingkat_approval_advance', 'in', ('0','1','2'))]}"/>
+                            <field name="nominal_approve_advance3" attrs="{'invisible': [('tingkat_approval_advance', 'in', ('0','1','2'))]}"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group> -->
+                 </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+<!-- menu diatas/kalau di odoo 10 yang dibawah menu diatas-->
+    <record model="ir.actions.act_window" id="action_menu_approval">
+        <field name="name">Approval</field> 
+        <field name="res_model">tbl_msi_approval</field> 
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_approval" name="Approval" parent="base.menu_administration" action="action_menu_approval" sequence="7"/>
+
+    </data>
+</odoo>

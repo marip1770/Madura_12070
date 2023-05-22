@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <!-- <record id="seq_hourmeter" model="ir.sequence">
+            <field name="name">hourmeter</field>
+            <field name="code">hourmeter</field>
+            <field name="prefix">HM</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record> -->
+
+        <record id="seq_p5m_hauling" model="ir.sequence">
+            <field name="name">seq_p5m_hauling</field>
+            <field name="code">seq_p5m_hauling</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_hrm" model="ir.sequence">
+            <field name="name">seq_p5m_hrm</field>
+            <field name="code">seq_p5m_hrm</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_rental" model="ir.sequence">
+            <field name="name">seq_p5m_rental</field>
+            <field name="code">seq_p5m_rental</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_port" model="ir.sequence">
+            <field name="name">seq_p5m_port</field>
+            <field name="code">seq_p5m_port</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_fuel_truck" model="ir.sequence">
+            <field name="name">seq_p5m_fuel_truck</field>
+            <field name="code">seq_p5m_fuel_truck</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_water_truck" model="ir.sequence">
+            <field name="name">seq_p5m_water_truck</field>
+            <field name="code">seq_p5m_water_truck</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p5m_tls" model="ir.sequence">
+            <field name="name">seq_p5m_tls</field>
+            <field name="code">seq_p5m_tls</field>
+            <field name="prefix">MMM-FM-SHE-06-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_hauling" model="ir.sequence">
+            <field name="name">seq_kesiapan_hauling</field>
+            <field name="code">seq_kesiapan_hauling</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_hrm" model="ir.sequence">
+            <field name="name">seq_kesiapan_hrm</field>
+            <field name="code">seq_kesiapan_hrm</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_rental" model="ir.sequence">
+            <field name="name">seq_kesiapan_rental</field>
+            <field name="code">seq_kesiapan_rental</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_port" model="ir.sequence">
+            <field name="name">seq_kesiapan_port</field>
+            <field name="code">seq_kesiapan_port</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_fuel_truck" model="ir.sequence">
+            <field name="name">seq_kesiapan_fuel_truck</field>
+            <field name="code">seq_kesiapan_fuel_truck</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_water_truck" model="ir.sequence">
+            <field name="name">seq_kesiapan_water_truck</field>
+            <field name="code">seq_kesiapan_water_truck</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_kesiapan_tls" model="ir.sequence">
+            <field name="name">seq_kesiapan_tls</field>
+            <field name="code">seq_kesiapan_tls</field>
+            <field name="prefix">MMM-FM-SHE-03-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- <record id="seq_inspeksi" model="ir.sequence">
+            <field name="name">seq_inspeksi</field>
+            <field name="code">seq_inspeksi</field>
+            <field name="prefix">MMM-FM-SHE-13-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record> -->
+
+        <record id="seq_p2h_hauling" model="ir.sequence">
+            <field name="name">seq_p2h_hauling</field>
+            <field name="code">seq_p2h_hauling</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+        <record id="seq_p2h_hrm" model="ir.sequence">
+            <field name="name">seq_p2h_hrm</field>
+            <field name="code">seq_p2h_hrm</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p2h_rental" model="ir.sequence">
+            <field name="name">seq_p2h_rental</field>
+            <field name="code">seq_p2h_rental</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p2h_port" model="ir.sequence">
+            <field name="name">seq_p2h_port</field>
+            <field name="code">seq_p2h_port</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p2h_fuel_truck" model="ir.sequence">
+            <field name="name">seq_p2h_fuel_truck</field>
+            <field name="code">seq_p2h_fuel_truck</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p2h_water_truck" model="ir.sequence">
+            <field name="name">seq_p2h_water_truck</field>
+            <field name="code">seq_p2h_water_truck</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_p2h_tls" model="ir.sequence">
+            <field name="name">seq_p2h_tls</field>
+            <field name="code">seq_p2h_tls</field>
+            <field name="prefix">Frm-001-OPR-</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_hauling" model="ir.sequence">
+            <field name="name">seq_no_register_hauling</field>
+            <field name="code">seq_no_register_hauling</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_hrm" model="ir.sequence">
+            <field name="name">seq_no_register_hrm</field>
+            <field name="code">seq_no_register_hrm</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_rental" model="ir.sequence">
+            <field name="name">seq_no_register_rental</field>
+            <field name="code">seq_no_register_rental</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_port" model="ir.sequence">
+            <field name="name">seq_no_register_port</field>
+            <field name="code">seq_no_register_port</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_fuel_truck" model="ir.sequence">
+            <field name="name">seq_no_register_fuel_truck</field>
+            <field name="code">seq_no_register_fuel_truck</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_water_truck" model="ir.sequence">
+            <field name="name">seq_no_register_water_truck</field>
+            <field name="code">seq_no_register_water_truck</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_no_register_tls" model="ir.sequence">
+            <field name="name">seq_no_register_tls</field>
+            <field name="code">seq_no_register_tls</field>
+            <field name="prefix">KR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

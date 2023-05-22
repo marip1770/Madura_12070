@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_msi_hourmeter_manager,mgr_tbl_msi_hourmeter,model_tbl_msi_hourmeter,grup_hourmeter_mgr,1,1,1,1
+access_tbl_msi_hourmeter_input_manager,mgr_tbl_msi_hourmeter_input,model_tbl_msi_hourmeter_input,grup_hourmeter_mgr,1,1,1,1
+access_tbl_msi_master_mesin_manager,mgr_tbl_msi_master_mesin,model_tbl_msi_master_mesin,grup_hourmeter_mgr,1,1,1,1
+
+access_tbl_msi_hourmeter_appr,appr_tbl_msi_hourmeter,model_tbl_msi_hourmeter,grup_hourmeter_appr,1,1,0,0
+access_tbl_msi_hourmeter_input_appr,appr_tbl_msi_hourmeter_input,model_tbl_msi_hourmeter_input,grup_hourmeter_appr,1,1,0,0
+access_tbl_msi_master_mesin_appr,appr_tbl_msi_master_mesin,model_tbl_msi_master_mesin,grup_hourmeter_appr,1,1,0,0
+

@@ -1,0 +1,13 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_purchase_request" model="ir.actions.report">
+            <field name="name">Purchase Order</field>
+            <field name="model">purchase.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bisa_purchase_request.report_purchase_request</field>
+            <field name="report_file">bisa_purchase_request.report_purchase_request</field>
+        </record>
+    </data>
+</odoo>
+ -->

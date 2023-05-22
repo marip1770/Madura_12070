@@ -1,0 +1,17 @@
+<odoo>
+  <data>  
+    <menuitem id="menu_port_management" name="Port Service"  web_icon="bisa_port,static/description/icon.png"/>
+
+    <menuitem name="Contract" id="menu_port_kontrak_top" parent="menu_port_management" sequence="10"/>
+    <menuitem name="Plant and Assigment" id="menu_port_pna_top" parent="menu_port_management" sequence="11"/>
+    <menuitem name="Brief and Prepare" id="menu_port_bnp_top" parent="menu_port_management" sequence="12"/>
+    <menuitem name="Report" id="menu_port_report_top" parent="menu_port_management" sequence="13"/>
+    <menuitem name="Billing" id="menu_port_billing_top" parent="menu_port_management" sequence="14"/>
+    <menuitem name="Breakdown" id="menu_port_breakdown_top" parent="menu_port_management" sequence="15"/>
+    <!-- <menuitem name="Port Service" id="menu_port_top" parent="menu_port_management" sequence="10"/> -->
+
+
+   </data>
+</odoo>
+
+

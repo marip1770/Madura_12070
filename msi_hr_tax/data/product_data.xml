@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_payroll_tax" model="ir.module.category">
+            <field name="name">Payroll Tax</field>
+            <field name="description">Payroll Tax Management</field>
+            <field name="sequence">62</field>
+        </record>
+
+    </data>
+</odoo>

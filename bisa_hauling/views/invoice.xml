@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_msi_invoice_hauling_users_form" model="ir.ui.view">
+            <field name="name">view_msi_invoice_hauling_users_form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="before">
+                    <field name="harga"/>
+                    <field name="rf"/>
+                    <!-- <field name="distance"/> -->
+
+            	</xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                    <field name="distance"/>
+
+                </xpath>
+		</field>
+	</record>
+    </data>
+</odoo>

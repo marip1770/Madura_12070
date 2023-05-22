@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_time_management" model="ir.module.category">
+            <field name="name">Time Management</field>
+            <field name="description">Time Management</field>
+            <field name="sequence">60</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,107 @@
+<odoo>
+  <data>  
+
+        <record id="view_tbl_payrol_item_struktur_tree" model="ir.ui.view">
+            <field name="name">tbl_payrol_item_struktur.tree</field>
+            <field name="model">tbl_payrol_item_struktur</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="kode"/>
+                                    <field name="kode_import"/>
+                                    <field name="tipe"/>
+                                    <field name="account_id"/>
+                                    <field name="tipe_potongan"/>
+                                    <field name="taxable"/>
+                                    <field name="kategori_pendapatan"/>
+                                    <field name="is_auto"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+      <record model="ir.actions.act_window" id="action_payroll_item">
+           <field name="name">Item Payroll</field>
+           <field name="res_model">tbl_payrol_item_struktur</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Item Payroll" id="menu_payroll_item_left" parent="menu_seting_top" action="action_payroll_item" sequence="5"/>
+
+
+        <record id="view_tbl_msi_hr_structure_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_hr_structure.tree</field>
+            <field name="model">tbl_msi_hr_structure</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_hr_structure_form">
+        <field name="name">tbl_msi_hr_structure.form</field>
+        <field name="model">tbl_msi_hr_structure</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="akses"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="ket"/>
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            <field name="detail">
+				<tree string="Detail Action" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="kode"/>
+                                    <field name="tipe"/>
+                                    <field name="seq"/>
+
+				 </tree>
+		             </field>
+                        </page>
+
+	     </notebook>
+          </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="activity_ids" widget="mail_activity"/>
+                     <field name="message_ids" widget="mail_thread"/>
+                 </div>
+	   </form>
+	  </field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_hr_structure">
+           <field name="name">Structure Payroll</field>
+           <field name="res_model">tbl_msi_hr_structure</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Structure Payroll" id="menu_hr_structure_left" parent="menu_seting_top" action="menu_action_hr_structure" sequence="10"/>
+
+
+</data>
+</odoo>

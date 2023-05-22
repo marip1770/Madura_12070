@@ -1,0 +1,28 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_attendance_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_attendance.tree</field>
+            <field name="model">tbl_msi_attendance</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration" editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="nik" invisible="1"/>
+                                    <field name="date"/>
+                                    <field name="time"/>
+                                    <field name="tgl_jam" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="menu_action_time_attendance">
+           <field name="name">Time Attendance</field>
+           <field name="res_model">tbl_msi_attendance</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Time Attendance" id="menu_time_attedance_left" parent="menu_time_attendance_top" action="menu_action_time_attendance" sequence="10"/>
+
+
+</data>
+</odoo>

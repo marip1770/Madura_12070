@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_bisa_contract_management,mgr_tbl_bisa_contract_management,model_tbl_bisa_contract_management,grup_contract_management_usr,1,1,1,1
+access_tbl_bisa_detail_contract,mgr_tbl_bisa_detail_contract,model_tbl_bisa_detail_contract,grup_contract_management_usr,1,1,1,1
+access_tbl_bisa_progress,mgr_tbl_bisa_progress,model_tbl_bisa_progress,grup_contract_management_usr,1,1,1,1
+

@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="0">
+        <record id="grup_contract_management_usr" model="res.groups">
+            <field name="name">Contract Management Usr</field>
+            <field name="comment">User</field>
+            <field name="category_id" ref="module_category_contract_management"/>
+        </record>
+    </data>
+</odoo>

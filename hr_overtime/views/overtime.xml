@@ -1,0 +1,226 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_msi_rekap_overtime_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_rekap_overtime.tree</field>
+            <field name="model">tbl_msi_rekap_overtime</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="nomor"/>
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="department_id"/>
+                                    <field name="description"/>
+                                    <field name="sc_date_start"/>
+                                    <field name="sc_date_end"/>
+                                    <field name="act_date_start"/>
+                                    <field name="act_date_end"/>
+                                    <field name="partner_id"/>
+                                    <field name="durasi"/>
+                                    <field name="value"/>
+                                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="menu_action_rekap_overtime">
+           <field name="name">Rekap Overtime</field>
+           <field name="res_model">tbl_msi_rekap_overtime</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree</field>
+       </record>
+
+    <menuitem name="Rekap Overtime" id="menu_rekap_overtime_left" parent="menu_rekap_overtime_top" action="menu_action_rekap_overtime" sequence="10"/>
+
+
+        <record id="view_tbl_msi_overtime_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_overtime.tree</field>
+            <field name="model">tbl_msi_overtime</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="description"/>
+                                    <field name="sc_date_start"/>
+                                    <field name="sc_date_end"/>
+                                    <field name="user"/>
+                                    <field name="is_bill_to"/>
+                                    <field name="partner_id" attrs="{'invisible': [('is_bill_to','!=', True)]}" />
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_overtime_form">
+        <field name="name">tbl_msi_overtime.form</field>
+        <field name="model">tbl_msi_overtime</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft" groups="hr_overtime.grup_overtime_user"/>
+                    <button name="action_approve1" string="Approve1" type="object" states="submit" groups="hr_overtime.grup_overtime_appr1"/>
+                    <button name="action_approve2" string="Approve2" type="object" states="approve1" groups="hr_overtime.grup_overtime_appr2"/>
+                    <button name="action_done" string="Finish" type="object" states="approve2" groups="hr_overtime.grup_overtime_user"/>
+                    <button name="action_ulang" string="Ulang" type="object" states="done" groups="hr_overtime.grup_overtime_appr2"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve1,approve2,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+
+                                    <field name="description"/>
+                                    <field name="sc_date"/>
+                                    <field name="sc_date_start"/>
+                                    <field name="sc_date_end"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+                                    <field name="is_bill_to"/>
+                                    <field name="partner_id" attrs="{'invisible': [('is_bill_to','!=', True)]}" />
+		               </group>
+			</group>
+	     <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="department_id"/>
+                                    <field name="description"/>
+                                    <field name="is_bill_to" invisible="1"/>
+                                    <field name="partner_id" invisible="1"/>
+                                    <field name="sc_date"/>
+                                    <field name="sc_date_start"/>
+                                    <field name="sc_date_end"/>
+                                    <field name="act_date_start" invisible="1"/>
+                                    <field name="act_date_end" invisible="1"/>
+                                    <field name="durasi"/>
+
+
+				                </tree>
+				            </field>
+                        </page>
+
+
+
+
+	     </notebook>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_request_overtime">
+           <field name="name">Request Overtime</field>
+           <field name="res_model">tbl_msi_overtime</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Request Overtime" id="menu_overtime_left" parent="menu_overtime_top" action="menu_action_request_overtime" sequence="10"/>
+
+        <record id="view_tbl_msi_overtime_billing_tree" model="ir.ui.view">
+            <field name="name">tbl_msi_overtime_billing.tree</field>
+            <field name="model">tbl_msi_overtime_billing</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="periode"/>
+                                    <field name="user"/>
+                                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="tbl_msi_overtime_billing_form">
+        <field name="name">tbl_msi_overtime_billing.form</field>
+        <field name="model">tbl_msi_overtime_billing</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_create_bill" string="Create Bill" type="object" states="approve"/>
+                    <button name="action_done" string="Finish" type="object" states="create_bill"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,create_bill,approve,done"/>
+                </header>
+                <sheet>
+
+                	<group>
+                		<group>
+                                    <field name="name"/>
+                                    <field name="periode"/>
+                                    <field name="department_id"/>
+                                    <field name="partner_id"/>
+		                </group>
+		                <group>
+                                    <field name="date"/>
+
+		               </group>
+			           </group>
+                 <group>
+                  <button name="act_get_data" string="Get Data" type="object" states="draft"/>
+                 </group>
+	               <notebook>
+                        <page string="Detail">
+		            		<field name="detail">
+				            	<tree string="Detail Action" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="employee"/>
+                                    <field name="department_id"/>
+                                    <field name="periode"/>
+                                    <field name="lembur_spkl_start"/>
+                                    <field name="lembur_spkl_end"/>
+                                    <field name="akt_lembur_spkl"/>
+                                    <field name="lembur_value"/>
+
+
+				                </tree>
+				            </field>
+                 <group>
+                  <group>
+                    <field name="total_value"/>
+                  </group>
+                  <group/>
+                 </group>
+                        </page>
+
+
+
+
+	     </notebook>
+
+			</sheet>
+                      <div class="oe_chatter">
+                       <field name="message_follower_ids" widget="mail_followers"/>
+                       <field name="activity_ids" widget="mail_activity"/>
+                       <field name="message_ids" widget="mail_thread"/>
+                      </div>
+			</form>
+		</field>
+	</record>
+
+      <record model="ir.actions.act_window" id="menu_action_request_overtime_billing">
+           <field name="name">Create Billing</field>
+           <field name="res_model">tbl_msi_overtime_billing</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Create Billing" id="menu_overtime_billing_left" parent="menu_billing_overtime_top" action="menu_action_request_overtime_billing" sequence="10"/>
+
+
+
+
+</data>
+</odoo>

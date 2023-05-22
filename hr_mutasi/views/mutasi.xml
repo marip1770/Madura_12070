@@ -1,0 +1,162 @@
+<odoo>
+  <data>  
+        <record id="view_tbl_hr_mutasi_tree" model="ir.ui.view">
+            <field name="name">tbl_hr_mutasi.tree</field>
+            <field name="model">tbl_hr_mutasi</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Registration">
+                                    <field name="name"/>
+                                    <field name="user"/>
+
+
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="tbl_hr_mutasi_form">
+        <field name="name">tbl_hr_mutasi.form</field>
+        <field name="model">tbl_hr_mutasi</field>
+        <field name="arch" type="xml">
+            <form string="Teknisi">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" states="draft"/>
+                    <button name="action_approve" string="Approve" type="object" states="submit"/>
+                    <button name="action_done" string="Finish" type="object" states="approve"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,approve,done"/>
+                </header>
+                <sheet>
+
+                  <group>
+                    <group>
+                                    <field name="tanggal"/>
+                                    <field name="tipe"/>
+                                    <field name="name"/>
+                                    <field name="nik"/>
+                    </group>
+                    <group>
+                                    <field name="user"/>
+                                    <field name="desc"/>
+                                    <field name="tindak_lanjut"/>
+                   </group>
+                 </group>
+
+                  <group>
+                    <group>
+                                    <field name="is_divisi"/>
+                                    <field name="is_lokasi"/>
+                                    <field name="is_job_id"/>
+
+                                    <field name="is_department_id"/>
+                                    <field name="is_wage"/>
+                                    <field name="is_u_transport"/>
+                                    <field name="is_u_makan"/>
+
+                                    <field name="is_u_kehadiran"/>
+                                    <field name="is_u_komunikasi"/>
+                                    <field name="is_u_perumahan"/>
+                                    <field name="is_u_keluarga"/>
+                                    <field name="is_u_daerah"/>
+                                    <field name="is_u_jabatan"/>
+                    </group>
+                    <group>
+                                    <field name="is_u_keahlian"/>
+                                    <field name="is_u_khusus"/>
+                                    <field name="is_u_hari_tua"/>
+                                    <field name="is_u_field"/>
+                                    <field name="is_u_saku"/>
+                                    <field name="is_u_kebersihan"/>
+                                    <field name="is_u_medium"/>
+                                    <field name="is_u_hd"/>
+                                    <field name="is_u_se"/>
+                                    <field name="is_u_kinerja"/>
+                                    <field name="is_u_tanggung_jawab"/>
+                                    <field name="is_struktur_gaji"/>
+                                    <field name="is_gol_gaji"/>
+                                    <field name="is_analytic_id"/>
+                   </group>
+                 </group>
+                  <group>
+                    <group string='Lama'>
+                                    <field name="divisi" attrs="{'invisible': [('is_divisi', '=', False)]}"/>
+                                    <field name="lokasi" attrs="{'invisible': [('is_lokasi', '=', False)]}"/>
+                                    <field name="job_id" attrs="{'invisible': [('is_job_id', '=', False)]}"/>
+                                    <field name="department_id" attrs="{'invisible': [('is_department_id', '=', False)]}"/>
+                                    <field name="wage" attrs="{'invisible': [('is_wage', '=', False)]}"/>
+                                    <field name="u_transport" attrs="{'invisible': [('is_u_transport', '=', False)]}"/>
+                                    <field name="u_makan" attrs="{'invisible': [('is_u_makan', '=', False)]}"/>
+
+                                    <field name="u_kehadiran" attrs="{'invisible': [('is_u_kehadiran', '=', False)]}"/>
+                                    <field name="u_komunikasi" attrs="{'invisible': [('is_u_komunikasi', '=', False)]}"/>
+                                    <field name="u_perumahan" attrs="{'invisible': [('is_u_perumahan', '=', False)]}"/>
+                                    <field name="u_keluarga" attrs="{'invisible': [('is_u_keluarga', '=', False)]}"/>
+                                    <field name="u_daerah" attrs="{'invisible': [('is_u_daerah', '=', False)]}"/>
+                                    <field name="u_jabatan" attrs="{'invisible': [('is_u_jabatan', '=', False)]}"/>
+                                    <field name="u_keahlian" attrs="{'invisible': [('is_u_keahlian', '=', False)]}"/>
+                                    <field name="u_khusus" attrs="{'invisible': [('is_u_khusus', '=', False)]}"/>
+                                    <field name="u_hari_tua" attrs="{'invisible': [('is_u_hari_tua', '=', False)]}"/>
+                                    <field name="u_field" attrs="{'invisible': [('is_u_field', '=', False)]}"/>
+                                    <field name="u_saku" attrs="{'invisible': [('is_u_saku', '=', False)]}"/>
+                                    <field name="u_kebersihan" attrs="{'invisible': [('is_u_kebersihan', '=', False)]}"/>
+                                    <field name="u_medium" attrs="{'invisible': [('is_u_medium', '=', False)]}"/>
+                                    <field name="u_hd" attrs="{'invisible': [('is_u_hd', '=', False)]}"/>
+                                    <field name="u_se" attrs="{'invisible': [('is_u_se', '=', False)]}"/>
+                                    <field name="u_kinerja" attrs="{'invisible': [('is_u_kinerja', '=', False)]}"/>
+                                    <field name="u_tanggung_jawab" attrs="{'invisible': [('is_u_tanggung_jawab', '=', False)]}"/>
+                                    <field name="struktur_gaji" attrs="{'invisible': [('is_struktur_gaji', '=', False)]}"/>
+                                    <field name="gol_gaji" attrs="{'invisible': [('is_gol_gaji', '=', False)]}"/>
+                                    <field name="analytic_id" attrs="{'invisible': [('is_analytic_id', '=', False)]}"/>
+                    </group>
+                    <group string='Baru'>
+                                    <field name="new_divisi" attrs="{'invisible': [('is_divisi', '=', False)]}"/>
+                                    <field name="new_lokasi" attrs="{'invisible': [('is_lokasi', '=', False)]}"/>
+                                    <field name="new_job_id" attrs="{'invisible': [('is_job_id', '=', False)]}"/>
+
+                                    <field name="new_department_id" attrs="{'invisible': [('is_department_id', '=', False)]}"/>
+                                    <field name="new_wage" attrs="{'invisible': [('is_wage', '=', False)]}"/>
+                                    <field name="new_u_transport" attrs="{'invisible': [('is_u_transport', '=', False)]}"/>
+                                    <field name="new_u_makan" attrs="{'invisible': [('is_u_makan', '=', False)]}"/>
+
+                                    <field name="new_u_kehadiran" attrs="{'invisible': [('is_u_kehadiran', '=', False)]}"/>
+                                    <field name="new_u_komunikasi" attrs="{'invisible': [('is_u_komunikasi', '=', False)]}"/>
+                                    <field name="new_u_perumahan" attrs="{'invisible': [('is_u_perumahan', '=', False)]}"/>
+                                    <field name="new_u_keluarga" attrs="{'invisible': [('is_u_keluarga', '=', False)]}"/>
+                                    <field name="new_u_daerah" attrs="{'invisible': [('is_u_daerah', '=', False)]}"/>
+                                    <field name="new_u_jabatan" attrs="{'invisible': [('is_u_jabatan', '=', False)]}"/>
+                                    <field name="new_u_keahlian" attrs="{'invisible': [('is_u_keahlian', '=', False)]}"/>
+                                    <field name="new_u_khusus" attrs="{'invisible': [('is_u_khusus', '=', False)]}"/>
+                                    <field name="new_u_hari_tua" attrs="{'invisible': [('is_u_hari_tua', '=', False)]}"/>
+                                    <field name="new_u_field" attrs="{'invisible': [('is_u_field', '=', False)]}"/>
+                                    <field name="new_u_saku" attrs="{'invisible': [('is_u_saku', '=', False)]}"/>
+                                    <field name="new_u_kebersihan" attrs="{'invisible': [('is_u_kebersihan', '=', False)]}"/>
+                                    <field name="new_u_medium" attrs="{'invisible': [('is_u_medium', '=', False)]}"/>
+                                    <field name="new_u_hd" attrs="{'invisible': [('is_u_hd', '=', False)]}"/>
+                                    <field name="new_u_se" attrs="{'invisible': [('is_u_se', '=', False)]}"/>
+                                    <field name="new_u_kinerja" attrs="{'invisible': [('is_u_kinerja', '=', False)]}"/>
+                                    <field name="new_u_tanggung_jawab" attrs="{'invisible': [('is_u_tanggung_jawab', '=', False)]}"/>
+                                    <field name="new_struktur_gaji" attrs="{'invisible': [('is_struktur_gaji', '=', False)]}"/>
+                                    <field name="new_gol_gaji" attrs="{'invisible': [('is_gol_gaji', '=', False)]}"/>
+                                    <field name="new_analytic_id" attrs="{'invisible': [('is_analytic_id', '=', False)]}"/>
+                   </group>
+                 </group>
+
+
+      </sheet>
+
+      </form>
+    </field>
+  </record>
+
+
+      <record model="ir.actions.act_window" id="menu_action_mutasi">
+           <field name="name">Promosi</field>
+           <field name="res_model">tbl_hr_mutasi</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+    <menuitem name="Promosi" id="menu_mutasi_left" parent="menu_mutasi_top" action="menu_action_mutasi" sequence="10"/>
+
+
+
+</data>
+</odoo>

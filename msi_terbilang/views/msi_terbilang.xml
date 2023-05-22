@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Partner -->
+
+    <record id="tbl_msi_invoice_terbilang_form" model="ir.ui.view">
+        <field name="name">tbl_msi_invoice_terbilang_form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+                <xpath expr="//field[@name='comment']" position="after">
+                    <group>
+                        <field name="terbilang" style="text-transform:uppercase"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+    <record id="tbl_msi_account_payment_terbilang_form" model="ir.ui.view">
+        <field name="name">tbl_msi_account_payment_terbilang_form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+                <xpath expr="//group[1]" position="after">
+                    <group>
+                        <field name="terbilang" style="text-transform:uppercase"/>
+                    </group>
+                </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for kwitansi -->
+        <record id="acc_kwitansi" model="ir.sequence">
+            <field name="name">acc_kwitansi</field>
+            <field name="code">acc_kwitansi</field>
+            <field name="prefix">KWT-</field>
+            <field name="padding">6</field>
+            <field name="suffix">/%(month)s-%(y)s-BAK</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

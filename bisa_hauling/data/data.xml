@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="1">
+        <record id="module_category_operasional" model="ir.module.category">
+            <field name="name">Operasional</field>
+            <field name="description">Operasional</field>
+            <field name="sequence">60</field>
+        </record>
+        <record id="module_category_menu" model="ir.module.category">
+            <field name="name">Menu</field>
+            <field name="description">Menu</field>
+            <field name="sequence">60</field>
+        </record>
+    </data>
+</odoo>

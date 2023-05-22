@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_tbl_bisa_contract_management_tree" model="ir.ui.view">
+            <field name="name">tbl_bisa_contract_management.tree</field>
+            <field name="model">tbl_bisa_contract_management</field>
+            <field name="arch" type="xml">
+                <tree string="Contract Management" create="false">
+                    <field name="name"/>
+                    <field name="no_kontrak"/>
+                    <field name="tanggal"/>
+                    <field name="nama_customer"/>
+                    <field name="tgl_kontrak_awal"/>
+                    <field name="tgl_kontrak_akhir"/>
+                    <!-- <field name="jaminan" invisible="1"/> -->
+                    <!-- <field name="tgl_jaminan_awal" invisible="1"/>
+                    <field name="tgl_jaminan_akhir" invisible="1"/> -->
+                    <field name="nilai"/>                    
+                    <field name="state"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tbl_bisa_contract_management_form" model="ir.ui.view">
+            <field name="name">tbl_bisa_contract_management.form</field>
+            <field name="model">tbl_bisa_contract_management</field>
+            <field name="arch" type="xml">
+                <form string="Contract Management" create="false">
+                    <header>
+                        <button string="Confirm" name="action_create" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="tanggal"/>
+                                    <field name="name"/>
+                                    <field name="no_kontrak"/>
+                                    <field name="nama_customer"/>
+                                    <field name="tgl_kontrak_awal"/>
+                                    <field name="tgl_kontrak_akhir"/>
+                                    <field name="nilai"/>
+                                </group>
+                                <!-- <group>
+                                    <field name="jaminan" invisible="1"/>
+                                    <field name="tgl_jaminan_awal" invisible="1"/>
+                                    <field name="tgl_jaminan_akhir" invisible="1"/>
+                                </group> -->
+                            </group>
+                            <notebook>
+                                <page string="Detail">
+                                    <field name="detail_contrak" attrs="{'readonly': [('state', 'in', ['done'])]}">
+                                        <tree string="Detail" editable="bottom">
+                                            <field name="nama_projek" domain="[('partner_id','=', nama_customer)]"/>
+                                            <field name="nama_customer" invisible="1"/>
+                                            <field name="produk" domain="[('servis','in', ('hauling','hrm','rental','port','fuel_truck','water_truck'))]"/>
+                                            <field name="lokasi"/>
+                                            <field name="quantity"/>
+                                            <field name="uom"/>
+                                            <field name="harga"/>
+                                            <field name="total"/>
+                                            <field name="progress"/>
+                                            <field name="invoiced"/>
+                                            <field name="bayar"/>
+                                            <field name="is_confirm" invisible="1"/>
+                                            <button string="Confirm" name="action_create_line" type="object" class="oe_highlight" attrs="{'invisible': [('is_confirm', '=', True)]}"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Progress">
+                                    <field name="detail_progress">
+                                        <tree string="Progress" editable="bottom">
+                                            <field name="no_invoice"/>
+                                            <field name="produk"/>
+                                            <field name="progress"/>
+                                            <field name="nominal"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="menu_action_contract_management" model="ir.actions.act_window">
+            <field name="name">Contract Management</field>
+            <field name="res_model">tbl_bisa_contract_management</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_action_management_left" name="Contract Management" action="menu_action_contract_management" parent="menu_cm_top" sequence="10"/>
+    
+        <record id="view_tbl_product_form" model="ir.ui.view">
+            <field name="name">tbl_product_form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='uom_po_id']" position="after">
+                    <field name="servis"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
+

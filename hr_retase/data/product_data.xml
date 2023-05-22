@@ -1,0 +1,11 @@
+<odoo>
+
+    <data>
+        <record id="module_category_retase_management" model="ir.module.category">
+            <field name="name">Retase Management</field>
+            <field name="description">Retase Management</field>
+            <field name="sequence">59</field>
+        </record>
+
+    </data>
+</odoo>

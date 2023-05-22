@@ -1,0 +1,26 @@
+<odoo>
+
+
+
+    <data noupdate="0">
+        <record id="grup_hourmeter_mgr" model="res.groups">
+            <field name="name">Hourmeter Manager</field>
+            <field name="comment">Manager</field>
+            <field name="category_id" ref="module_category_hourmeter_management"/>
+        </record>
+
+        <record id="grup_hourmeter_user" model="res.groups">
+            <field name="name">Hourmeter User</field>
+            <field name="comment">User</field>
+            <field name="category_id" ref="module_category_hourmeter_management"/>
+        </record>
+
+        <record id="grup_hourmeter_appr" model="res.groups">
+            <field name="name">Hourmeter Approve</field>
+            <field name="comment">Approve</field>
+            <field name="category_id" ref="module_category_hourmeter_management"/>
+        </record>
+
+
+    </data>
+</odoo>

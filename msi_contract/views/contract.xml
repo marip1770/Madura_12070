@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="hr_contract_view_form" model="ir.ui.view">
+            <field name="name">msi_hr.contract.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='job_id']" position="after">
+                               <field name="job_lokasi"/>
+            	</xpath>
+                
+                <xpath expr="//page[@name='information']" position="replace">
+                        <page string="Salary Information" name="information">
+                            <group name="main_info">
+                                <group name="salary_and_advantages" string="Pendapatan Tetap">
+                                    <!-- <field name="nama_tunjangan" />
+                                    <field name="tipe_tunjangan" />
+                                    <field name="kategori_pendapatan" />
+                                    <field name="taxable" /> -->
+                                    <label for="wage"/>
+                                    <div class="o_row" name="wage">
+                                        <field name="wage" nolabel="1"/>
+                                        <span>/ month</span>
+                                    </div>
+                                    <field name="advantages" nolabel="1" placeholder="Advantages..." colspan="2" invisible="1"/>
+                                    <field name="tunj_tetap"/>
+                                </group>
+                            <group>
+                                    <field name="mata_uang_id" />
+                                    <field name="struktur_gaji" />
+                                    <field name="akses" />
+                                    <field name="analytic_id" />
+                                    <field name="gol_gaji" />
+                                </group>
+                            </group>
+
+                            <group>
+                                <group>
+
+                                    <field name="u_komunikasi" />
+                                    <field name="u_perumahan" />
+                                    <field name="u_keluarga" />
+                                </group>
+                                <group>
+                                    <field name="u_daerah" />
+                                    <field name="u_jabatan" />
+                                    <field name="u_keahlian" />
+                                    <field name="u_khusus" />
+                                    <field name="u_hari_tua" />
+
+                                </group>
+                            </group>
+
+                            <group>
+                                <group>
+                                    <!-- <field name="u_field" /> -->
+                                    <field name="u_kebersihan" />
+                                    <!-- <field name="u_kinerja" /> -->
+                                    <field name="u_tanggung_jawab" />
+                                    <field name="uang_makan"/>
+
+                                </group>
+                                <group>
+                                    <field name="u_hd" />
+                                    <field name="u_se" />
+                                </group>
+                            </group>
+
+                            <group>
+                                <group string="Potongan Tetap">
+                                    <field name="pot_uang_makan"/>
+                                </group>
+                            </group>
+
+                            
+                            <group>
+                                <group string="Tunjangan per hadir">
+                                    <field name="u_transport_hdr" />
+                                    <field name="u_transport" />
+                                    <field name="u_makan_hdr" />
+                                    <field name="u_makan" />
+                                    <field name="u_kehadiran_hdr" />
+                                    <field name="u_kehadiran" />
+                                    <field name="u_saku_hdr" />
+                                    <field name="u_saku" />
+                                    <field name="u_medium_hdr" />
+                                    <field name="u_medium" />
+                                    <field name="u_field_hdr" />
+                                    <field name="u_field" />
+
+                                </group>
+                                <group string="Potongan per hadir">
+                                    <field name="u_terlambat_hdr" />
+                                    <field name="u_terlambat" />
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="BPJS" name="bpjs">
+                            <group>
+                                <group>
+                                    <field name="bpjs_kesehatan" />
+                                    <field name="jp" />
+                                    <field name="jkm" />
+                                    <field name="jkk" />
+                                    <field name="jht" />
+
+                                </group>
+                                <group>
+
+
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Pajak" name="pajak">
+                            <group>
+                                <group>
+                                    <field name="ptkp" />
+                                </group>
+                                 <group>
+
+
+                                </group>
+                            </group>
+                        </page>
+
+            	</xpath>
+
+	</field>
+	</record>
+
+
+    </data>
+</odoo>

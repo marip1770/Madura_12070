@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tbl_msi_budget_detail,access_tbl_msi_budget_detail,model_tbl_msi_budget_detail,,1,1,1,1
+access_tbl_msi_budget,access_tbl_msi_budget,model_tbl_msi_budget,,1,1,1,1
+access_tbl_msi_budget_tahun,access_tbl_msi_budget_tahun,model_tbl_msi_budget_tahun,,1,1,1,1

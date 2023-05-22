@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_print_overtime"
+            string="Overtime"
+            model="tbl_msi_overtime_print" 
+            report_type="qweb-pdf"
+            file="hr_overtime.action_print_overtime_tmpl" 
+            name="hr_overtime.action_print_overtime_tmpl"
+            print_report_name="('Overtime - %s' % (object.employee.name))"
+        />
+
+    </data>
+
+
+</odoo>

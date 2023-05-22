@@ -1,0 +1,24 @@
+ <odoo>
+
+
+
+        <record id="view_msi_account_change_lock_date_form" model="ir.ui.view">
+            <field name="name">account.msi_change.lock.date.form</field>
+            <field name="model">account.change.lock.date</field>
+            <field name="inherit_id" ref="account_accountant.view_account_change_lock_date"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fiscalyear_lock_date']" position="after">
+                    <field name="pr_start_date"/>
+                    <field name="pr_end_date"/>
+                    <field name="gr_start_date"/>
+                    <field name="gr_end_date"/>
+                    <field name="closing_start_date"/>
+                    <field name="closing_end_date"/>
+                </xpath>
+            </field>
+        </record>
+           
+
+
+
+</odoo>

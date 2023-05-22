@@ -1,0 +1,26 @@
+<odoo>
+
+
+
+    <data noupdate="0">
+        <record id="grup_retase_mgr" model="res.groups">
+            <field name="name">Retase Manager</field>
+            <field name="comment">Manager</field>
+            <field name="category_id" ref="module_category_retase_management"/>
+        </record>
+
+        <record id="grup_retase_user" model="res.groups">
+            <field name="name">Retase User</field>
+            <field name="comment">User</field>
+            <field name="category_id" ref="module_category_retase_management"/>
+        </record>
+
+        <record id="grup_retase_appr" model="res.groups">
+            <field name="name">Retase Approve</field>
+            <field name="comment">Approve</field>
+            <field name="category_id" ref="module_category_retase_management"/>
+        </record>
+
+
+    </data>
+</odoo>
